@@ -19,3 +19,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# 一个可以使用各种方式管理Django项目的命令行工具
