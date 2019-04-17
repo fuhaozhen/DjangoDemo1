@@ -10,6 +10,11 @@ class BookInfo(models.Model):
     def __str__(self):
         return self.btitle
 
+    # 更改列名显示
+    def name(self):
+        return self.btitle
+    name.short_description = "书名"
+
 
 class HeroInfo(models.Model):
     hname = models.CharField(max_length=20)
@@ -19,3 +24,5 @@ class HeroInfo(models.Model):
 
     def __str__(self):
         return self.hname
+
+
