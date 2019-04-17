@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
     # url("index/", views.index),
-    url("index/$", views.index),
-    url("list/$", views.list),
+    url(r"^$", views.index),
+    url(r"^list/$", views.list),
+    url(r"^detail/(\d+)/", views.detail)
 ]
 

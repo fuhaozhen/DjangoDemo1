@@ -17,7 +17,7 @@ Including another URLconf
 Django项目的URL声明，就像是网站的“目录”
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 from django.conf.urls import url
 
 urlpatterns = [
