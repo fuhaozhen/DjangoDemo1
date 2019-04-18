@@ -22,5 +22,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('booktest/', include('booktest.urls')),
+    # include第二个参数为命名空间
+    url('booktest/', include('booktest.urls', namespace='booktest')),
 ]

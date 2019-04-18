@@ -40,6 +40,6 @@ class HeroInfoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(BookInfo, BookInfoAdmin)
-admin.site.register(HeroInfo)
+admin.site.register(HeroInfo, HeroInfoAdmin)
 
 # Register your models here.

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表页</title>
+</head>
+<body>
+    <h1>书籍列表</h1>
+
+    <ul>
+        {% for book in booklist %}
+        {#<li><a href="/booktest/detail/{{book.id}}/">{{book.btitle}}</a></li>#}
+        <li>
+            <a href="{% url 'booktest:detail' book.id %}">{{book.btitle}}</a>
+            <a href="{% url 'booktest:delete' book.id %}">删除书籍</a>
+        </li>
+
+        {% empty %}
+        <h3>没有图书信息</h3>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'booktest:add' %}" method="post">
+        输入书名：<input type="text" name="bname">
+        <input type="submit" value="添加书籍">
+    </form>
+</body>
+</html>

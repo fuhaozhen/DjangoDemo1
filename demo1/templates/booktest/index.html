@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h2>首页</h2>
+
+        {# 超级链接编码 #}
+        {#<a href = "/booktest/list/">列表页</a>#}
+        {# 去除硬编码 #}
+        <a href = "{% url 'booktest:list' %}">进入列表页</a>
+        <br>
+        <img src="/static/images/liu.jpg" alt="图片加载失败">
+    </div>
+</body>
+</html>
