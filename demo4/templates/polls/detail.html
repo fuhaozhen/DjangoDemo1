@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页</title>
+</head>
+<body>
+<h2>投票信息：{{q.qtext}}</h2>
+<h4>投票选项</h4>
+<form action="{% url 'polls:vote' q.id%}" method="post">
+    {% for i in q.choice_set.all %}
+    <input type="radio" name="choice" value="{{i.id}}">{{i}}
+    {% empty %}
+    <h4>没有选项</h4>
+    {% endfor %}
+    <br>
+    <input type="submit" value="投票">
+</form>
+</body>
+</html>

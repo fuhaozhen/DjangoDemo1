@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>得票信息</title>
+</head>
+<body>
+    <h2>投票信息</h2>
+    <h3>{{q.qtext}}</h3>
+    {% for i in choices %}
+        {{i.cchoice}}--票数：{{i.cvote}}<br>
+    {% empty %}
+        <h4>没有信息</h4>
+    {% endfor %}
+</body>
+</html>
