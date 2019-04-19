@@ -54,7 +54,7 @@ def delete(request, id):
         b1 = BookInfo.objects.all()
         return render(request, "booktest/list.html", {"booklist": b1})
     except:
-        return HttpResponse("删除成功")
+        return HttpResponse("删除失败")
 
 
 def addhero(request, bookid):
@@ -82,8 +82,11 @@ def addherohandler(request):
     # return  HttpResponseRedirect("添加成功")
 
 
-# def deletehero(request):
-#     return HttpResponse("删除成功")
+def deletehero(request, id):
+    h1 = HeroInfo.objects.get(pk=id)
+    b1 = h1.hbook
+    h1.delete()
+    return render(request, "booktest/detail.html", {"book": b1})
 
 
 

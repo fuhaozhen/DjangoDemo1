@@ -13,6 +13,6 @@ urlpatterns = [
     url(r"^delete/(\d+)/$", views.delete, name="delete"),
     url(r"^addhero/(\d+)/$", views.addhero, name="addhero"),
     url(r"^addherohandler/$", views.addherohandler, name="addherohandler"),
-    # url(r"^deletehero/(\d+)/$", views.deletehero, name="deletehero"),
+    url(r"^deletehero/(\d+)/$", views.deletehero, name="deletehero"),
 ]
 
