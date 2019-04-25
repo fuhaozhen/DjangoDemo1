@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/static/jqUI/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.css"/>
+		<script src="/static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/jqUI/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/* top */
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			div{
+				display: block;
+			}
+			body{
+				font-family: "微软雅黑";
+				font-size:14px;
+				color: #666;
+			}
+			div.top{
+				height:40px;
+				background-color:#323232;
+				line-height:40px;
+			}
+			a.phone{
+				line-height: 52px;
+				float: left;
+				height:40px;
+			}
+			a.kefu{
+				float: left;
+				font-size: 15px;
+				margin-left:11px;
+			}
+			div.content{
+				width:1100px;
+				margin:0 auto;
+			}
+			ul.flu{
+				float: left;
+			}
+			ul.flu>li{
+				list-style: none;
+				float:left;
+				margin-left:11px;
+				padding-right:11px;
+				border-right:1px solid #23B7B7;	
+			}
+			ul.flu>li a{
+				display: block;
+				text-decoration: none;
+				color:#b4b5ba;
+			}
+			ul.flu>li a:hover{
+				text-decoration: underline;
+			}
+			div.top .fr{
+				float:right;
+			}
+			div.top .fr a{
+				width:78px;
+				height:24px;
+				display: block;
+				border:1px solid #23B7B7;
+				float: left;
+				line-height: 24px;
+				text-align: center;
+				margin-top:7px;
+				text-decoration: none;
+				color:#23B7B7;
+			}
+			div.top .fr a:hover{
+				background-color:#23B7B7;
+				color: white;
+			}
+			
+			/* nav */
+			div.nav{
+				height:100px;
+				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
+			}
+			div.s1_content img{
+				margin-top: 20px;
+			}
+			div.s1_content{
+				width:1100px;
+				margin: 0 auto;
+				clear:both;
+			}
+			div.menu{
+				float:right;
+				height:100px;
+			}
+			div.menu ul li{
+				float:left;
+				list-style: none;
+				padding-top: 34px;
+				color:#666666;
+				/* width:110px; */
+				text-align: center;
+				line-height: 30px;
+				margin-right: 60px;
+			}
+			div.menu ul li a{
+				text-decoration: none;
+				color:#000;
+				font-size:20px;
+			}
+			div.menu ul li a:hover{
+				color:#23B7B7;
+				border-bottom: 2px solid #23B7B7;
+				padding-bottom:10px;	
+			}
+			
+			/* middle-content */
+			div.about_content{
+				width: 1100px;
+				margin: 0 auto;
+				overflow: hidden;
+				background: #fff;
+				margin-top: 30px;
+				margin-bottom: 40px;
+				border: 1px solid #eee;
+			}
+			div.about_left{
+				width: 205px;
+				overflow: hidden;
+				float: left;
+				background: #f9f9f9;
+				min-height: 900px;
+			}
+			div.about_left a.guide{
+				color: #23B7B7;
+				font-weight: bold;
+			}
+			div.about_left a{
+				display: block;
+				width: 205px;
+				height: 60px;
+				border-bottom: 1px solid #eeeeee;
+				font-size: 18px;
+				text-align: center;
+				line-height: 60px;
+				text-decoration: none;
+				color: #666;
+			}
+			div.about_left a:hover{
+				background: url(/static/images/ny/gywm-bj.png) no-repeat;
+			
+				color:#23B7B7 ;
+				font-weight: bold;
+			}
+			div.about_right{
+				width: 879px;
+				overflow: hidden;
+				min-height: 610px;
+				margin: auto;
+			}
+			div.right_top{
+				width: 810px;
+				height: 35px;
+				margin: auto;
+				border-bottom: 1px solid #ddd;
+				position: relative;
+				margin-top: 20px;
+			}
+			div.gong_si_jie_shao{
+				padding-right: 20px;
+				height: 38px;
+				background: #fff;
+				line-height: 38px;
+				color: #666;
+				font-size: 22px;
+				font-weight: bold;
+				position: absolute;
+				top: 11px;
+				width:160px ;
+			
+			}
+			div.right_bottom{
+				width: 810px;
+				overflow: hidden;
+				margin: auto;
+				padding: 40px 0;
+				font-size: 14px;
+				font-family: Simsun;
+			}
+			
+			div#accordion h3{
+				height: 50px;
+				line-height: 50px;
+				font-size: 14px;
+			}
+			div#accordion li{
+				list-style: square;
+				margin: 10px;
+			}
+			div#accordion p{
+				text-indent: 2em;
+			}
+			/* foot */
+			div.s1_footer{
+				height: 150px;
+				width: 100%;
+				background: #323232;
+			}
+			div.foot_top{
+				height: 100px;
+				padding-top: 10px;
+			}
+			div.s1_top{
+				padding-top: 10px;
+				margin-bottom: 10px;
+			}
+			div.clear{
+				clear: both;
+				overflow: hidden;
+				height: 1px;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			div.s1_lian_jie ul{
+				height: 80px;
+				border-top: 1px solid gray;
+				overflow: hidden;
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+			div.s1_lian_jie ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				line-height: 25px;
+				margin-top: 10px;
+			}
+			div.s1_lian_jie ul li a{
+				color: #b4b5ba;
+				text-decoration: none;
+			}
+			div.s1_top span{
+				margin-right: 15px;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<!-- top -->
+		<div class="top">
+			<div class="content">
+				<div class="fl">
+					<ul class="flu">
+						<li>
+							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
+						</li>
+						<li>
+							<a href="#">用户中心</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="fr">
+					{% if  not username %}
+						<a href="{% url 'cars:user_login' %}">登录</a>
+						<a href="{% url 'cars:user_register' %}">注册</a>
+					{% else %}
+						<a href="{% url 'cars:userinfo' %}">我的</a>
+						<a href="{% url 'cars:log_out' %}">退出</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<!-- nav -->
+		<div class="nav">
+			<div class="s1_content">
+				<img src="/static/images/商标.png" alt>
+			
+				<div class="menu">
+					<ul>
+						<li><a href="{% url 'cars:index' %}">首页</a></li>
+						<li><a href="{% url 'cars:short' %}">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide' %}" style="color:#23B7B7;">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- middle -->
+		<div class="about_content">
+			<div class="about_left">
+				<a href="{% url 'cars:about' %}" >关于我们</a>
+				<a href="{% url 'cars:guide' %}" class="guide">租车指南</a>
+				<a href="#">企业服务</a>
+				<a href="#">在线咨询</a>
+			</div>
+			<div class="about_right">
+				<div class="right_top">
+					<div class="gong_si_jie_shao"><img src="/static/images/zhi_nan.png">租车指南</div>
+				</div>
+				<div class="right_bottom">
+					<div id="accordion">
+					  <h3>新手上路</h3>
+					  <div>
+						<ul>
+							<li>
+								<div class="titles">
+									<h4>租车条件</h4>
+								</div>	
+								<div class="zuche_content">
+									
+									<p>	身份证，驾驶证，信用卡。</p>
+									<p>
+										<p>租车前，请确认您满足以下条件、持有以下证件：</p>
+										<p>1. 年龄要求：年满20周岁</p>
+										<p>2. 证件要求：</p>
+										<p>A. 首次取车时，请出示以下证件的原件：</p>
+										<p>(1)　本人的有效身份证件</p>
+										<p>a)境内客户：二代身份证</p>
+										<p>b)港澳客户：港澳居民来往内地通行证</p>
+										<p>c)台湾客户：大陆通行证</p>
+										<p> d)外籍客户：护照，签证/居住证</p>
+										<p>(2)　本人国内有效驾驶证</p>
+										<p>(3)　有效信用卡</p>
+										<p> B.自第二次租车开始，您仅需出示驾照原件即可。</p>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="titles">
+								   <h4>预订方式</h4>
+								</div>
+								<div class="yuding">
+									
+									<p>1、网站预订：登录http://www.qingsong.com网页进行预订</p>
+									<p style="text-indent: 2em;">2、电话预订：致电朋友租车客户服务中心400 666 6688，客服人员将为您安排订车</p>
+									<p style="text-indent: 2em;">3、门店预订：光临朋友租车门店，门店人员将为您安排预订或协助您选租车辆。</p>
+									<p>预订说明</p>
+									<p style="text-indent: 2em;">1. 成功提交订单后，我们将为您预留车辆。</p>
+									<p style="text-indent: 2em;">2. 客户取车：</p>
+									<p>(1) 提前取车：</p>
+									<p>如在预订取车时间前取车，租期将按您实际的取车时间计算。</p>
+									<p>(2) 延时取车：</p>
+									<p>如您需要延时取车，请务必在预订取车时间前致电我们以便为您保留车辆，超过预订取车时间一小时如果您未取车，订单将自动取消；延时取车，租期将自您原先预订的取车时间起算。</p>
+									<p>如您需要延时取车，请务必在预订取车时间前致电我们以便为您保留车辆，超过预订取车时间一小时如果您未取车，订单将自动取消；延时取车，租期将自您原先预订的取车时间起算。</p>
+									<p>(1) 我们将为您调整同级别车辆或免费升级车辆；</p>
+									<p>(2) 确实无车提供的，我们将补偿您订单首日车辆租金金额的朋友积分。</p>
+									
+								</div>
+							</li>
+							<li>
+								<div class="titles">
+									<h4>取还车流程</h4>
+								</div>
+								<div class="liu_cheng">
+									
+									<p>租车流程：</p>                                       
+									<p>上门服务模式： 送车人员前往您指定地点--为您检验身份证件---为您刷取第一次租车预授权---请您签署租车合同---验车---交付车辆</p>
+									<p>门店模式：前往门店---门店服务人员为您检验身份证件---为您刷取第一次租车预授权---请您签署租车合同---验车---驾离门店</p>
+									 
+									<p>还车流程:</p>
+									<p>上门服务模式：收车人员前往您指定还车地点---为您验车---为您结算租车费用---请检查您的私人物品---交还车辆</p>
+									<p>门店模式：前往约定还车地点---门店服务人员为您验车---为您结算租车费用---请检查您的私人物品---离开门店</p>
+								</div>
+							</li>
+						</ul>
+					  </div>
+					  <h3>收费及结算</h3>
+					  <div>
+						<ul>
+							<li>
+								<div class="titles">
+									<h4>收费项目说明</h4>
+								</div>
+								<div class="shou_fei">
+									
+									<p>标准服务价格</p>
+									<p>1. 车辆租金：（必购项目）</p>
+										<p>(1)车辆租金是各车型在租赁中形成的费用，最小单位为1天（24小时）：</p>
+										<p>(2) 超1-5小时按半天计费，超时5小时以上（不含5小时），24小时以内，按1天租金计算，同时按原订单标准加收相关保险费。</p>
+									<p>根据您选择的产品类型、支付方式，车辆租金分为正常价和周租/月租价：</p>
+									 <p>2. 基本保险费：（必购项目） </p>
+									<p>基本保险是对您重大事故的保障。</p>
+									   <p>(1) 基本计费单位：1天（24小时），其中租期中非整日的部分：</p>
+										  <p>a) 不足1小时，保险费不计；</p>
+										  <p>b) 超1小时以上的，按1天计费。</p>
+									 <p>  (2) 计价方式：按天计费，总额=单价*租期；</p>
+									   <p>(3) 计价说明：</p>
+										 <p> a) 不同车型基本保险费价格不同；</p>
+										  <p>b) 基本保险费不计入停运损失费、超期违约金。</p>
+									<p>3. 手续费：（必购项目）</p>
+									<p>手续费是为您办理租车手续的人工费、场地费等。</p>
+									  <p> (1) 基本计费单位：按订单计费；</p>
+									   <p>(2) 计价说明：</p>
+										 <p> a) 不区分车型和会员级别；</p>
+										  <p> a) 不区分车型和会员级别；</p>
+									<p> a) 不区分车型和会员级别；</p>
+									<p>4. 超时费：</p>
+									  <p> 60分钟以内的超时，不收取超时费。</p>
+									<p>还车时间超过租期约定的归还时间60分钟以上的，或总租期内非整日部分中有不满5小时的，按以下标准收取超时费。</p>
+									   <p>(1) 基本计费单位：小时</p>
+									   <p>(2) 超时费用只计车辆租金，不含基本保险费等其他费用，计费方式：</p>
+										  <p>a) 不足1小时的，不计费；</p>
+										 <p> b) 1小时（含）内的，按全天计费；</p>
+								
+								</div>
+							</li>
+							<li>
+								<div class="titles">
+									<h4>定金与授权额度标准</h4>
+								<div>
+								<div class="ding_jin">
+								
+									<table class="table table-bordered">
+										<tr>
+											<th>产品类型</th>
+											<th>租金支付时间</th>
+											<th>租金额度</th>
+											<th>享受车辆租金价格</th>
+										</tr>
+										<tr>
+											<td>普通产品</td>
+											<td>还车时一次性支付</td>
+											<td>全款</td>
+											<td>正常价</td>
+										</tr>
+										<tr>
+											<td>周租/月租 产品</td>
+											<td>取车时一次性现付</td>
+											<td>预计全款，还车多退少补</td>
+											<td>周租/月租价</td>
+										</tr>
+									</table>
+								</div>
+							</li>
+							<li>
+								<div class="titles">
+									<h4>支付方式</h4>
+								</div>
+								<div class="zhi_fu">
+								
+									<p>预授权及租金支付</p>
+									<p>1. 朋友租车接受信用卡及国内借记卡支付。</p>
+									<p>2. 预授权：</p>
+									<p>取车时，请根据您租用的车型，刷取相应的信用卡预授权。</p>
+									<p>3.租金支付</p>
+								</div>
+							</li>
+						</ul>
+					  </div>
+					  <h3>紧急事务处理</h3>
+					  <div>
+						<ul>
+							<li>
+								<div class="titles">
+									<h4>保险责任</h4>
+								</div>
+								<div>
+									<table class="table table-bordered">
+										<tr>
+											<th>保险项目</th>
+											<th>保额</th>
+											<th>保险保障范围</th>
+											<th>承租方责任</th>
+											<th>保险公司及本公司责任</th>
+											<th>备注</th>
+										</tr>
+										<tr>
+											<td>车辆损失险</td>
+											<td>车辆实际价值</td>
+											<td>由于发生自然灾害、意外事故、其他保险事故导致的车辆本身的损失</td>
+											<td>20%</td>
+											<td>80%</td>
+											<td>保险公司拒赔的部分由客户承担</td>
+										</tr>
+										<tr>
+											<td>第三者责任险</td>
+											<td>20万元</td>
+											<td>保险车辆发生意外事故</td>
+											<td>0</td>
+											<td>100%</td>
+											<td>保险公司拒赔的部分由客户承担</td>
+										</tr>
+										<tr>
+											<td>车上人员责任险</td>
+											<td>2万元</td>
+											<td>保险车辆发生意外事故，驾驶人员伤亡</td>
+											<td>0</td>
+											<td>100%</td>
+											<td>保险公司拒赔的部分由客户承担</td>
+										</tr>
+										<tr>
+											<td>全车盗抢险</td>
+											<td>车辆实际价值</td>
+											<td>全车被盗抢、被抢劫而造成的损失</td>
+											<td>20%</td>
+											<td>80%</td>
+											<td></td>
+										</tr>
+									</table>
+								</div>
+							</li>
+							<li>
+								<div class="titles"><h4>事故处理</h4></div>
+								<div><p>1. 如车辆不慎出险，请您注意人身安全，并立即致电朋友租车24小时热线400 871 6166报案，车辆需由保险公司定损后再修理；</p>
+									 <p>2. 为避免处理不当给您带来损失，请您按以下指引处理事故：
+									 <p> (1)双方交通事故：</p>
+											<p>a) 请您立即停车，记录相关事故车辆的车牌号码，索要对方电话号码；</p>
+											<p>b) 检查对方驾驶执照，如对方无有效驾照，请立即拨打110报警；</p>
+											<p>c) 依据《交通事故快速处理办法》所列的事故情形明确双方责任，如能达成一致：</p>
+										<p>■拍摄第一现场照片：全景照片（现场位置、痕迹、事故损失全貌），物证及特写照片（车牌号、受损部位、受损程度等）；</p>
+										<p>■驶离现场至不妨碍交通的地方；</p>
+										<p>■填写《交通事故快速处理协议书》：当事各方各持一份；</p>
+										<p>■拨打保险报案电话（见车辆前挡风玻璃上粘贴的交强险标识），获得报案号和报险建议；</p>
+										<p>注：《交通事故快速处理协议书》填写项目要齐全，时间精确到分，事故地点具体到所在区域及道路具体名称，各方驾驶证、电话号码需进行核对；保险“报案号”待报案后会获得。</p>
+											<p>d) 如果不能明确双方责任：</p>
+										<p>■请立即报警（110）等待警察处理；</p>
+										<p>■请于事故车后50米处安放随车附带的三角警示牌，同时将车辆双闪警示灯打开，以便使行驶车辆安全避让；</p>
+										<p>■待警察出具事故责任判定后，立即致电400 871 6166报险。</p>
+											<p>e) 请根据报险处理建议，携带车辆行驶本和驾照，将车辆送到指定地点定损（定损时需要事故车辆同时到场以便勘察定损）。</p>
+											<p>f) 请按指导收集理赔所需材料，并将材料交与还车门店或指定维修人员。</p>
+										  <p>(2)如遇对方车辆肇事逃逸的、对方车辆无号牌的、对方驾驶员无驾驶证或饮酒后驾驶车辆的，请您记录相关信息（如：车牌号，车辆品牌，颜色以及肇事地点）并立即报警（110），等候交警处理，同时请您致电400 871 6166以获得保险方面的咨询和建议。</p>
+										<p>(3)如车辆与障碍物、建筑物发生碰撞，或车辆停放期间被碰撞而找不到肇事者，请您将车辆损坏部位以及碰撞物体进行比对拍照，并致电400 871 6166，以便车辆能够得到及时修复；</p>
+										<p>(4)如遇重大交通事故且有人员伤亡的，请保护现场，并拨打110交通事故报警台求助，同时请立即致电保险报案电话（见车辆前挡风玻璃上粘贴的交强险标识），以获得保险方面的咨询和建议。</p>
+										<p>3. 事故损失的垫付：
+										 <p>(1) 在事故索赔所需材料不齐的情况下，您需垫付本车维修费用（即支付材料缺失保证金）；</p>
+										 <p> (2) 如有第三方损失，相关费用需由您先行垫付；</p>
+										<p>4. 为避免保险公司拒赔或视您放弃理赔，请您务必在出险之日起15日内将保险理赔所需事故材料完整提供给我们（特大人伤事故，或费用超 1万元，可相应延缓30日）；感谢您的配合！</p>
+										<p>5. 保险公司理赔结束后，我们会将所得理赔款中由您垫付的部分返还给您（具体费用由保险公司核损，最终返还给您的费用额度将按保险公司实际到位理赔款确定）。</p>
+										<p>注：发生事故后，请勿擅自维修事故车辆，否则您将承担赔偿损失等违约责任，超过保险公司赔偿范围或保险公司不足额理赔的部分，也将由您承担。</p></div>
+							</li>
+							<li>
+								<div class="titles"><h4>理赔流程</h4></div>
+								<div><p>1. 以下情况及其他保险公司不予赔偿的情况，造成的所有经济损失和后果将由您自行承担，请您务必避免：</p>
+									  <p>(1) 超过48小时报案；</p>
+									  <p>(2) 饮酒后驾驶车辆；</p>
+									  <p>(3) 无证驾驶车辆；</p>
+									  <p>(4) 持逾期未审验的驾驶执照驾驶车辆；</p>
+									  <p>(5) 发生事故后驾车逃逸。</p>
+									<p>2. 如车辆不慎出险，请您注意人身安全，并立即致电朋友租车24小时热线400 871 6166报案、收集理赔材料。齐全的理赔材料可以节省您的理赔等待时间：</p>
+									  <p>(1) 在您还车并提交了齐全的理赔资料时，您不需要垫付本车维修等保险公司应付费用，仅需：</p>
+										<p>a) 垫付第三方损失，该费用将在保险公司完成理赔后返还给您；</p>
+										<p>b) 支付上表列明的保险责任内的由承租方承担的损失，以及保险责任外的所有责任和损失；</p>
+									  <p>(2) 在您还车不能提供齐全的理赔资料时，请根据预估的车辆损失刷取最低1500元的维修押金，该押金将在您提交完材料后的3天内发起退款（到账时间以各银行为准）。</p>
+									<p>3. 在您用车期间，如有车辆盗抢与报废发生，您需支付公安部门立案或车管部门出具报废证明之前的车辆租赁费用。</p></div>
+							</li>
+							<li>
+								<div class="titles"><h4>紧急救援</h4></div>
+								<div><p>轻松租车提供24小时的救援服务。如遇紧急情况，请您致电客户服务中心400 871 6166</p>
+									<p>1. 由于车辆本身故障引起的救援，费用由朋友租车承担。</p>
+									 <p> (1) 我们将联系4s店为您提供现场紧急修理服务；</p>
+									  <p>(2) 如车辆故障无法现场修复：</p>
+									<p>	a) 我们将尽快为您换车，备用车为同级别或就近高级别车辆时，租金按原车型计费；备用车为就近低级别车时，租金按低级别车辆价格计费。</p>
+									<p>	b) 我们负责临时交通费用。</p>
+									<p>2. 对于非车辆本身故障导致车辆不能正常行驶的（包含且不限于人为操作失误、保险事故等），相关费用由客户承担：</p></p>
+									<p>  (1) 您可以自行选择救援商或选择由我们提供的道路救援服务。</p>
+									<p>  (2)由于要调配停驶车辆，车辆在租车城市之外地区停驶的，您需支付异地还车费用。</p></div>
+							</li>
+						</ul>
+					  </div>
+					  <h3>章程与规则</h3>
+					  <div>
+						 <ul>
+							<li>
+								 <div class="titles"><h4>积分规则</h4></div>
+								 <div><p>
+									<p>一 积分获取 </p>
+									<p>	1 会员每成功短租自驾租车一次，积分1分，金卡会员1.5分；当次租期在4天（含）以上时，额外增加积分1分 ；</p>
+									<p>	2 会员还车结算后的7日内，积分计入会员名下。 </p>
+									<p>二 积分有效期为一年，每年1月1日至12月31日期间的积分可累加，次年1月1日起清零重新计算。</p>
+									<p>三 普卡会员积分仅限用于会员定级，不用于抵扣租车消费和礼品兑换；金卡会员可折算租金，1分=1元人民币。</p>
+									<p>四 积分最小使用单位为30个积分。</p></div>
+							</li>
+							<li>
+								 <div class="titles"><h4>权益规则</h4></div>
+								 <div><p>会员资格仅限会员本人使用。</p>
+									<p>一 会员权利 </p>
+									 <p>  会员享有使用朋友租车产品和服务的权益。</p>
+									<p>二 会员义务 </p>
+									 <p>  1 会员租车时需遵守朋友租车的产品和服务规定；</p>
+									 <p>  2 会员的资料发生变更（如工作变动、住址迁移、联系方式变动或单位名称变更、单位迁址等信息等）时，应及时通知	轻松租车。</p>
+							
+								 </div>
+							</li>
+							<li>
+								<div class="titles"><h4>会员章程</h4></div>
+								<div><p>第一章 总则</p>
+									<p>轻松租车秉承“信誉第一，服务至上”的经营宗旨，竭诚为客户提供简单、安全、省钱的租车服务。为明确会员的权利和义务，特制定本章程。</p>
+									<p>第二章 会员资格</p>
+									<p>凡年龄在18周岁（含）以上、持有有效证件的客户，均可申请入会。</p>
+									<p>第三章 会员级别说明</p>
+									<p>3.1 普卡会员</p>
+									<p>	3.1.1 网站、手机客户端、客服中心或门店均提供免费注册，注册后即时生效；</p>
+									<p>	3.1.2 会员有效期，自注册之日起三年有效。 </p>
+									<p>3.2 金卡会员 </p>
+									<p>	3.2.1 普卡会员本年度的积分满30分，获得下一年度的金卡会员资格；</p>
+									<p>	3.2.2 金卡会员有效期为两年。</p>
+									<p>第四章 会员待遇</p>
+									<p>4.1 不限里程</p>
+									<p>	所有级别会员，短租自驾租车均不限行驶里程（有固定里程限制的产品除外）。</p>
+									<p>4.2 积分返还 </p>
+									<p>   各级别会员短租自驾消费后，按会员级别不同，享受不同的积分政策。</p>
+									<p>第五章 会员积分</p>
+									<p>5.1 积分获取 </p>
+									<p>	5.1.1 会员每成功短租自驾租车一次，积分1分，金卡会员1.5分；当次租期在4天（含）以上时，额外增加积分1分 ；</p>
+									<p>	5.1.2 会员还车结算后的7日内，积分计入会员名下。 </p>
+									<p>5.2 积分有效期为一年，每年1月1日至12月31日期间的积分可累加，次年1月1日起清零重新计算。</p>
+									<p>5.3普卡会员积分仅限用于会员定级，不用于抵扣租车消费和礼品兑换；金卡会员可折算租金，1分=1元人民币。 </p>
+									<p>5.4积分最小使用单位为30个积分。</p>
+									<p>第六章 会员权利与义务</p>
+									<p>会员资格仅限会员本人使用。</p>
+									<p>6.1 会员权利 </p>
+									<p>会员享有使用朋友租车产品和服务的权益。</p>
+									<p>6.2 会员义务 </p>
+									<p>	6.2.1 会员租车时需遵守朋友租车的产品和服务规定；</p>
+									<p>	6.2.2 会员的资料发生变更（如工作变动、住址迁移、联系方式变动或单位名称变更、单位迁址等信息等）时，应及时通知轻松租车。</p>
+							    </div>
+							</li>
+						 </ul>
+					  </div>
+					  
+					  <h3>服务承诺</h3>
+					  <div>
+							<ul>
+								<li>
+									<div class="titles"><h4>租车还车快捷</h4></div>
+									<div><p>1. 送车上门服务：（需要预付1天的租金）</p>
+											<p>我们可将车辆送至您指定的地点，为您现场办理租车手续。</p>
+											<p>	 (1)　送车上门范围：三环以内，机场，高铁站；</p>
+											<p>	 (2)　此项服务须视调度状况而定，为满足您的需求，请务必提前预订：取车时间在10:00-20:00的订单，请您至少提前4小时预订；取车时间在10:00-20:00之外的订单，请您根据网站或客服提示尽早预订；</p>
+											<p>	 (3)　车辆送达后，如因您的缘故服务终止，需要收取送车上门费。</p>
+											<p>2. 上门取车服务：</p>
+											<p>租期结束，我们可到您指定的地点取回租赁车辆，为您现场办理还车手续。</p>
+											<p>	 (1)　上门取车的范围：三环以内，机场，高铁站；</p>
+											<p>	 (2)　为满足您的需求，请务必提前预订：还车时间在10:00-20:00的订单，请您至少提前4小时预订；还车时间在10:00-20:00之外的订单，请您根据网站或客服提示尽早预订；</p>
+											<p>	 (3)　为合理判断车辆损伤、维护您的权益，如车辆在使用过程中出现事故或故障，请将车辆归还到门店。</p>
+											<p>	 (4)　如因您的缘故，工作人员到达后取车不成功，服务终止，需要收取上门取车费。</p>
+											<p>3. 异店还车服务：（不收取异店还车费）</p>
+											<p>轻松租车提供同城异店还车服务，只要您事先预订，就能轻松在同城其他门店归还车辆。</p>
+											<p>为方便您还车，同时不影响下一位客户的既定行程，请您在预订时预订该服务或在预计还车前提前预订：如还车时间在10:00-20:00，请您提前2小时预订；如还车时间在10:00-20:00之外，请您尽早致电预订，我们将尽力满足您的需求。</p></div>
+								</li>
+								<li>
+									<div class="titles"><h4>租赁车辆状况</h4></div>
+									<div><p>我们竭诚为您提供安全、舒适、整洁的车辆：</p>
+										<p>1. 车辆定期保养检修及安全检查，无重大事故及安全隐患；</p>
+										<p>2. 车身外观、内饰、性能：</p>
+										<p> (1)　车身清洁，内饰干净、无破损；</p>
+										<p> (2)　轮胎完好，无鼓包，胎面无明显偏磨；</p>
+										<p> (3)　备胎、灭火器、故障警示牌、随车工具等齐全完好；</p>
+										 <p>(4)　行驶本、保单复印件、交强险标、年检标志等齐全并有效放置、粘贴；</p>
+										 <p>(5)　车辆性能（灯光、仪表、空调、玻璃水、电瓶等）正常。</p></div>
+								</li>
+							</ul>
+					  </div>
+					</div>	
+				
+				</div>
+			</div>
+		</div>
+		<!-- foot -->
+		<div class="s1_footer">
+			<div class="s1_footer_top">
+				<div class="s1_content">
+					<div class="s1_top">
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="s1_lian_jie">
+						<h5 style="color: #b4b5ba;">热门城市入口</h5>
+						<ul>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">广州租车</a></li>
+							<li><a href="#">北京租车</a></li>
+							<li><a href="#">深圳租车</a></li>
+							<li><a href="#">杭州租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">重庆租车</a></li>
+							<li><a href="#">长沙租车</a></li>
+							<li><a href="#">苏州租车</a></li>
+							<li><a href="#">佛山租车</a></li>
+							<li><a href="#">合肥租车</a></li>
+							<li><a href="#">武汉租车</a></li>
+							<li><a href="#">厦门租车</a></li>
+							<li><a href="#">中山租车</a></li>
+							<li><a href="#">宝鸡租车</a></li>
+							<li><a href="#">安阳租车</a></li>
+							<li><a href="#">义务租车</a></li>
+							<li><a href="#">太仓租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">德州租车</a></li>
+							<li><a href="#">乐山租车</a></li>
+							<li><a href="#">枣庄租车</a></li>
+							<li><a href="#">荆州租车</a></li>
+							<li><a href="#">大理租车</a></li>
+							<li><a href="#">淮安租车</a></li>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">信阳租车</a></li>
+							<li><a href="#">丹江租车</a></li>
+							<li><a href="#">遵义租车</a></li>
+							<li><a href="#">青岛租车</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$( function() {
+				$( "#accordion" ).accordion({
+				  collapsible: true
+				});
+			  } );
+		</script>
+	</body>
+</html>

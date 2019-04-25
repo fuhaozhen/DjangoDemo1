@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../3.11/main.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/* top */
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			div{
+				display: block;
+			}
+			body{
+				font-family: "微软雅黑";
+				font-size:14px;
+				color: #666;
+			}
+			div.top{
+				height:40px;
+				background-color:#323232;
+				line-height:40px;
+			}
+			a.phone{
+				line-height: 52px;
+				float: left;
+				height:40px;
+			}
+			a.kefu{
+				float: left;
+				font-size: 15px;
+				margin-left:11px;
+			}
+			div.content{
+				width:1100px;
+				margin:0 auto;
+			}
+			ul.flu{
+				float: left;
+			}
+			ul.flu>li{
+				list-style: none;
+				float:left;
+				margin-left:11px;
+				padding-right:11px;
+				border-right:1px solid #23B7B7;	
+			}
+			ul.flu>li a{
+				display: block;
+				text-decoration: none;
+				color:#b4b5ba;
+			}
+			ul.flu>li a:hover{
+				text-decoration: underline;
+			}
+			div.top .fr{
+				float:right;
+			}
+			div.top .fr a{
+				width:78px;
+				height:24px;
+				display: block;
+				border:1px solid #23B7B7;
+				float: left;
+				line-height: 24px;
+				text-align: center;
+				margin-top:7px;
+				text-decoration: none;
+				color:#23B7B7;
+			}
+			div.top .fr a:hover{
+				background-color:#23B7B7;
+				color: white;
+			}
+			
+			/* nav */
+			div.nav{
+				height:100px;
+				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
+			}
+			div.s1_content img{
+				margin-top: 20px;
+			}
+			div.s1_content{
+				width:1100px;
+				margin: 0 auto;
+				clear:both;
+			}
+			div.menu{
+				float:right;
+				height:100px;
+			}
+			div.menu ul li{
+				float:left;
+				list-style: none;
+				padding-top: 34px;
+				color:#666666;
+				/* width:110px; */
+				text-align: center;
+				line-height: 30px;
+				margin-right: 60px;
+			}
+			div.menu ul li a{
+				text-decoration: none;
+				color:#000;
+				font-size:20px;
+			}
+			div.menu ul li a:hover{
+				color:#23B7B7;
+				border-bottom: 2px solid #23B7B7;
+				padding-bottom:10px;	
+			}
+			
+			/* middle-content */
+			div.about_content{
+				width: 1100px;
+				margin: 0 auto;
+				overflow: hidden;
+				background: #fff;
+				margin-top: 30px;
+				margin-bottom: 40px;
+				border: 1px solid #eee;
+			}
+			div.about_left{
+				width: 205px;
+				overflow: hidden;
+				float: left;
+				background: #f9f9f9;
+				min-height: 800px;
+			}
+			div.about_left a.service{
+				color: #23B7B7;
+				font-weight: bold;
+			}
+			div.about_left a{
+				display: block;
+				width: 205px;
+				height: 60px;
+				border-bottom: 1px solid #eeeeee;
+				font-size: 18px;
+				text-align: center;
+				line-height: 60px;
+				text-decoration: none;
+				color: #666;
+			}
+			div.about_left a:hover{
+				background: url(images/ny/gywm-bj.png) no-repeat;
+				color: #23B7B7;
+				font-weight: bold;
+			}
+			div.about_right{
+				width: 879px;
+				overflow: hidden;
+				min-height: 610px;
+				margin: auto;
+			}
+			div.right_top{
+				width: 810px;
+				height: 35px;
+				margin: auto;
+				border-bottom: 1px solid #ddd;
+				position: relative;
+				margin-top: 20px;
+			}
+			div.gong_si_jie_shao{
+				padding-right: 20px;
+				height: 38px;
+				background: #fff;
+				line-height: 38px;
+				color: #666;
+				font-size: 22px;
+				font-weight: bold;
+				position: absolute;
+				top: 11px;
+				width:100px ;
+			}
+			div.right_bottom{
+				width: 950px;
+				overflow: hidden;
+				margin: auto;
+				padding-top: 40px;
+				padding-bottom: 10px;
+				height: 700px;
+			}
+			ul.qiye_fuwu li{
+				width: 390px;
+				height: 130px;
+				margin: 20px 0 20px 40px ;
+				float: left;
+				display: inline;
+				border-bottom: 1px solid #eee;
+				color: #666;
+				list-style: none;
+			}
+			ul.qiye_fuwu li img{
+				float: left;
+				width: 78px;
+				height: 78px;
+				margin-top: 5px;
+			}
+			ul.qiye_fuwu li div{
+				width: 290px;
+				float: right;
+				line-height: 18px;
+				height: 100px;
+			}
+			ul.qiye_fuwu li div h3{
+				font-weight: bold;
+				font-family: "微软雅黑";
+				font-size: 16px;
+				margin-bottom: 8px;
+				color: #333;
+			}
+			/* foot */
+			div.s1_footer{
+				height: 150px;
+				width: 100%;
+				background: #323232;
+			}
+			div.foot_top{
+				height: 100px;
+				padding-top: 10px;
+			}
+			div.s1_top{
+				padding-top: 10px;
+				margin-bottom: 10px;
+			}
+			div.clear{
+				clear: both;
+				overflow: hidden;
+				height: 1px;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			div.s1_lian_jie ul{
+				height: 80px;
+				border-top: 1px solid gray;
+				overflow: hidden;
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+			div.s1_lian_jie ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				line-height: 25px;
+				margin-top: 10px;
+			}
+			div.s1_lian_jie ul li a{
+				color: #b4b5ba;
+				text-decoration: none;
+			}
+			div.s1_top span{
+				margin-right: 15px;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<!-- top -->
+		<div class="top">
+			<div class="content">
+				<div class="fl">
+					<ul class="flu">
+						<li>
+							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
+						</li>
+						<li>
+							<a href="#">用户中心</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="fr">
+					<a href="./login.html">登录</a>
+					<a href="./register.html">注册</a>
+				</div>
+			</div>
+		</div>
+		<!-- nav -->
+		<div class="nav">
+			<div class="s1_content">
+				<img src="images/商标.png" alt>
+			
+				<div class="menu">
+					<ul>
+						<li><a href="./index.html" style="color:#23B7B7;">首页</a></li>
+						<li><a href="short.html">短租</a></li>
+						<li><a href="./long.html">长租</a></li>
+						<!-- <li><a href="#">车型查询</a></li> -->
+						<li><a href="./guide.html">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- middle -->
+		<div class="about_content">
+			<div class="about_left">
+				<a href="about.html" >关于我们</a>
+				<a href="./guide.html" >租车指南</a>
+				<a href="./service.html" class="service">企业服务</a>
+				<a href="./online.html">在线咨询</a>
+			</div>
+			<div class="about_right">
+				<div class="right_top">
+					<div class="gong_si_jie_shao">企业服务</div>
+				</div>
+				<div class="right_bottom">
+					<ul class="qiye_fuwu">
+						<li>
+							<img src="images/tu_biao/1.png" alt="">
+							<div>
+								<h3>商务包车</h3>
+								您是否有过这样的困惑？要招待亲朋好友或商务客人却无法事先确定行程？我们的包车服务不仅提供全天候的出车服务，经验丰富的司机还能为您提供市内、市郊的各类主要景点路线和餐厅信息，让您的出行更轻松、更便捷。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/2.png" alt="">
+							<div>
+								<h3>会议会务用车</h3>
+								当您到市区、或近郊参加高级商务、学术性会议，会为找不到停车地点而烦恼吗？只要通过电话或网上订车，朋友租车会及时把您送到指定地点。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/3.png" alt="">
+							<div>
+								<h3>企业班车</h3>
+								轻松租车可以为企业提供上下班及大型商场或超市的客户接送班车，朋友租车优质的班车司机服务让公司上下班的班车不在是员工抱怨的焦点，给员工或客户创造一个温馨满意的车厢环境。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/4.png" alt="">
+							<div>
+							<h3>机场车接车送</h3>
+							只要您事先通过电话或网上预定，我公司即为您提供机场接送用车，并可接受您的委托，去机场代接或代送客人。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/5.png" alt="">
+							<div>
+								<h3>节假日租车</h3>
+								过节啦，过年啦～～穿上正式光鲜的新衣服去吃年夜饭、拜年啦!可是还是要在瑟瑟寒风中去挤公交？还是抢拦出租车？如果想要全家人一起出动，一辆出租还坐不下又怎么办？快来朋友租车电话或者网上预订车辆吧。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/6.png" alt="">
+							<div>
+								<h3>周边旅游用车</h3>
+								当您需要去周边城市参加会议、探亲访友或旅游时，您只需事先通过电话或网上订车，朋友租车可以上门接您直达目的地，免去您去机场、大巴车站的奔波之苦。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/7.png" alt="">
+							<div>
+								<h3>婚礼庆典用车</h3>
+								想坐着一辆漂亮而体面的婚车去迎接新娘吗？在这里可以让您美梦成真。我们提供各种高中档婚庆车，包括奔驰，宝马，新款林肯房车，克莱斯勒，劳斯莱斯，红色系车辆等。
+							</div>
+						</li>
+						<li>
+							<img src="images/tu_biao/8.png" alt="">
+							<div>
+								<h3>剧组包车服务</h3>
+								凡在郑州或临近省市有影视剧组拍摄，我公司可为您提供剧组工作用车，明星接待专车等用车。
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- foot -->
+		<div class="s1_footer">
+			<div class="s1_footer_top">
+				<div class="s1_content">
+					<div class="s1_top">
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="./guide.html" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="about.html" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="s1_lian_jie">
+						<h5 style="color: #b4b5ba;">热门城市入口</h5>
+						<ul>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">广州租车</a></li>
+							<li><a href="#">北京租车</a></li>
+							<li><a href="#">深圳租车</a></li>
+							<li><a href="#">杭州租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">重庆租车</a></li>
+							<li><a href="#">长沙租车</a></li>
+							<li><a href="#">苏州租车</a></li>
+							<li><a href="#">佛山租车</a></li>
+							<li><a href="#">合肥租车</a></li>
+							<li><a href="#">武汉租车</a></li>
+							<li><a href="#">厦门租车</a></li>
+							<li><a href="#">中山租车</a></li>
+							<li><a href="#">宝鸡租车</a></li>
+							<li><a href="#">安阳租车</a></li>
+							<li><a href="#">义务租车</a></li>
+							<li><a href="#">太仓租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">德州租车</a></li>
+							<li><a href="#">乐山租车</a></li>
+							<li><a href="#">枣庄租车</a></li>
+							<li><a href="#">荆州租车</a></li>
+							<li><a href="#">大理租车</a></li>
+							<li><a href="#">淮安租车</a></li>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">信阳租车</a></li>
+							<li><a href="#">丹江租车</a></li>
+							<li><a href="#">遵义租车</a></li>
+							<li><a href="#">青岛租车</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

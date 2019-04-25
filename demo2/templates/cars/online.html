@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../3.11/main.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/* top */
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			div{
+				display: block;
+			}
+			body{
+				font-family: "微软雅黑";
+				font-size:14px;
+				color: #666;
+			}
+			div.top{
+				height:40px;
+				background-color:#323232;
+				line-height:40px;
+			}
+			a.phone{
+				line-height: 52px;
+				float: left;
+				height:40px;
+			}
+			a.kefu{
+				float: left;
+				font-size: 15px;
+				margin-left:11px;
+			}
+			div.content{
+				width:1100px;
+				margin:0 auto;
+			}
+			ul.flu{
+				float: left;
+			}
+			ul.flu>li{
+				list-style: none;
+				float:left;
+				margin-left:11px;
+				padding-right:11px;
+				border-right:1px solid #23B7B7;	
+			}
+			ul.flu>li a{
+				display: block;
+				text-decoration: none;
+				color:#b4b5ba;
+			}
+			ul.flu>li a:hover{
+				text-decoration: underline;
+			}
+			div.top .fr{
+				float:right;
+			}
+			div.top .fr a{
+				width:78px;
+				height:24px;
+				display: block;
+				border:1px solid #23B7B7;
+				float: left;
+				line-height: 24px;
+				text-align: center;
+				margin-top:7px;
+				text-decoration: none;
+				color:#23B7B7;
+			}
+			div.top .fr a:hover{
+				background-color:#23B7B7;
+				color: white;
+			}
+			
+			/* nav */
+			div.nav{
+				height:100px;
+				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
+			}
+			div.s1_content img{
+				margin-top: 20px;
+			}
+			div.s1_content{
+				width:1100px;
+				margin: 0 auto;
+				clear:both;
+			}
+			div.menu{
+				float:right;
+				height:100px;
+			}
+			div.menu ul li{
+				float:left;
+				list-style: none;
+				padding-top: 34px;
+				color:#666666;
+				/* width:110px; */
+				text-align: center;
+				line-height: 30px;
+				margin-right: 60px;
+			}
+			div.menu ul li a{
+				text-decoration: none;
+				color:#000;
+				font-size:20px;
+			}
+			div.menu ul li a:hover{
+				color:#23B7B7;
+				border-bottom: 2px solid #23B7B7;
+				padding-bottom:10px;	
+			}
+			
+			/* middle-content */
+			div.about_content{
+				width: 1100px;
+				margin: 0 auto;
+				overflow: hidden;
+				background: #fff;
+				margin-top: 30px;
+				margin-bottom: 40px;
+				border: 1px solid #eee;
+			}
+			div.about_left{
+				width: 205px;
+				overflow: hidden;
+				float: left;
+				background: #f9f9f9;
+				min-height: 800px;
+			}
+			div.about_left a.online{
+				color: #23B7B7;
+				font-weight: bold;
+			}
+			div.about_left a{
+				display: block;
+				width: 205px;
+				height: 60px;
+				border-bottom: 1px solid #eeeeee;
+				font-size: 18px;
+				text-align: center;
+				line-height: 60px;
+				text-decoration: none;
+				color: #666;
+			}
+			div.about_left a:hover{
+				background: url(images/ny/gywm-bj.png) no-repeat;
+				color: #23B7B7;
+				font-weight: bold;
+			}
+			div.about_right{
+				width: 879px;
+				overflow: hidden;
+				min-height: 610px;
+				margin: auto;
+			}
+			div.right_top{
+				width: 810px;
+				height: 35px;
+				margin: auto;
+				border-bottom: 1px solid #ddd;
+				position: relative;
+				margin-top: 20px;
+			}
+			div.gong_si_jie_shao{
+				padding-right: 20px;
+				height: 50px;
+				background: #fff;
+				line-height: 50px;
+				color: #666;
+				font-size: 22px;
+				font-weight: bold;
+				position: absolute;
+				top: 11px;
+				width:100px ;
+			}
+			div.right_bottom{
+				width: 810px;
+				overflow: hidden;
+				margin: auto;
+				padding: 40px 0;
+			}
+			form{
+				display: block;
+			}
+			div.zi_xun_top{
+				width: 100%;
+				margin: 0 auto;
+				padding-top: 10px;
+			}
+			div.zi_xun_top p.wen_ben{
+				line-height: 20px;
+				color: #888;
+				border-bottom: 1px dashed #ddd;
+				padding-bottom: 20px;
+				margin-bottom: 0;
+			}
+			div.zi_xun_top p{
+				height: 30px;
+				line-height: 30px;
+				margin: 0 30px;
+				padding: 0;
+				font-size: 12px;
+			}
+			font{
+				color: #000;
+				font-size: 12px;
+			}
+			div.zi_xun_top p input{
+				border: 1px solid #bdd1c9;
+				width: 300px;
+				height: 21px;
+				margin-left: 10px;
+				color: #666;
+				line-height: 21px;
+			}
+			div.zi_xun_top p select{
+				margin-left: 10px;
+				widows: 80px;
+				border-radius: 2px;
+				vertical-align: middle;
+				line-height: 30px;
+				padding-left: 5px;
+				border: 1px solid #E2E2E2;
+				min-width: 70px;
+			}
+			option{
+				display: block;
+				white-space: pre;
+				min-height: 1.2em;
+			}
+			
+			div.zi_xun_middle{
+				width: 100%;
+				margin: 20px auto 0 auto;
+			}
+			div.zi_xun_middle h2{
+				border-top: 1px solid #E3E3E3;
+				padding: 20px 0;
+				/* color: #23B7B7; */
+				font-weight: bold;
+				height: 22px;
+				margin: 0 30px 20px 30px;
+				font-size: 18px;
+			}
+			div.zi_xun_middle p{
+				height: 30px;
+				line-height: 30px;
+				margin: 0 30px;
+				padding: 0;
+			}
+			div.zi_xun_middle p input{
+				border: 1px solid #bdd1c9;
+				width: 300px;
+				height: 21px;
+				margin-left: 10px;
+				color: #666;
+				line-height: 21px;
+			}
+			.commentText{
+				width: 690px;
+				height: 150px;
+				background-position: 0 -414px;
+				margin: 15px 30px 10px 30px;
+				border: 1px solid #e6e6e6;
+				background-color: #fff;
+				padding: 10px 12px;
+				line-height: 20px;
+				color: #23B7B7;
+			}
+			.commentButton{
+				width: 89px;
+				height: 26px;
+				line-height: 26px;
+				text-align: center;
+				color: #23B7B7;
+				border: 0;
+				cursor: pointer;
+				margin: 10px 0 30px 30px;
+			}
+			
+			
+			/* foot */
+			div.s1_footer{
+				height: 150px;
+				width: 100%;
+				background: #323232;
+			}
+			div.foot_top{
+				height: 100px;
+				padding-top: 10px;
+			}
+			div.s1_top{
+				padding-top: 10px;
+				margin-bottom: 10px;
+			}
+			div.clear{
+				clear: both;
+				overflow: hidden;
+				height: 1px;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			div.s1_lian_jie ul{
+				height: 80px;
+				border-top: 1px solid gray;
+				overflow: hidden;
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+			div.s1_lian_jie ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				line-height: 25px;
+				margin-top: 10px;
+			}
+			div.s1_lian_jie ul li a{
+				color: #b4b5ba;
+				text-decoration: none;
+			}
+			div.s1_top span{
+				margin-right: 15px;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<!-- top -->
+		<div class="top">
+			<div class="content">
+				<div class="fl">
+					<ul class="flu">
+						<li>
+							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
+						</li>
+						<li>
+							<a href="#">用户中心</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="fr">
+					<a href="./login.html">登录</a>
+					<a href="register.html">注册</a>
+				</div>
+			</div>
+		</div>
+		<!-- nav -->
+		<div class="nav">
+			<div class="s1_content">
+				<img src="images/商标.png" alt>
+			
+				<div class="menu">
+					<ul>
+						<li><a href="./index.html" style="color:#23B7B7;">首页</a></li>
+						<li><a href="short.html">短租</a></li>
+						<li><a href="./long.html">长租</a></li>
+						<!-- <li><a href="#">车型查询</a></li> -->
+						<li><a href="./guide.html">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="about.html">关于我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- middle -->
+		<div class="about_content">
+			<div class="about_left">
+				<a href="about.html">关于我们</a>
+				<a href="./guide.html">租车指南</a>
+				<a href="service.html">企业服务</a>
+				<a href="./online.html" class="online">在线咨询</a>
+			</div>
+			<div class="about_right">
+				<div class="right_top">
+					<div class="gong_si_jie_shao">在线咨询</div>
+				</div>
+				<div class="right_bottom">
+					<form action="#" method="post" name="zi_xun">
+						<div class="zi_xun_top">
+							<p class="wen_ben">
+								如果您对我们的服务有任何的意见或者建议，可以通过以下方式与我们沟通，我们会在第一时间给您最满意的回复与反馈，您的满意是我们最大的心愿。
+							</p>
+							<p>
+								<font>*</font>为必填项
+							</p>
+							<p>
+								您的姓名:<input type="text" name="username" id="username" value="" />
+								<font>*</font>
+							</p>
+							<p>
+								您的称谓：<select name="sex" id="sex">
+									<option value ="先生" selected="selected">先生</option>
+									<option value ="女士">女士</option>
+									</select>
+									<font>*</font>
+							</p>
+							<p>
+								电子邮箱:
+								<input type="email" name="email" id="email" value="" />
+								<font>*</font>
+							</p>
+							<p>
+								联系电话:
+								<input type="number" name="tel" id="tel" value="" />
+								<font>*</font>
+							</p>
+						</div>
+						<div class="zi_xun_middle">
+							<h2>咨询内容</h2>
+							<p>
+								咨询标题
+								<input type="text" name="title" id="title" value="" />
+								<font>*</font>
+							</p>
+						</div>
+						<div class="zi_xun_bottom">
+							<textarea name="comment" class="commentText" placeholder="请输入咨询内容...">	
+							</textarea>
+							<br>
+							<input type="button" name="commentSubmit" class="commentButton" id="commentSubmit" value="提交咨询"  onclick=""/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- foot -->
+		<div class="s1_footer">
+			<div class="s1_footer_top">
+				<div class="s1_content">
+					<div class="s1_top">
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="./guide.html" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="about.html" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="s1_lian_jie">
+						<h5 style="color: #b4b5ba;">热门城市入口</h5>
+						<ul>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">广州租车</a></li>
+							<li><a href="#">北京租车</a></li>
+							<li><a href="#">深圳租车</a></li>
+							<li><a href="#">杭州租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">重庆租车</a></li>
+							<li><a href="#">长沙租车</a></li>
+							<li><a href="#">苏州租车</a></li>
+							<li><a href="#">佛山租车</a></li>
+							<li><a href="#">合肥租车</a></li>
+							<li><a href="#">武汉租车</a></li>
+							<li><a href="#">厦门租车</a></li>
+							<li><a href="#">中山租车</a></li>
+							<li><a href="#">宝鸡租车</a></li>
+							<li><a href="#">安阳租车</a></li>
+							<li><a href="#">义务租车</a></li>
+							<li><a href="#">太仓租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">德州租车</a></li>
+							<li><a href="#">乐山租车</a></li>
+							<li><a href="#">枣庄租车</a></li>
+							<li><a href="#">荆州租车</a></li>
+							<li><a href="#">大理租车</a></li>
+							<li><a href="#">淮安租车</a></li>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">信阳租车</a></li>
+							<li><a href="#">丹江租车</a></li>
+							<li><a href="#">遵义租车</a></li>
+							<li><a href="#">青岛租车</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

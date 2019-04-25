@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="/static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/* top */
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			div{
+				display: block;
+			}
+			body{
+				font-family: "微软雅黑";
+				font-size:14px;
+				color: #666;
+			}
+			div.top{
+				height:40px;
+				background-color:#323232;
+				line-height:40px;
+			}
+			a.phone{
+				line-height: 52px;
+				float: left;
+				height:40px;
+			}
+			a.kefu{
+				float: left;
+				font-size: 15px;
+				margin-left:11px;
+			}
+			div.content{
+				width:1100px;
+				margin:0 auto;
+			}
+			ul.flu{
+				float: left;
+			}
+			ul.flu>li{
+				list-style: none;
+				float:left;
+				margin-left:11px;
+				padding-right:11px;
+				border-right:1px solid #23B7B7;	
+			}
+			ul.flu>li a{
+				display: block;
+				text-decoration: none;
+				color:#b4b5ba;
+			}
+			ul.flu>li a:hover{
+				text-decoration: underline;
+			}
+			div.top .fr{
+				float:right;
+			}
+			div.top .fr a{
+				width:78px;
+				height:24px;
+				display: block;
+				border:1px solid #23B7B7;
+				float: left;
+				line-height: 24px;
+				text-align: center;
+				margin-top:7px;
+				text-decoration: none;
+				color:#23B7B7;
+			}
+			div.top .fr a:hover{
+				background-color:#23B7B7;
+				color: white;
+			}
+			
+			/* nav */
+			div.nav{
+				height:100px;
+				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
+			}
+			div.s1_content img{
+				margin-top: 20px;
+			}
+			div.s1_content{
+				width:1100px;
+				margin: 0 auto;
+				clear:both;
+			}
+			div.menu{
+				float:right;
+				height:100px;
+			}
+			div.menu ul li{
+				float:left;
+				list-style: none;
+				padding-top: 34px;
+				color:#666666;
+				/* width:110px; */
+				text-align: center;
+				line-height: 30px;
+				margin-right: 60px;
+			}
+			div.menu ul li a{
+				text-decoration: none;
+				color:#000;
+				font-size:20px;
+			}
+			div.menu ul li a:hover{
+				color:#23B7B7;
+				border-bottom: 2px solid #23B7B7;
+				padding-bottom:10px;	
+			}
+			
+			/* middle */
+			div.main{
+				width: 1100px;
+				height: auto;
+				margin-top: 18px;
+				background: #f4f4f6;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+	
+			div.newlist{
+				float: right;
+				border: 1px solid #E6E6E6;
+				border-bottom: 3px solid #E6E6E6;
+				min-height: 800px;
+			}
+			div.t1{
+				height: 35px;
+				border-bottom: 1px solid #E6E6E6;
+				margin: 15px 20px;
+			}
+			div.t1 img{
+				margin-top: 7px;
+				float: left;
+				margin: 0 0 0 10px;
+			}
+			div.t1 h2{
+				margin-top: 7px;
+				color: #666;
+				float: left;
+				margin: 0 0 0 10px;
+				display: block;
+			}
+			.clear{
+				clear: both;
+			}
+			form{
+				display: block;
+			}
+			
+			div.ding_dan_content{
+				margin-top: 10px;
+			}
+			div.ding_dan_main{
+				margin: 30px 40px;
+			}
+			div.ding_dan_left{
+				float: left;
+				margin-top: 10px;
+				width: 201px;
+				height: 113px;
+				border: 1px solid #ddd;
+			}
+			ul.ding_dan_right{
+				list-style: none;
+				float: right;
+				width: 800px;
+				color: #666;
+			}
+			.ding_dan_right li{
+				float: left;
+				width: 100%;	
+			}
+			div.inf-name{
+				padding: 0 10px 20px 0;
+				float: left;
+			}
+			span.value{
+				color: #333;
+				font-size: 22px;
+				margin-left: 10px;
+			}
+			div.inf-name p{
+				margin-left: 10px;
+				font-size: 14px;
+				margin-top: 30px;
+			}
+			.ding_dan_right .bot{
+				padding-top: 15px;
+			}
+			table{
+				width: 100%;
+				height: 115px;
+			}
+			tbody{
+				height: 115px;
+			}
+			.bot td{
+				padding: 8px 0 8px 10px;
+				line-height: 19px;
+			}
+			
+			div.date-box{
+				width: 200px;
+				height: 40px;
+			}
+			.date-box .take-time{
+				background-position: 0 0;
+			}
+			div.date-box ul{
+				list-style: none;
+				height: 26px;
+				margin-top:10px;
+				padding-left: 26px;
+			}
+			.date-box li{
+				margin-right: 6px;
+				list-style: none;
+				border: none;
+			}
+			
+			.date-box .sel-t-date{
+				width: 160px;
+			}
+			.date-box li input{
+				float: left;
+				height: 24px;
+				line-height: 23px;
+				border: 1px solid #999;
+				border-top: 1px solid #AEAEAE;
+				border-left: 1px solid #AEAEAE;
+				border-right: 1px solid #D6D6D6;
+				border-bottom: 1px solid #D6D6D6;
+				font-size: 12px;
+				padding-left: 5px;
+				cursor: pointer;
+				margin-right: 7px;
+			}
+
+			.date-box .sel-r-date{
+				width: 160px;
+			}
+			select{
+				border-radius: 2px;
+				vertical-align: middle;
+				line-height: 30px;
+				padding-left: 5px;
+				border: 1px solid #E2E2E2;
+				min-width: 70px;
+			}
+			.s_box{
+				float: left;
+				width: 160px;
+				height: 40px;
+				position: relative;
+			}
+			.s_box .city{
+				width: 90px;
+				font-size: 18px;
+				color: #0888c8;
+				float: left;
+				margin-top: 8px;
+				border: 0;
+			}
+			
+			input.que_ren{
+				display: block;
+				font-size: 16px;
+				text-decoration: none;
+				line-height: 50px;
+				color: #333;
+                float: left;
+			}
+			/* foot */
+			div.s1_footer{
+				height: 150px;
+				width: 100%;
+				background: #323232;
+			}
+			div.foot_top{
+				height: 100px;
+				padding-top: 10px;
+			}
+			div.s1_top{
+				padding-top: 10px;
+				margin-bottom: 10px;
+			}
+			div.clear{
+				clear: both;
+				overflow: hidden;
+				height: 1px;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			div.s1_lian_jie ul{
+				height: 80px;
+				border-top: 1px solid gray;
+				overflow: hidden;
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+			div.s1_lian_jie ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				line-height: 25px;
+				margin-top: 10px;
+			}
+			div.s1_lian_jie ul li a{
+				color: #b4b5ba;
+				text-decoration: none;
+			}
+			div.s1_top span{
+				margin-right: 15px;
+			
+			}
+		</style>
+	</head>
+	<body>
+		{# -- top -- #}
+		<div class="top">
+			<div class="content">
+				<div class="fl">
+					<ul class="flu">
+						<li>
+							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
+						</li>
+						<li>
+							<a href="#">用户中心</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="fr">
+					{% if  not username %}
+						<a href="{% url 'cars:user_login' %}">登录</a>
+						<a href="{% url 'cars:user_register' %}">注册</a>
+					{% else %}
+						<a href="{% url 'cars:userinfo' %}">我的</a>
+						<a href="{% url 'cars:log_out' %}">退出</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{# -- nav -- #}
+		<div class="nav">
+			<div class="s1_content">
+				<img src="/static/images/商标.png" alt>
+			
+				<div class="menu">
+					<ul>
+						<li><a href="{% url 'cars:index' %}">首页</a></li>
+						<li><a href="{% url 'cars:short' %}" style="color:#23B7B7;">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide'%}">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{# -- middle -- #}
+		<div class="main">
+			<div class="newlist" style="width: 1100px;">
+				<div class="t1">
+					<img src="" alt="" width="22" height="21">
+					<h2>确认订单</h2>
+					<div class="clear"></div>
+				</div>
+				<form name="myform" action="{% url 'cars:commit' car.id %}" method="post">
+					<input type="hidden" name="qutime"/>
+					<input type="hidden" name="qucity" id="getcity"/>
+					<input type="hidden" name="huancity" id="retcity" />
+					<input type="hidden" name="huantime" />
+					<div class="ding_dan_content">
+						<div class="ding_dan_main">
+							<div class="ding_dan_left">
+								<img src="/{{car.picture}}" style="width: 201px; height:112px ;">
+							</div>
+							<ul class="ding_dan_right">
+								<li>
+									<div class="inf-name">
+										<span class="value">{{car.typeNo}}  {{car.description}}</span>
+										<br>
+										<p>
+											短租：<b style="color:#ff3d3d ;">￥{{car.drentprice}}/天</b>
+										</p>
+									</div>
+								</li>
+								<li class="bot">
+									<table border="0.5" width="100%" cellspacing="1" bgcolor="#ddd" style="margin-top: 10px;">
+										<tbody>
+											<tr>
+												<td width="16%" height="40" align="center" bgcolor="#eee" class="key">
+													<i class="takeCar"></i>
+													<h3>取车：</h3>
+												</td>
+												<td width="44%" bgcolor="#fff">
+													<div class="date-box">
+														<ul class="take-time">
+															<li>
+																<input type="date" class="sel-t-date" name="qutime" required/>
+															</li>
+														</ul>
+													</div>
+												</td>
+												<td width="40%" bgcolor="#fff">
+													<div class="s_box">
+														<input class="city" type="text" id="getcityname" readonly value="航海路店" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="16%" height="40" align="center" bgcolor="#eee" class="key">
+													<i class="takeCar"></i>
+													<h3>还车：</h3>
+												</td>
+												<td width="44%" bgcolor="#fff">
+													<div class="date-box">
+														<ul class="return-time">
+															<li>
+																<input class="sel-r-date" type="date" name="huantime" required/>
+															</li>
+														</ul>
+													</div>
+												</td>
+												<td width="40%" bgcolor="#fff">
+													<div class="s_box">
+														<input class="city" id="retcityname" readonly type="text" value="航海路店">
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</li>
+							</ul>
+							<div class="clear"></div>
+							<div style="margin: 50px 0 10px 220px; width: 100px; height: 50px; text-align: center;">
+								<a href="{% url 'cars:short' %}" style="text-decoration: none;">上一步</a>
+                                <input type="submit" class="que_ren" value="下一步">
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+		
+		{# -- foot -- #}
+		<div class="s1_footer">
+			<div class="s1_footer_top">
+				<div class="s1_content">
+					<div class="s1_top">
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:about' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="s1_lian_jie">
+						<h5 style="color: #b4b5ba;">热门城市入口</h5>
+						<ul>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">广州租车</a></li>
+							<li><a href="#">北京租车</a></li>
+							<li><a href="#">深圳租车</a></li>
+							<li><a href="#">杭州租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">重庆租车</a></li>
+							<li><a href="#">长沙租车</a></li>
+							<li><a href="#">苏州租车</a></li>
+							<li><a href="#">佛山租车</a></li>
+							<li><a href="#">合肥租车</a></li>
+							<li><a href="#">武汉租车</a></li>
+							<li><a href="#">厦门租车</a></li>
+							<li><a href="#">中山租车</a></li>
+							<li><a href="#">宝鸡租车</a></li>
+							<li><a href="#">安阳租车</a></li>
+							<li><a href="#">义务租车</a></li>
+							<li><a href="#">太仓租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">德州租车</a></li>
+							<li><a href="#">乐山租车</a></li>
+							<li><a href="#">枣庄租车</a></li>
+							<li><a href="#">荆州租车</a></li>
+							<li><a href="#">大理租车</a></li>
+							<li><a href="#">淮安租车</a></li>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">信阳租车</a></li>
+							<li><a href="#">丹江租车</a></li>
+							<li><a href="#">遵义租车</a></li>
+							<li><a href="#">青岛租车</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

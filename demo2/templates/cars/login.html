@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/* top */
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			div{
+				display: block;
+			}
+			body{
+				font-family: "微软雅黑";
+				font-size:14px;
+				color: #666;
+			}
+			div.top{
+				height:40px;
+				background-color:#323232;
+				line-height:40px;
+			}
+			a.phone{
+				line-height: 52px;
+				float: left;
+				height:40px;
+			}
+			a.kefu{
+				float: left;
+				font-size: 15px;
+				margin-left:11px;
+			}
+			div.content{
+				width:1100px;
+				margin:0 auto;
+			}
+			ul.flu{
+				float: left;
+			}
+			ul.flu>li{
+				list-style: none;
+				float:left;
+				margin-left:11px;
+				padding-right:11px;
+				border-right:1px solid #23B7B7;	
+			}
+			ul.flu>li a{
+				display: block;
+				text-decoration: none;
+				color:#b4b5ba;
+			}
+			ul.flu>li a:hover{
+				text-decoration: underline;
+			}
+			div.top .fr{
+				float:right;
+			}
+			div.top .fr a{
+				width:78px;
+				height:24px;
+				display: block;
+				border:1px solid #23B7B7;
+				float: left;
+				line-height: 24px;
+				text-align: center;
+				margin-top:7px;
+				text-decoration: none;
+				color:#23B7B7;
+			}
+			div.top .fr a:hover{
+				background-color:#23B7B7;
+				color: white;
+			}
+			
+			/* nav */
+			div.nav{
+				height:100px;
+				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
+			}
+			div.s1_content img{
+				margin-top: 20px;
+			}
+			div.s1_content{
+				width:1100px;
+				margin: 0 auto;
+				clear:both;
+			}
+			div.menu{
+				float:right;
+				height:100px;
+			}
+			div.menu ul li{
+				float:left;
+				list-style: none;
+				padding-top: 34px;
+				color:#666666;
+				/* width:110px; */
+				text-align: center;
+				line-height: 30px;
+				margin-right: 60px;
+			}
+			div.menu ul li a{
+				text-decoration: none;
+				color:#000;
+				font-size:20px;
+			}
+			div.menu ul li a:hover{
+				color:#23B7B7;
+				border-bottom: 2px solid #23B7B7;
+				padding-bottom:10px;	
+			}
+
+			/* middle */
+			div.s1_dl{
+				margin:50px auto;
+				overflow: hidden;
+			}
+			div.s1_dl img.picture{
+				float:left;
+				border:none;
+			}
+			div.s1_dl_right{
+				width:438px;
+				height:599px;
+				background-color: #fff;
+				float:right;
+			}
+			h1{
+				width:438px;
+				text-align: center;
+				height:77px;
+				line-height: 77px;
+				border-bottom: 1px solid #E5E5E5;
+				font-size:24px;
+			}
+
+			ul.s1_biaodan li{
+				margin: 0px;
+				list-style: none;
+				height:65px;
+				text-align: center;
+			}
+			input.s1_yonghuming{
+				width:276px;
+				height:48px;
+				border: 1px solid #E5E5E5;
+				line-height: 48px;
+				padding-left: 20px;
+				margin-top: 15px;
+			}
+
+			a.s1_wangji{
+				color:#999;
+				position:relative;
+				top:10px;
+				text-decoration: none;
+				margin-left: 235px;
+			}
+			a.s1_register{
+				width:298px;
+				height:48px;
+				line-height:48px;
+				border: 1px solid #23B7B7;
+				text-align: center;
+				display: block;
+				text-decoration: none;
+				margin-top: 20px;
+			}
+			div.deng_lu input{
+				width: 298px;
+				display: block;
+				height: 45px;
+				line-height: 45px;
+				text-align: center;
+				color: #fff;
+				font-size:16px;
+				background: #23B7B7;
+				text-decoration: none;
+				margin-top: 15px;
+			}
+			div.s1_huo{
+				border-bottom: 1px solid #E5E5E5;
+				height: 1px;
+				position: relative;
+				margin-top: 30px;
+				width: 77.5%;
+				color: #999;
+			}
+			div.s1_huo p{
+				padding: 0 10px;
+				height: 30px;
+				background: #fff;
+				text-align: center;
+				line-height: 30px;
+				position: absolute;
+				top: -13px;
+				left: 100px;
+				margin: 0;
+			}
+			div.s1_huo p a{
+				color: #23B7B7;
+				text-decoration: none;
+			}
+			/* foot */
+			div.s1_footer{
+				height: 150px;
+				width: 100%;
+				background: #323232;
+			}
+			div.foot_top{
+				height: 100px;
+				padding-top: 10px;
+			}
+			div.s1_top{
+				padding-top: 10px;
+				margin-bottom: 10px;
+			}
+			div.clear{
+				clear: both;
+				overflow: hidden;
+				height: 1px;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			div.s1_lian_jie ul{
+				height: 80px;
+				border-top: 1px solid gray;
+				overflow: hidden;
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+			div.s1_lian_jie ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				line-height: 25px;
+				margin-top: 10px;
+			}
+			div.s1_lian_jie ul li a{
+				color: #b4b5ba;
+				text-decoration: none;
+			}
+			div.s1_top span{
+				margin-right: 15px;
+
+			}
+		</style>
+	</head>
+	<body>
+		{# -- top -- #}
+		<div class="top">
+			<div class="content">
+				<div class="fl">
+					<ul class="flu">
+						<li>
+							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
+						</li>
+						<li>
+							<a href="#">用户中心</a>
+						</li>
+						<li>
+							<a href="#">积分商城</a>
+						</li>
+					</ul>
+				</div>
+				<div class="fr">
+					{% if  not username %}
+						<a href="{% url 'cars:user_login' %}">登录</a>
+						<a href="{% url 'cars:user_register' %}">注册</a>
+					{% else %}
+						<a href="{% url 'cars:userinfo' %}">我的</a>
+						<a href="{% url 'cars:log_out' %}">退出</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{# -- nav -- #}
+		<div class="nav">
+			<div class="s1_content">
+				<img src="/static/images/商标.png" alt>
+			
+				<div class="menu">
+					<ul>
+						<li><a href="{% url 'cars:index' %}" style="color:#23B7B7;">首页</a></li>
+						<li><a href="{% url 'cars:short' %}">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:guide' %}">关于我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{# -- content -- #}
+		<div class="s1_content">
+			<div class="s1_dl">
+				<img class="picture" src="/static/images/00.png">
+				<div class="s1_dl_right">
+					<h1>会员登录</h1>
+					<h3>{{error_msg}}</h3>
+					<form action="{% url 'cars:user_login' %}" method="post" style="padding-left: 70px; padding-top: 20px;">
+						{% csrf_token %}
+						<input class="s1_yonghuming" type="text" name="username" placeholder="请输入您的账号" onfocus="getfocus(this);" onblur="lostfocus(this, '用户名/手机号');" required/>
+						<input class="s1_yonghuming" type="password" name="userpwd" placeholder="请输入您的密码" onfocus="getfocus(this);" onblur="lostfocus(this, '密码');" required>
+						<a class="s1_wangji" href="#">忘记密码？</a>
+						<div class="deng_lu">
+						<input type="submit" value="立即登录">
+						</div>
+						<div class="s1_huo">
+							<p>
+								没有账号？
+								<a href="{% url 'cars:user_register' %}">注册</a>
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		{# -- foot -- #}
+		<div class="s1_footer">
+			<div class="s1_footer_top">
+				<div class="s1_content">
+					<div class="s1_top">
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="s1_lian_jie">
+						<h5 style="color: #b4b5ba;">热门城市入口</h5>
+						<ul>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">广州租车</a></li>
+							<li><a href="#">北京租车</a></li>
+							<li><a href="#">深圳租车</a></li>
+							<li><a href="#">杭州租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">重庆租车</a></li>
+							<li><a href="#">长沙租车</a></li>
+							<li><a href="#">苏州租车</a></li>
+							<li><a href="#">佛山租车</a></li>
+							<li><a href="#">合肥租车</a></li>
+							<li><a href="#">武汉租车</a></li>
+							<li><a href="#">厦门租车</a></li>
+							<li><a href="#">中山租车</a></li>
+							<li><a href="#">宝鸡租车</a></li>
+							<li><a href="#">安阳租车</a></li>
+							<li><a href="#">义务租车</a></li>
+							<li><a href="#">太仓租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">德州租车</a></li>
+							<li><a href="#">乐山租车</a></li>
+							<li><a href="#">枣庄租车</a></li>
+							<li><a href="#">荆州租车</a></li>
+							<li><a href="#">大理租车</a></li>
+							<li><a href="#">淮安租车</a></li>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">信阳租车</a></li>
+							<li><a href="#">丹江租车</a></li>
+							<li><a href="#">遵义租车</a></li>
+							<li><a href="#">青岛租车</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
