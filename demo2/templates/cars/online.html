@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<script src="../3.11/main.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -147,7 +146,7 @@
 				color: #666;
 			}
 			div.about_left a:hover{
-				background: url(images/ny/gywm-bj.png) no-repeat;
+				background: url(/static/images/ny/gywm-bj.png) no-repeat;
 				color: #23B7B7;
 				font-weight: bold;
 			}
@@ -329,7 +328,7 @@
 		</style>
 	</head>
 	<body>
-		<!-- top -->
+		{# -- top -- #}
 		<div class="top">
 			<div class="content">
 				<div class="fl">
@@ -346,35 +345,39 @@
 					</ul>
 				</div>
 				<div class="fr">
-					<a href="./login.html">登录</a>
-					<a href="register.html">注册</a>
+					{% if  not username %}
+						<a href="{% url 'cars:user_login' %}">登录</a>
+						<a href="{% url 'cars:user_register' %}">注册</a>
+					{% else %}
+						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:log_out' %}">退出</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>
-		<!-- nav -->
+		{# -- nav -- #}
 		<div class="nav">
 			<div class="s1_content">
-				<img src="images/商标.png" alt>
+				<img src="/static/images/商标.png" alt>
 			
 				<div class="menu">
 					<ul>
-						<li><a href="./index.html" style="color:#23B7B7;">首页</a></li>
-						<li><a href="short.html">短租</a></li>
-						<li><a href="./long.html">长租</a></li>
-						<!-- <li><a href="#">车型查询</a></li> -->
-						<li><a href="./guide.html">租车指南</a></li>
-						<li style="margin-right: 20px;"><a href="about.html">关于我们</a></li>
+						<li><a href="{% url 'cars:index' %}" >首页</a></li>
+						<li><a href="{% url 'cars:short' %}">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<!-- middle -->
+		{# -- middle -- #}
 		<div class="about_content">
 			<div class="about_left">
-				<a href="about.html">关于我们</a>
-				<a href="./guide.html">租车指南</a>
-				<a href="service.html">企业服务</a>
-				<a href="./online.html" class="online">在线咨询</a>
+				<a href="{% url 'cars:about' %}">关于我们</a>
+				<a href="{% url 'cars:guide' %}">租车指南</a>
+				<a href="{% url 'cars:service' %}">企业服务</a>
+				<a href="{% url 'cars:online' %}" class="online">在线咨询</a>
 			</div>
 			<div class="about_right">
 				<div class="right_top">
@@ -429,13 +432,13 @@
 				</div>
 			</div>
 		</div>
-		<!-- foot -->
+		{# -- foot -- #}
 		<div class="s1_footer">
 			<div class="s1_footer_top">
 				<div class="s1_content">
 					<div class="s1_top">
-							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="./guide.html" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
-							<span><a href="about.html" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
 					</div>
 					<div class="clear"></div>
 					<div class="s1_lian_jie">

@@ -271,7 +271,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:userinfo' %}">我的</a>
+						<a href="{% url 'cars:me' %}">我的</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -298,8 +298,8 @@
 			<div class="about_left">
 				<a href="{% url 'cars:about' %}" >关于我们</a>
 				<a href="{% url 'cars:guide' %}" class="guide">租车指南</a>
-				<a href="#">企业服务</a>
-				<a href="#">在线咨询</a>
+				<a href="{% url 'cars:service' %}">企业服务</a>
+				<a href="{% url 'cars:online' %}">在线咨询</a>
 			</div>
 			<div class="about_right">
 				<div class="right_top">

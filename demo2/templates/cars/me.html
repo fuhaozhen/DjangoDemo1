@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<script src="/static/main.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="/static/dist/css/bootstrap.css"/>
+		<script src="/static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -45,7 +47,7 @@
 				float:left;
 				margin-left:11px;
 				padding-right:11px;
-				border-right:1px solid #23B7B7;	
+				border-right:1px solid #23B7B7;
 			}
 			ul.flu>li a{
 				display: block;
@@ -74,20 +76,22 @@
 				background-color:#23B7B7;
 				color: white;
 			}
-			
+
 			/* nav */
 			div.nav{
+
 				height:100px;
 				background-color:#fff;
-				border-bottom:1px solid #23B7B7;
+
 			}
 			div.s1_content img{
 				margin-top: 20px;
 			}
 			div.s1_content{
 				width:1100px;
-				margin: 0 auto;
+				margin-left: -400px;
 				clear:both;
+				border-bottom:1px solid #23B7B7;
 			}
 			div.menu{
 				float:right;
@@ -111,9 +115,9 @@
 			div.menu ul li a:hover{
 				color:#23B7B7;
 				border-bottom: 2px solid #23B7B7;
-				padding-bottom:10px;	
+				padding-bottom:10px;
 			}
-			
+
 			/* middle-content */
 			div.about_content{
 				width: 1100px;
@@ -129,7 +133,7 @@
 				overflow: hidden;
 				float: left;
 				background: #f9f9f9;
-				min-height: 900px;
+				min-height: 600px;
 			}
 			div.about_left a.us{
 				color: #23B7B7;
@@ -147,80 +151,65 @@
 				color: #666;
 			}
 			div.about_left a:hover{
-				background: url(/static/images/ny/gywm-bj.png) no-repeat;
 				color: #23B7B7;
 				font-weight: bold;
+			}
+			div.about_left dt{
+				padding: 10px 20px;
+				font-size: 16px;
+				background-color: #E7E7E7;
+				font-weight: 700;
+				line-height: 1.5;
+				display: block;
+			}
+			div.about_right dd{
+				padding: 6px 0;
 			}
 			div.about_right{
 				width: 879px;
 				overflow: hidden;
-				min-height: 610px;
+				min-height: 410px;
 				margin: auto;
+				padding: 30px 0;
+				box-sizing: border-box;
+				font-family: "微软雅黑";
 			}
-			div.right_top{
-				width: 810px;
-				height: 35px;
-				margin: auto;
-				border-bottom: 1px solid #ddd;
-				position: relative;
-				margin-top: 20px;
-			}
-			div.gong_si_jie_shao{
-				padding-right: 20px;
-				height: 38px;
-				background: #fff;
-				line-height: 38px;
-				color: #666;
+			div.title{
+				line-height: 44px;
+				border-bottom: 1px solid #E5E5E5;
+				padding-left: 30px;
 				font-size: 22px;
+				width: 120px;
+				height: 44px;
+				text-align: center;
 				font-weight: bold;
-				position: absolute;
-				top: 11px;
-				width:100px ;
 			}
-			div.right_bottom{
-				width: 810px;
+			div.code_num{
+				display: block;
+			}
+			div.pict{
+				width: 99px;
+				height: 99px;
+				margin: 4px 0px 45px;
+				border-radius: 3px;
 				overflow: hidden;
-				margin: auto;
-				padding: 40px 0;
 			}
-			div.right_bottom p{
-				display: block;
-				font-size: 15px;
-				color: #666;
-				line-height: 25px;
-				width: 810px;
-				text-indent: 2em;
+			div.aaa{
+				margin-left: 200px;
 			}
-			div.right_bottom_down{
-				width: 780px;
-				height: 370px;
-				margin: auto;
+			div.show{
+				width: 400px;
 			}
-			div.right_bottom_down dl{
-				width: 390px;
+			span.user-option-name{
 				float: left;
+				width: 124px;
+				line-height: 30px;
 			}
-			div.right_bottom_down dd{
-				width: 117px;
-				height: 118px;
+			span.user-option-value{
 				float: left;
-				margin-right: 20px;
-			}
-			div.right_bottom_down dt{
-				line-height: 23px;
-				width: 253px;
-				float: left;
-				color: #999999;
-			}
-			div.right_bottom_down dt h4{
-				font-size: 18px;
-				color: #666;
-				font-weight: bold;
-				margin-bottom: 10px;
-				display: block;
-			}
-			.m-50{
-				margin-top: 50px;
+				width: 140px;
+				font-size: 16px;
+				line-height: 30px;
 			}
 			/* foot */
 			div.s1_footer{
@@ -263,7 +252,7 @@
 			}
 			div.s1_top span{
 				margin-right: 15px;
-			
+
 			}
 		</style>
 	</head>
@@ -299,58 +288,179 @@
 		<div class="nav">
 			<div class="s1_content">
 				<img src="/static/images/商标.png" alt>
-			
+
 				<div class="menu">
 					<ul>
 						<li><a href="{% url 'cars:index' %}" >首页</a></li>
 						<li><a href="{% url 'cars:short' %}">短租</a></li>
 						<li><a href="{% url 'cars:long' %}">长租</a></li>
 						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
-						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}" style="color:#23B7B7;">关于我们</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		{# -- middle -- #}
-		<div class="about_content">
+			<div class="about_content">
 			<div class="about_left">
-				<a href="{% url 'cars:about' %}" class="us">关于我们</a>
-				<a href="{% url 'cars:guide' %}">租车指南</a>
-				<a href="{% url 'cars:service' %}">企业服务</a>
-				<a href="{% url 'cars:online' %}">在线咨询</a>
+				<dt>我的订单</dt>
+					<dd>
+						<a href="{% url 'cars:dingdan' %}" class="ck">订单管理</a>
+					</dd>
+				<dt>个人中心</dt>
+					<dd>
+						<a href="#" class="user"  style="color:#23B7B7; ">用户信息</a>
+					</dd>
 			</div>
 			<div class="about_right">
-				<div class="right_top">
-					<div class="gong_si_jie_shao">公司介绍</div>
+				<div class="title">
+					基本信息
 				</div>
-				<div class="right_bottom">
-						<p>
-							轻松租车有限公司是河南省内早期经工商部门，交通部门批准并登记注册的汽车租赁公司，河南省道路运输协会汽车租赁工作委员会理事长单位，注册资金一千零一万元整（工商在线查询）。以社会各界需要用车的个人、企事业单位为服务对象，提供包括婚庆租车，旅游租车，商务租车，会议租车等各种类型的汽车租赁服务，是一家专业汽车租赁服务公司。目前公司拥有租赁车辆200多台，包含中高档轿车，商务车，房车，大巴等，能够满足各种类型客户的需要。
-						</p>
-						<p>
-							 公司成功承接了中国中和农信2014全体会议，中国好声音第三季河南站，中国郑州糖烟酒会议，黄帝故里拜祖大典，中西部食品加工与包装机械展览会，中原国际医疗器械展览会，全球商报经济论坛。接待了近年来所有来郑州的包含周杰伦，许巍，五月天，纵贯线，郭德纲，刘谦，刘若英等艺人的演出活动。良好的车况，贴心的服务，赢得了主办方的一致好评。
-						</p>
-						<p>
-							公司拥有奔驰车队，宝马车队，奥迪车队，加长奔驰，加长悍马，陆军一号等礼宾用车。可用于婚庆，庆典，贵宾接待等。配备的驾驶员均有6年以上驾驶经验，安全驾驶10万公里以上无安全事故，有强烈的集体荣誉感和责任感。受过专业的礼仪培训，有较高的个人素质
-						</p>
-						<p>
-							简便的租车手续，灵活的租车方式。24小时电话约车和抢修救援，车辆预定，客户定期回访等优质的服务赢得了广大客户的信赖。历经十四年公司全体员工的共同努力，铸就了河南省汽车租赁行业品牌<<朋友租车>>，并成为中国汽车租赁联盟理事单位，北京蒙迪艾尔指定服务商。公司将一如既往秉承“信誉第一，服务至上”的经营宗旨，向着规范化、专业化、规模化发展。 
-						</p>
-						
-					<br>
-					<p>
-						随着网络的发展，社会的进步，此种金融服务的正规性与合法性会逐步加强，在有效的监督下发挥网络技术优势，实现普惠金融的理想。
-					</p>
-					<br>
-					<br>
-					<br>
-					
-					<span>
-						<img src="/static/images/gong_si.png" alt="">
-					</span>
+				<div class="aaa">
+					<div class="txt">
+					<div class="code_num" style="display: block;">
+						<div class="jiben">
+							<div class="pict">
+								<img src="/static/images/touxiang.png" alt="加载不出来" width="99" height="99">
+							</div>
+							<div class="show">
+								<div id="accordion">
+									<div class="card">
+										<div class="card-header" id="headingOne">
+											<h5 class="mb-0">
+												<span class="user-option-name">
+													<i class="icon-check'"></i>
+													用户名
+												</span>
+												<span class="user-option-value">
+													13290901690
+												</span>
+												<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+												 修改
+												</button>
+											</h5>
+										</div>
+
+										<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+											<div class="card-body">
+												<form action="#">
+													用户名：<input type="text">
+													<input type="submit" value="提交">
+												</form>
+											</div>
+										</div>
+									</div>
+
+									<div class="card">
+										<div class="card-header" id="headingTwo">
+											<h5 class="mb-0">
+												<span class="user-option-name">
+													<i class="icon-check'"></i>
+													手机号
+												</span>
+												<span class="user-option-value">
+													13290901690
+												</span>
+												<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+													修改
+												</button>
+											</h5>
+										</div>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+											<div class="card-body">
+												<form action="#">
+														手机号：<input type="text">
+														<input type="submit" value="提交">
+													</form>
+											</div>
+										</div>
+									</div>
+
+									<div class="card">
+										<div class="card-header" id="headingThree">
+											<h5 class="mb-0">
+												<span class="user-option-name">
+													<i class="icon-check'"></i>
+													年龄
+												</span>
+												<span class="user-option-value">
+													20
+												</span>
+												<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+													修改
+												</button>
+											</h5>
+										</div>
+										<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+											<div class="card-body">
+												<form action="#">
+														年龄：<input type="text">
+														<input type="submit" value="提交">
+													</form>
+											</div>
+										</div>
+									</div>
+
+								<div class="card">
+									<div class="card-header" id="headingFour">
+										<h5 class="mb-0">
+											<span class="user-option-name">
+												<i class="icon-check'"></i>
+												性别
+											</span>
+											<span class="user-option-value">
+												女
+											</span>
+											<button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+											 修改
+											</button>
+										</h5>
+									</div>
+
+									<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
+										<div class="card-body">
+											<form action="#">
+													性别：<input type="text">
+													<input type="submit" value="提交">
+												</form>
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+										<div class="card-header" id="headingFive">
+											<h5 class="mb-0">
+												<span class="user-option-name">
+													<i class="icon-check'"></i>
+													邮箱
+												</span>
+												<span class="user-option-value">
+													1542242578@qq.com
+												</span>
+												<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+													修改
+												</button>
+											</h5>
+										</div>
+										<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+											<div class="card-body">
+												<form action="#">
+														邮箱：<input type="text">
+														<input type="submit" value="提交">
+													</form>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
+
 		{# -- foot -- #}
 		<div class="s1_footer">
 			<div class="s1_footer_top">
@@ -393,7 +503,7 @@
 							<li><a href="#">丹江租车</a></li>
 							<li><a href="#">遵义租车</a></li>
 							<li><a href="#">青岛租车</a></li>
-							
+
 						</ul>
 					</div>
 				</div>

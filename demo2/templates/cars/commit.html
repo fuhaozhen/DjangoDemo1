@@ -459,7 +459,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:userinfo' %}">我的</a>
+						<a href="{% url 'cars:me' %}">我的</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -489,14 +489,12 @@
 					<h2>确认订单</h2>
 					<div class="clear"></div>
 				</div>
-				<form name="myform" action="{% url 'cars:pay' %}" method="post">
+				<form name="myform" action="{% url 'cars:pay' car.id %}" method="post">
 					<input type="hidden" name="aid" />
 					<input type="hidden" name="getcity"  />
 					<input type="hidden" name="retcity"  />
-					<input type="hidden" name="getdate"  />
-					<input type="hidden" name="redate"  />
-					<input type="hidden" name="gettime" />
-					<input type="hidden" name="rettime" />
+					<input type="hidden" name="getdate"  value="{{qutime}}" />
+					<input type="hidden" name="redate"  vaule="{{huantime}}"/>
 					<input type="hidden" name="flag"  />
 					<input type="hidden" name="days"/>
 					<div class="ding_dan_content">
@@ -612,33 +610,6 @@
 													<table width="95%" border="0" cellspacing="0" cellpadding="0">
 														<tbody>
 															<tr>
-																<td width="11%">
-																	<b>车辆租金</b>
-																</td>
-																<td width="55%">
-																	<a href="javascript:void(0);" class="iconTips" data-placement="right"></a>
-																</td>
-																<td width="30%">
-																	<span class="sz_priceGraySmall">
-																		<em class="rmb">￥</em>
-																		<em class="num">{{car.drentprice}}x{{longtime}}</em>
-																		<em class="unit">天=</em>
-																	</span>
-																	<span class="sz_OrderpOrangeM">
-																		<em class="rmb">￥</em>
-																		<em class="num">{{rentprice}}</em>
-																	</span>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="4" bgcolor="#fffbf8">
-													<table width="95%" border="0" cellspacing="0" cellpadding="0">
-														<tbody>
-															<tr>
 																<td width="15%">
 																	<b>手续费</b>
 																</td>
@@ -683,12 +654,39 @@
 												</td>
 											</tr>
 											<tr>
+												<td colspan="4" bgcolor="#fffbf8">
+													<table width="95%" border="0" cellspacing="0" cellpadding="0">
+														<tbody>
+															<tr>
+																<td width="11%">
+																	<b>车辆租金</b>
+																</td>
+																<td width="55%">
+																	<a href="javascript:void(0);" class="iconTips" data-placement="right"></a>
+																</td>
+																<td width="30%">
+																	<span class="sz_priceGraySmall">
+																		<em class="rmb">￥</em>
+																		<em class="num">{{car.drentprice}}x{{longtime}}</em>
+																		<em class="unit">天=</em>
+																	</span>
+																	<span class="sz_OrderpOrangeM">
+																		<em class="rmb">￥</em>
+																		<em class="num">{{rentprice}}</em>
+																	</span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+											<tr>
 												<td height="20" colspan="4" bgcolor="#fff">
 													<table width="95%" border="0" cellspacing="0" cellpadding="0">
 														<tbody>
 															<td width="11%"></td>
 															<td width="65%" align="right">
-																<input type="hidden" name="priceCount" id="priceCount" value="90" />
+																<input type="hidden" name="priceCount" id="priceCount" value="{{orderprice}}"/>
 																<b>订单总价：</b>
 															</td>
 															<td width="22%">

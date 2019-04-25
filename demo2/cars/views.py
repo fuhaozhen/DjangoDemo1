@@ -5,7 +5,7 @@ from .models import *
 from django.contrib.auth.models import User
 # 身份认证 登出 登录（记录登录状态）
 from django.contrib.auth import authenticate, logout, login
-
+from datetime import date
 
 def index(request):
     if request.method == "GET":
@@ -104,10 +104,7 @@ def hunqing(request):
 
 def daba(request):
     car = Car.objects.all()
-    if request.method == "GET":
-        return render(request, 'cars/daba.html', {"carlist": car, "username": request.session.get("username")})
-    elif request.method == "POST":
-        return render(request, 'cars/daba.html', {"carlist": car, "username": request.session.get("username")})
+    return render(request, 'cars/daba.html', {"carlist": car, "username": request.session.get("username")})
 
 
 def guide(request):
@@ -158,11 +155,12 @@ def userinfo(request):
     return render(request, 'cars/userinfo.html')
 
 
-def pay(request):
+def pay(request, id):
+    car = Car.objects.get(pk=id)
+    print(car, type(car), "#########")
     realname = request.POST["realname"]
     gender = request.POST["gender"]
     idCard = request.POST["idCard"]
-    # print(realname)
     user = request.session.get("username")
     users = User.objects.get(username=user)
     users.last_name = realname[:1]
@@ -170,5 +168,40 @@ def pay(request):
 
     users.customer.gender = gender
     users.customer.idCard = idCard
+    users.customer.save()
     users.save()
-    return render(request, 'cars/pay.html')
+
+    # 生成订单
+    order1 = Order()
+    order1.o_uid = users
+    order1.customerName = realname
+    order1.customerTel = users.customer.tel
+    order1.o_cid = car
+    order1.typeNo = car.typeNo
+    order1.creatDate = request.POST["getdate"]
+    # print(order1.creatDate)
+    order1.returnDate = request.POST["redate"]
+    order1.ocost = request.POST["priceCount"]
+    # print(order1.ocost)
+    order1.save()
+    return render(request, 'cars/pay.html', {"car": car})
+
+
+def service(request):
+    car = Car.objects.all()
+    return render(request, 'cars/service.html', {"carlist": car, "username": request.session.get("username")})
+    
+   
+def online(request):
+    car = Car.objects.all()
+    return render(request, 'cars/online.html', {"carlist": car, "username": request.session.get("username")})
+
+
+def me(request):
+    car = Car.objects.all()
+    return render(request, 'cars/me.html', {"carlist": car, "username": request.session.get("username")})
+
+
+def dingdan(request):
+    user = request.session.get("username")
+    return render(request, 'cars/dingdan.html', {"username": user})

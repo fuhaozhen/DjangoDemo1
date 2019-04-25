@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<script src="../3.11/main.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -147,7 +146,7 @@
 				color: #666;
 			}
 			div.about_left a:hover{
-				background: url(images/ny/gywm-bj.png) no-repeat;
+				background: url(/static/images/ny/gywm-bj.png) no-repeat;
 				color: #23B7B7;
 				font-weight: bold;
 			}
@@ -260,7 +259,7 @@
 		</style>
 	</head>
 	<body>
-		<!-- top -->
+		{# -- top -- #}
 		<div class="top">
 			<div class="content">
 				<div class="fl">
@@ -277,35 +276,39 @@
 					</ul>
 				</div>
 				<div class="fr">
-					<a href="./login.html">登录</a>
-					<a href="./register.html">注册</a>
+					{% if  not username %}
+						<a href="{% url 'cars:user_login' %}">登录</a>
+						<a href="{% url 'cars:user_register' %}">注册</a>
+					{% else %}
+						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:log_out' %}">退出</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>
-		<!-- nav -->
+		{# -- nav -- #}
 		<div class="nav">
 			<div class="s1_content">
-				<img src="images/商标.png" alt>
+				<img src="/static/images/商标.png" alt>
 			
 				<div class="menu">
 					<ul>
-						<li><a href="./index.html" style="color:#23B7B7;">首页</a></li>
-						<li><a href="short.html">短租</a></li>
-						<li><a href="./long.html">长租</a></li>
-						<!-- <li><a href="#">车型查询</a></li> -->
-						<li><a href="./guide.html">租车指南</a></li>
-						<li style="margin-right: 20px;"><a href="about.html">关于我们</a></li>
+						<li><a href="{% url 'cars:index' %}">首页</a></li>
+						<li><a href="{% url 'cars:short' %}">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<!-- middle -->
+		{# -- middle -- #}
 		<div class="about_content">
 			<div class="about_left">
-				<a href="about.html" >关于我们</a>
-				<a href="./guide.html" >租车指南</a>
-				<a href="./service.html" class="service">企业服务</a>
-				<a href="./online.html">在线咨询</a>
+				<a href="{% url 'cars:about' %}" >关于我们</a>
+				<a href="{% url 'cars:guide' %}" >租车指南</a>
+				<a href="{% url 'cars:service' %}" class="service">企业服务</a>
+				<a href="{% url 'cars:online' %}">在线咨询</a>
 			</div>
 			<div class="about_right">
 				<div class="right_top">
@@ -314,56 +317,56 @@
 				<div class="right_bottom">
 					<ul class="qiye_fuwu">
 						<li>
-							<img src="images/tu_biao/1.png" alt="">
+							<img src="/static/images/tu_biao/1.png" alt="">
 							<div>
 								<h3>商务包车</h3>
 								您是否有过这样的困惑？要招待亲朋好友或商务客人却无法事先确定行程？我们的包车服务不仅提供全天候的出车服务，经验丰富的司机还能为您提供市内、市郊的各类主要景点路线和餐厅信息，让您的出行更轻松、更便捷。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/2.png" alt="">
+							<img src="/static/images/tu_biao/2.png" alt="">
 							<div>
 								<h3>会议会务用车</h3>
 								当您到市区、或近郊参加高级商务、学术性会议，会为找不到停车地点而烦恼吗？只要通过电话或网上订车，朋友租车会及时把您送到指定地点。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/3.png" alt="">
+							<img src="/static/images/tu_biao/3.png" alt="">
 							<div>
 								<h3>企业班车</h3>
 								轻松租车可以为企业提供上下班及大型商场或超市的客户接送班车，朋友租车优质的班车司机服务让公司上下班的班车不在是员工抱怨的焦点，给员工或客户创造一个温馨满意的车厢环境。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/4.png" alt="">
+							<img src="/static/images/tu_biao/4.png" alt="">
 							<div>
 							<h3>机场车接车送</h3>
 							只要您事先通过电话或网上预定，我公司即为您提供机场接送用车，并可接受您的委托，去机场代接或代送客人。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/5.png" alt="">
+							<img src="/static/images/tu_biao/5.png" alt="">
 							<div>
 								<h3>节假日租车</h3>
 								过节啦，过年啦～～穿上正式光鲜的新衣服去吃年夜饭、拜年啦!可是还是要在瑟瑟寒风中去挤公交？还是抢拦出租车？如果想要全家人一起出动，一辆出租还坐不下又怎么办？快来朋友租车电话或者网上预订车辆吧。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/6.png" alt="">
+							<img src="/static/images/tu_biao/6.png" alt="">
 							<div>
 								<h3>周边旅游用车</h3>
 								当您需要去周边城市参加会议、探亲访友或旅游时，您只需事先通过电话或网上订车，朋友租车可以上门接您直达目的地，免去您去机场、大巴车站的奔波之苦。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/7.png" alt="">
+							<img src="/static/images/tu_biao/7.png" alt="">
 							<div>
 								<h3>婚礼庆典用车</h3>
 								想坐着一辆漂亮而体面的婚车去迎接新娘吗？在这里可以让您美梦成真。我们提供各种高中档婚庆车，包括奔驰，宝马，新款林肯房车，克莱斯勒，劳斯莱斯，红色系车辆等。
 							</div>
 						</li>
 						<li>
-							<img src="images/tu_biao/8.png" alt="">
+							<img src="/static/images/tu_biao/8.png" alt="">
 							<div>
 								<h3>剧组包车服务</h3>
 								凡在郑州或临近省市有影视剧组拍摄，我公司可为您提供剧组工作用车，明星接待专车等用车。
@@ -373,13 +376,13 @@
 				</div>
 			</div>
 		</div>
-		<!-- foot -->
+		{# -- foot -- #}
 		<div class="s1_footer">
 			<div class="s1_footer_top">
 				<div class="s1_content">
 					<div class="s1_top">
-							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="./guide.html" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
-							<span><a href="about.html" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
 					</div>
 					<div class="clear"></div>
 					<div class="s1_lian_jie">

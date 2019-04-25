@@ -18,5 +18,9 @@ urlpatterns = [
     url(r'^commit/(\d+)/$', views.commit, name='commit'),
     url(r'^log_out/$', views.log_out, name='log_out'),
     url(r'^userinfo/$', views.userinfo, name='userinfo'),
-    url(r'^pay/$', views.pay, name='pay'),
+    url(r'^pay/(\d+)/$', views.pay, name='pay'),
+    url(r'^service/$', views.service, name='service'),
+    url(r'^online/$', views.online, name='online'),
+    url(r'^me/$', views.me, name='me'),
+    url(r'^dingdan/$', views.dingdan, name='dingdan'),
 ]

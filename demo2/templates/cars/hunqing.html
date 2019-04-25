@@ -293,7 +293,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:userinfo' %}">我的</a>
+						<a href="{% url 'cars:me' %}">我的</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
