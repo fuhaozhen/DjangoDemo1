@@ -234,3 +234,14 @@ def new(request):
     news.save()
     # print(type(news))
     return redirect('/cars/me/')
+
+
+def advice(request):
+    # 新建一个用户
+    user = User()
+    user.username=request.POST["username"]
+    user.tel = request.POST["tel"]
+    user.addr = request.POST["addr"]
+    user.save()
+
+    return render(request, 'cars/advice.html')
