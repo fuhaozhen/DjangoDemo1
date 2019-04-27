@@ -3,7 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+
+		<!-- 先引入jQuery，再引入BootStrap -->
 		<script src="/static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+
 		<style type="text/css">
 			/* top */
 			*{
@@ -77,17 +82,19 @@
 
 			/* nav */
 			div.nav{
+
 				height:100px;
 				background-color:#fff;
-				border-bottom:1px solid #23B7B7;
+
 			}
 			div.s1_content img{
 				margin-top: 20px;
 			}
 			div.s1_content{
 				width:1100px;
-				margin: 0 auto;
+                margin:0 auto;
 				clear:both;
+				border-bottom:1px solid #23B7B7;
 			}
 			div.menu{
 				float:right;
@@ -114,118 +121,116 @@
 				padding-bottom:10px;
 			}
 
-			/* middle */
-			div.s1_bottom{
+			/* middle-content */
+			div.about_content{
 				width: 1100px;
 				margin: 0 auto;
-				border: 1px solid #E6E6E6;
-				border-bottom: 3px solid #E6E6E6;
-				margin-top:22px;
+				overflow: hidden;
+				background: #fff;
+				margin-top: 30px;
+				margin-bottom: 40px;
+				border: 1px solid #eee;
+			}
+			div.about_left{
+				width: 205px;
+				overflow: hidden;
+				float: left;
+				background: #f9f9f9;
 				min-height: 800px;
 			}
-			div.t1{
-				height: 35px;
-				border-bottom: 1px solid #E6E6E6;
-				margin: 15px 20px;
+			div.about_left a.us{
+				color: #23B7B7;
+				font-weight: bold;
 			}
-			div.t1 h2{
-				margin-top: 7px;
+			div.about_left a{
+				display: block;
+				width: 205px;
+				height: 60px;
+				border-bottom: 1px solid #eeeeee;
+				font-size: 18px;
+				text-align: center;
+				line-height: 60px;
+				text-decoration: none;
 				color: #666;
 			}
-			div.area ul.cha_xun{
-				padding: 20px 0 0 15px;
-				overflow: hidden;
-				zoom: 1;
+			div.about_left a:hover{
+				color: #23B7B7;
+				font-weight: bold;
 			}
-
-			ul.cha_xun li{
-				display: inline;
-				float: left;
-				margin: 0 15px 5px 0;
-				padding: 2px 20px;
-				font-size: 14px;
-				white-space: nowrap;
-				background: #23B7B7;
-				list-style: none;
-			}
-			ul.cha_xun li a{
-				padding: 0 10px;
-				line-height: 22px;
-				color: #fff;
-				text-decoration: none;
-			}
-			ul.cha_xun .current{
-				color: #fff;
-				background-color:#ff6b3a ;
-				text-decoration: none;
-			}
-			ul.cars{
-				margin: 10px 20px;
-			}
-			ul.cars li{
-				height: 121px;
-				border-bottom: 1px solid #E3E3E3;
-				list-style: none;
-			}
-			div.box1{
-				float: left;
-				height: 120px;
-			}
-			a{
-				color: #555;
-				text-decoration: none;
-			}
-			ul.cars li img{
-				float: left;
-				margin: 5px 10px 0 20px;
-			}
-			ul.cars li .n1{
-				width: 400px;
-				height: 100px;
-				float: left;
-				line-height: 40px;
-				margin: 10px 0 0 20px;
-			}
-			.cars li .n1 p{
-				height: 30px;
-				color: #888;
-				margin-top: 10px;
-				margin-bottom: 10px;
-			}
-			.cars li .n1 img{
-				float: left;
-				margin: 0 10px 0 0;
-			}
-			.cars li .p7{
-
-				float: right;
-				width: 120px;
-				height: 110px;
-			}
-			.cars li .p7 a{
-				background: #23B7B7;
-				display: block;
-				width: 77px;
-				height: 29px;
-				border: 1px solid #09c;
-				line-height: 29px;
+			div.about_left dt{
+				padding: 10px 20px;
 				font-size: 16px;
-				color: #fff;
+				background-color: #E7E7E7;
+				font-weight: 700;
+				line-height: 1.5;
+				display: block;
+			}
+			div.about_right dd{
+				padding: 6px 0;
+			}
+			div.about_right{
+				width: 879px;
+				overflow: hidden;
+				min-height: 410px;
+				margin: auto;
+				padding: 30px 0;
+				box-sizing: border-box;
+				font-family: "微软雅黑";
+			}
+			div.title{
+				line-height: 44px;
+				border-bottom: 1px solid #E5E5E5;
+				padding-left: 30px;
+				font-size: 22px;
+				width: 120px;
+				height: 44px;
 				text-align: center;
 				font-weight: bold;
-				border-radius: 2px;
-				margin-top: 40px;
-				margin-left: 150px;
 			}
-			div.n2{
-				float: right;
-				width: 150px;
-				height: 72px;
-				margin: 40px 20px 0 0;
+			div.code_num{
+				display: block;
+			}
+			div.pict{
+				width: 99px;
+				height: 99px;
+				margin: 4px 0px 45px;
+				border-radius: 3px;
+				overflow: hidden;
+			}
+			div.aaa{
+				margin-left: 200px;
+			}
+			div.show{
+				width: 400px;
+			}
+			span.user-option-name{
+				float: left;
+				width: 124px;
+				line-height: 30px;
+			}
+			span.user-option-value{
+				float: left;
+				width: 140px;
 				font-size: 16px;
-				display: inline;
-				line-height: 26px;
+				line-height: 30px;
 			}
+			div.show tr{
+			 height:50px;
+			 line-height:50px;
+			 text-align:center;
+			 }
+			 button{
+			 	display:block;
+			 	background-color:#eee;
+			 	margin:0 auto;
+			 	margin-top:40px;
+			 	width: 80px;
+			 	height: 50px;
+			 	text-align: center;
+			 	line-height:50px;
+			 	text-decoration:none;
+			 	}
+
 			/* foot */
 			div.s1_footer{
 				height: 150px;
@@ -269,10 +274,11 @@
 				margin-right: 15px;
 
 			}
+
 		</style>
 	</head>
 	<body>
-		<!-- top -->
+		{# -- top -- #}
 		<div class="top">
 			<div class="content">
 				<div class="fl">
@@ -296,68 +302,97 @@
 				</div>
 			</div>
 		</div>
-		<!-- nav -->
+		{# -- nav -- #}
 		<div class="nav">
 			<div class="s1_content">
 				<img src="/static/images/商标.png" alt>
 
 				<div class="menu">
 					<ul>
-						<li><a href="{% url 'cars:index'%} " >首页</a></li>
-						<li><a href="{% url 'cars:short'%} " style="color:#23B7B7;">短租</a></li>
-						<li><a href="{% url 'cars:long' %} ">长租</a></li>
-						<li><a href="{% url 'cars:guide'%} ">租车指南</a></li>
+						<li><a href="{% url 'cars:index' %}" >首页</a></li>
+						<li><a href="{% url 'cars:short' %}">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
 						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<!-- middle -->
-		<div class="s1_bottom">
-			<div class="t1"><img src="/static/images/short.png" style="float: left;"><h2>自驾短租</h2></div>
-			<div class="area">
-				<ul class="cha_xun">
-					<li class="biao_ti" style="background: none;font-weight:bold;font-size: 16px;" >按车型查询：</li>
-					<li><a href="{% url 'cars:short' %} ">轿车</a></li>
-					<li><a href="{% url 'cars:shangwu' %} ">商务车</a></li>
-					<li  class="current"><a href="{% url 'cars:hunqing' %}">婚庆</a></li>
-					<li><a href="{% url 'cars:daba'%} ">大巴</a></li>
-				</ul>
+		{# -- middle -- #}
+			<div class="about_content">
+			<div class="about_left">
+				<dt>我的订单</dt>
+					<dd>
+						<a href="{% url 'cars:dingdan' %}" class="ck">订单管理</a>
+					</dd>
+				<dt>个人中心</dt>
+					<dd>
+						<a href="#" class="user"  style="color:#23B7B7; ">用户信息</a>
+					</dd>
 			</div>
-			<ul class="cars">
-				{% for car in carlist %}
-					{% if car.ctype == "婚庆" %}
-						<li>
-							<div class="box1">
-
-								<a href="#"><img src="/{{car.picture}}" width="200" height="100"></a>
-								<div class="n1">
-									<p style="font-size: 18px; color: #23B7B7; font-weight: bold;">{{car.typeNo}}</p>
-									<p>{{car.description}}</p>
-								</div>
-								<p class="p7">
-									{% if username %}
-									<a href="{% url 'cars:order' car.id%}">立即预定</a>
-									{% else %}
-									<a href="{% url 'cars:user_login' %}">请先登录</a>
-									{% endif %}
-								</p>
-								<div class="n2">
-									<strong>￥ {{car.drentprice}}元/天</strong>
-								</div>
+			<div class="about_right">
+				<div class="title">
+					{% block title %}
+					基本信息
+					{% endblock %}
+				</div>
+				<div class="aaa">
+					<div class="txt">
+					<div class="code_num" style="display: block;">
+						<div class="jiben">
+							<div class="pict">
+								<img src="/static/images/touxiang.png" alt="加载不出来" width="99" height="99">
 							</div>
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
+							<div class="show">
+                                {% block right %}
+								<table class="table border">
+
+								  <tbody class="thead-light">
+									<tr>
+									  <th scope="row" width="100px">用户名：</th>
+									  <td>{{username}}</td>
+									</tr>
+									<tr>
+									  <th scope="row">手机号：</th>
+									  <td>{{newuser.customer.tel}}</td>
+									</tr>
+									<tr>
+									  <th scope="row">性别：</th>
+									  <td>{{newuser.customer.gender}}</td>
+									</tr>
+								   <tr>
+									  <th scope="row">年龄：</th>
+									  <td>{{newuser.customer.age}}</td>
+									</tr>
+								   <tr>
+									  <th scope="row">邮箱：</th>
+									  <td>{{newuser.email}}</td>
+									</tr>
+									  <tr>
+										  <th scope="row">家庭住址：</th>
+										  <td>{{newuser.customer.addr}}</td>
+										</tr>
+								  </tbody>
+								</table>
+								<div class="xiugai">
+									<a href="#">修改信息</a>
+								</div>
+                                {% endblock %}
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
 		</div>
-		<!-- foot -->
+
+		{# -- foot -- #}
 		<div class="s1_footer">
 			<div class="s1_footer_top">
 				<div class="s1_content">
 					<div class="s1_top">
-							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide'%} " style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
-							<span><a href="{% url 'cars:about'%} " style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
 					</div>
 					<div class="clear"></div>
 					<div class="s1_lian_jie">

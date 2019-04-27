@@ -124,9 +124,12 @@ def about(request):
 
 
 def order(request, id):
-    car = Car.objects.get(pk=id)
-    orders = Order.objects.all()
-    return render(request, 'cars/order.html', {"car": car, "orders": order})
+    if request.method == "GET":
+        car = Car.objects.get(pk=id)
+        orders = Order.objects.all()
+        return render(request, 'cars/order.html', {"car": car, "orders": orders})
+    else:
+        print("出错了")
 
 
 def commit(request, id):
@@ -199,9 +202,26 @@ def online(request):
 
 def me(request):
     car = Car.objects.all()
-    return render(request, 'cars/me.html', {"carlist": car, "username": request.session.get("username")})
+    user1 = request.session.get("username")
+    newuser = User.objects.get(username=user1)
+    return render(request, 'cars/me.html', {"carlist": car, "username": user1, "newuser": newuser})
 
 
 def dingdan(request):
     user = request.session.get("username")
-    return render(request, 'cars/dingdan.html', {"username": user})
+    user1 = User.objects.get(username=user)
+    # print(user1, type(user1),"*********")
+    order1 = user1.order_set.all()
+    length = len(order1)
+    # print(type(order1))
+    return render(request, 'cars/dingdan.html', {"username": user, "order1": order1, "length": length})
+
+
+def xiugai(request):
+    return render(request, 'cars/xiugai.html')
+
+
+def new(request):
+    new1 = request.session.get("username")
+
+    return render(request, 'cars/me.html')

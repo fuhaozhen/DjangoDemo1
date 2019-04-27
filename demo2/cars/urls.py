@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^online/$', views.online, name='online'),
     url(r'^me/$', views.me, name='me'),
     url(r'^dingdan/$', views.dingdan, name='dingdan'),
+    url(r'^xiugai/$', views.xiugai, name='xiugai'),
+    url(r'^new/$', views.new, name='new'),
 ]
