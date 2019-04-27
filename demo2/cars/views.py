@@ -218,10 +218,19 @@ def dingdan(request):
 
 
 def xiugai(request):
-    return render(request, 'cars/xiugai.html')
+    return render(request, 'cars/xiugai.html', {"username": request.session.get("username")})
 
 
 def new(request):
     new1 = request.session.get("username")
+    news = User.objects.get(username=new1)
+    news.email = request.POST["email"]
+    news.customer.tel = request.POST["tel"]
+    news.customer.age = request.POST["age"]
+    news.customer.addr = request.POST["addr"]
+    news.customer.gender = request.POST["inlineRadioOptions"]
 
-    return render(request, 'cars/me.html')
+    news.customer.save()
+    news.save()
+    # print(type(news))
+    return redirect('/cars/me/')
