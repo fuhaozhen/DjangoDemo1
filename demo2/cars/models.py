@@ -31,6 +31,8 @@ class Car(models.Model):
     ctype = models.CharField(default="轿车", max_length=20)
     # 车辆型号
     typeNo = models.CharField(max_length=20)
+    # 车辆库存
+    carnum = models.IntegerField(default=100)
     # 车辆图片
     picture = models.FileField(null=True, upload_to="./static/media/")
     # 颜色

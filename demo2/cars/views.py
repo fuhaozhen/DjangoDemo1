@@ -181,6 +181,8 @@ def userinfo(request):
 
 def pay(request, id):
     car = Car.objects.get(pk=id)
+    car.carnum -= 1
+    car.save()
     # print(car, type(car), "#########")
     realname = request.POST["realname"]
     gender = request.POST["gender"]

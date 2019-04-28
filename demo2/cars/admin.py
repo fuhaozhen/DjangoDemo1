@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ["id", "ctype", "typeNo", "picture", "color", "drentprice", "description"]
+    list_display = ["id", "ctype", "carnum", "typeNo", "picture", "color", "drentprice", "description"]
     # 过滤字段
     list_filter = ["ctype"]
     # 搜索字段
