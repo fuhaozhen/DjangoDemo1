@@ -27,6 +27,13 @@ class CustomerAdmin(admin.ModelAdmin):
     search_fields = ["id"]
 
 
+class AdviceAdmin(admin.ModelAdmin):
+    list_display = ["id", "name", "gender", "email", "phone", "title", "content"]
+    list_filter = ["name"]
+    search_fields = ["name"]
+
+
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Car, CarAdmin)
 admin.site.register(Customer, CustomerAdmin)
+admin.site.register(Advice, AdviceAdmin)

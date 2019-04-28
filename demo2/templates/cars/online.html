@@ -381,7 +381,7 @@
 					<div class="gong_si_jie_shao">在线咨询</div>
 				</div>
 				<div class="right_bottom">
-					<form action="#" method="post" name="zi_xun">
+					<form action="{% url 'cars:success' %}" method="post" name="zi_xun">
 						<div class="zi_xun_top">
 							<p class="wen_ben">
 								如果您对我们的服务有任何的意见或者建议，可以通过以下方式与我们沟通，我们会在第一时间给您最满意的回复与反馈，您的满意是我们最大的心愿。
@@ -390,24 +390,24 @@
 								<font>*</font>为必填项
 							</p>
 							<p>
-								您的姓名:<input type="text" name="username" id="username" value="" />
+								您的姓名:<input type="text" name="username" id="username"  required />
 								<font>*</font>
 							</p>
 							<p>
-								您的称谓：<select name="sex" id="sex">
-									<option value ="先生" selected="selected">先生</option>
+								您的称谓：<select name="gender" id="sex" required>
+									<option value ="先生" selected="selected" >先生</option>
 									<option value ="女士">女士</option>
 									</select>
 									<font>*</font>
 							</p>
 							<p>
 								电子邮箱:
-								<input type="email" name="email" id="email" value="" />
+								<input type="email" name="email" id="email" required/>
 								<font>*</font>
 							</p>
 							<p>
 								联系电话:
-								<input type="number" name="tel" id="tel" value="" />
+								<input type="number" name="tel" id="tel" required />
 								<font>*</font>
 							</p>
 						</div>
@@ -415,15 +415,15 @@
 							<h2>咨询内容</h2>
 							<p>
 								咨询标题
-								<input type="text" name="title" id="title" value="" />
+								<input type="text" name="title" id="title" required/>
 								<font>*</font>
 							</p>
 						</div>
 						<div class="zi_xun_bottom">
-							<textarea name="comment" class="commentText" placeholder="请输入咨询内容...">	
+							<textarea name="comment" class="commentText" placeholder="请输入咨询内容..." required>
 							</textarea>
 							<br>
-							<input type="button" name="commentSubmit" class="commentButton" id="commentSubmit" value="提交咨询"  onclick=""/>
+							<input type="submit" name="commentSubmit" class="commentButton" id="commentSubmit" value="提交咨询"  onclick=""/>
 						</div>
 					</form>
 				</div>

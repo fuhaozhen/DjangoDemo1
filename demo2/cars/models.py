@@ -66,6 +66,13 @@ class Order(models.Model):
     ocost = models.FloatField()
 
 
+class Advice(models.Model):
+    name = models.CharField(max_length=20)
+    gender = models.CharField(max_length=20)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    title = models.CharField(max_length=20)
+    content = models.TextField()
 
 
 

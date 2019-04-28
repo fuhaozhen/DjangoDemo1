@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 # 身份认证 登出 登录（记录登录状态）
 from django.contrib.auth import authenticate, logout, login
 from datetime import datetime
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -84,7 +85,16 @@ def long(request):
 
 def short(request):
     car = Car.objects.all()
-    return render(request, 'cars/short.html', {"carlist": car,"username": request.session.get("username")})
+    # 分页器，一页8个
+    pagor = Paginator(car, 8)
+    # 页码，pagenum表示第几页
+    pagenum = request.GET.get("page")
+    pagenum = 1 if pagenum == None else pagenum
+    # print(pagor.object_list, pagor.page_range, pagor.num_pages, pagor.count)
+    page = pagor.page(pagenum)
+    # print(page.paginator, page.object_list, page.number, page.has_previous(), page.has_next())
+
+    return render(request, 'cars/short.html', {"carlist": car,"username": request.session.get("username"), "page": page})
 
 
 def shangwu(request):
@@ -134,13 +144,18 @@ def commit(request, id):
     car = Car.objects.get(pk=id)
     qutime = request.POST["qutime"]
     huantime = request.POST["huantime"]
-    # print(qutime, type(datetime.strptime(qutime, "%Y-%m-%d")))
-    qutime = datetime.strptime(qutime, "%Y-%m-%d %H:%M:%S")
+
     print(qutime)
-    huantime = datetime.strptime(huantime, "%Y-%m-%d %H:%M:%S")
-    y, m, d, H, M, S = huantime[0:6]
-    print(y, m, d, H, M, S)
-    longtime = huantime - qutime
+    day1 = qutime.split("-")[-1]
+    day2 = huantime.split("-")[-1]
+    month1 = qutime.split("-")[-2]
+    month2 = huantime.split("-")[-2]
+    if month1 == month2:
+        longtime = int(day2) - int(day1)
+    else:
+        longtime = 30 - int(day1) + int(day2)
+    # huantime = datetime.strptime(huantime, "%Y-%m-%d")
+    # longtime = huantime - qutime
     print(type(longtime))
     print(longtime)
     # print(longtime)
@@ -249,4 +264,21 @@ def advice(request):
         user1 = request.session["username"]
         users = User.objects.get(username=user1)
         users.customer.description = request.POST["car_style"]
+        # print(users.customer.tel, "**************")
+        users.customer.tel = request.POST["tel"]
+        users.customer.addr = request.POST["addr"]
         users.customer.save()
+        users.save()
+        return render(request, 'cars/success.html', {"users": users})
+
+
+def success(request):
+    advice1 = Advice()
+    advice1.name = request.POST["username"]
+    advice1.gender = request.POST["gender"]
+    advice1.email = request.POST["email"]
+    advice1.phone = request.POST["tel"]
+    advice1.title = request.POST["title"]
+    advice1.content = request.POST["comment"]
+    advice1.save()
+    return render(request, 'cars/success.html')
