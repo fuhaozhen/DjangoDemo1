@@ -154,8 +154,6 @@ def commit(request, id):
         longtime = int(day2) - int(day1)
     else:
         longtime = 30 - int(day1) + int(day2)
-    # huantime = datetime.strptime(huantime, "%Y-%m-%d")
-    # longtime = huantime - qutime
     print(type(longtime))
     print(longtime)
     # print(longtime)
@@ -266,7 +264,6 @@ def advice(request):
         user1 = request.session["username"]
         users = User.objects.get(username=user1)
         users.customer.description = request.POST["car_style"]
-        # print(users.customer.tel, "**************")
         users.customer.tel = request.POST["tel"]
         users.customer.addr = request.POST["addr"]
         users.customer.save()

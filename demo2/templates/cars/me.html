@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="/static/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.css"/>
 		<script src="/static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/static/dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -79,19 +79,17 @@
 
 			/* nav */
 			div.nav{
-
 				height:100px;
 				background-color:#fff;
-
+				border-bottom:1px solid #23B7B7;
 			}
 			div.s1_content img{
 				margin-top: 20px;
 			}
 			div.s1_content{
 				width:1100px;
-				margin-left: -300px;
+				margin:0  auto;
 				clear:both;
-				border-bottom:1px solid #23B7B7;
 			}
 			div.menu{
 				float:right;
@@ -211,9 +209,14 @@
 				font-size: 16px;
 				line-height: 30px;
 			}
+			div.show th{
+				width: 100px;
+				text-align: center;
+				 height:50px;
+			}
 			div.show tr{
 			 height:50px;
-			 line-height:50px;
+			 line-height:70px;
 			 text-align:center;
 			 }
 			 div.xiugai a{
@@ -338,34 +341,31 @@
 								<img src="/static/images/touxiang.png" alt="加载不出来" width="99" height="99">
 							</div>
 							<div class="show">
-								<table class="table border">
-
-								  <tbody class="thead-light">
+								<table class="table table-bordered">
 									<tr>
-									  <th scope="row" width="100px">用户名：</th>
+									  <th>用户名：</th>
 									  <td>{{username}}</td>
 									</tr>
 									<tr>
-									  <th scope="row">手机号：</th>
+									  <th>手机号：</th>
 									  <td>{{newuser.customer.tel}}</td>
 									</tr>
 									<tr>
-									  <th scope="row">性别：</th>
+									  <th>性别：</th>
 									  <td>{{newuser.customer.gender}}</td>
 									</tr>
 								   <tr>
-									  <th scope="row">年龄：</th>
+									  <th>年龄：</th>
 									  <td>{{newuser.customer.age}}</td>
 									</tr>
 								   <tr>
-									  <th scope="row">邮箱：</th>
+									  <th>邮箱：</th>
 									  <td>{{newuser.email}}</td>
 									</tr>
 									  <tr>
-										  <th scope="row">家庭住址：</th>
+										  <th>家庭住址：</th>
 										  <td>{{newuser.customer.addr}}</td>
 										</tr>
-								  </tbody>
 								</table>
 								<div class="xiugai">
 									<a href="{% url 'cars:xiugai' %}">修改信息</a>

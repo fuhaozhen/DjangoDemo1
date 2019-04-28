@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="/static/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.css"/>
 		<script src="/static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/static/dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -76,18 +76,15 @@
 			div.nav{
 				height:100px;
 				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
 			}
 			div.s1_content img{
 				margin-top: 20px;
 			}
 			div.s1_content{
-				margin-left:-300px;
+				margin:0 auto;
 				height:100px;
 				width:1100px;
-
-
-				border-bottom:1px solid #23B7B7;
-
 			}
 			div.menu{
 				float:right;
@@ -321,7 +318,6 @@
 				<div class="right_bottom">
 					{% if length > 0 %}
 							<table class="table table-hover">
-								  <thead>
 									<tr>
 									  <th scope="col">#</th>
 									  <th scope="col">姓名</th>
@@ -332,7 +328,6 @@
 									  <th scope="col">还车时间</th>
 										<th scope="col">花费</th>
 									</tr>
-								  </thead>
 								  <tbody>
 								  {% for i in order1 %}
 									<tr>
