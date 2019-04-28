@@ -237,11 +237,11 @@ def new(request):
 
 
 def advice(request):
-    # 新建一个用户
-    user = User()
-    user.username=request.POST["username"]
-    user.tel = request.POST["tel"]
-    user.addr = request.POST["addr"]
-    user.save()
-
-    return render(request, 'cars/advice.html')
+    if request.method == "GET":
+        return render(request, 'cars/login.html')
+    elif request.method == "POST":
+        user1 = request.session["username"]
+        users = User.objects.get(username=user1)
+        users.customer.description = request.POST["car_style"]
+        users.customer.save()
+        return render(request, 'cars/advice.html',{"users": users})

@@ -466,22 +466,41 @@
 				<div class="longRent_form clearfix">
 					<h2>您想长租什么类型的车辆呢</h2>
 					<h5>请留下联系方式，我们会尽快联系您，提供专人服务</h5>
-
-						<form action="{%url 'cars:advice' %} " method="post">
+						{% if username %}
+							<form action="{%url 'cars:advice' %} " method="post">
 							<ul class="subData">
 							<li>
-								心仪车型：<input type="radio" name="car_style" />经济型 <input type="radio" name="car_style"  /> 舒适型 <input type="radio" name="car_style" />豪华型
+								心仪车型：<input type="radio" name="car_style" value="经济型"/>经济型 <input type="radio" name="car_style"  value="舒适型" checked  /> 舒适型 <input type="radio" name="car_style" value="豪华型"/>豪华型
 							</li>
-							<li>您的姓名：<input type="text" name="username" style="width: 200px; height:40px;" required/></li>
-							<li>手机号码：<input type="text" name="tel" style="width: 200px; height:40px; " required/></li>
-							<li>家庭住址：<input type="text" name="addr" style="width: 200px; height:40px;" required/></li>
+							<li>您的姓名：
+								<input type="text"  style="width: 200px; height:40px;" placeholder="{{username}}"/>
+							</li>
+							<li>手机号码：<input type="text" name="tel" style="width: 200px; height:40px; " placeholder="{{users.customer.tel}}"/></li>
+							<li>家庭住址：<input type="text" name="addr" style="width: 200px; height:40px;" placeholder="{{users.customer.addr}}"/></li>
 							<li>
-								租车用途：<input type="radio" name="yong_tu" />个人用车 <input type="radio" name="yong_tu"/>企业用车
+								租车用途：<input type="radio" name="yong_tu"  checked/>个人用车 <input type="radio" name="yong_tu"/>企业用车
 							</li>
 							</ul>
 							<input class="adv" type="submit" value="提交申请">
 						</form>
-
+					{% else %}
+						<ul class="subData">
+							<ul class="subData">
+							<li>
+								心仪车型：<input type="radio" name="car_style" />经济型 <input type="radio" name="car_style"  checked /> 舒适型 <input type="radio" name="car_style" />豪华型
+							</li>
+							<li>您的姓名：
+								<input type="text"  style="width: 200px; height:40px;" required/>
+							</li>
+							<li>手机号码：<input type="text" name="tel" style="width: 200px; height:40px; "/></li>
+							<li>家庭住址：<input type="text" name="addr" style="width: 200px; height:40px;" required/></li>
+							<li>
+								租车用途：<input type="radio" name="yong_tu"  checked/>个人用车 <input type="radio" name="yong_tu"/>企业用车
+							</li>
+							</ul>
+							<div style="height:20px; line-height: 40px;"><h3>请 <a href="{% url 'cars:user_login' %}">登录</a></h3></div>
+						</ul>
+					{% endif %}
 				</div>
 			</div>
 			<div class="longRent_explain">
