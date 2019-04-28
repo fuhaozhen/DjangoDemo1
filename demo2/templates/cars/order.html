@@ -403,7 +403,7 @@
 													<div class="date-box">
 														<ul class="take-time">
 															<li>
-																<input type="date" class="sel-t-date" name="qutime" required/>
+																<input type="date" class="sel-t-date" name="qutime" id="date_info" required/>
 															</li>
 														</ul>
 													</div>
@@ -423,7 +423,7 @@
 													<div class="date-box">
 														<ul class="return-time">
 															<li>
-																<input class="sel-r-date" type="date" name="huantime" required/>
+																<input class="sel-r-date" type="date" name="huantime" id="return_info" required/>
 															</li>
 														</ul>
 													</div>
@@ -498,5 +498,30 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			  $(document).ready(function(){
+					let time = new Date();
+					//得到当前年份
+					let day = ("0" + time.getDate()).slice(-2);
+					let month = ("0" + (time.getMonth() + 1)).slice(-2);
+					let today = time.getFullYear() + "-" + (month) + "-" + (day);
+
+					let return_day = ("0" + (time.getDate() + 1 )).slice(-2);
+					let return_month = ("0" + (time.getMonth() + 2)).slice(-1);
+					let return_max = time.getFullYear() + "-0" + (return_month) + "-" + (day);
+
+					let return_min = time.getFullYear() + "-" + (month) + "-" + (return_day);
+
+					$('#date_info').val(today);
+					$('#date_info').attr('min', today);
+
+					$('#return_info').val(return_min);
+					$('#return_info').attr('min', return_min);
+					$('#return_info').attr('max', return_max);
+
+    			});
+
+		</script>
 	</body>
 </html>

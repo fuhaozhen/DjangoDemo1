@@ -4,22 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-# class User(models.Model):
-#     """用户信息"""
-#     # 用户姓名
-#     name = models.CharField(max_length=20)
-#     # 用户密码
-#     pwd = models.CharField(max_length=50)
-#     # 用户性别
-#     gender = models.CharField(max_length=20)
-#     # 用户电话
-#     tel = models.CharField(max_length=50)
-#     # 用户角色
-#     role = models.CharField(max_length=20)
-#
-#     def __str__(self):
-#         return self.name
-
 class Customer(models.Model):
     """
     定义用户扩展类型，和系统内置用户一对一关联
@@ -81,8 +65,7 @@ class Order(models.Model):
     # 总费用
     ocost = models.FloatField()
 
-    def __str__(self):
-        return self.o_uid
+
 
 
 

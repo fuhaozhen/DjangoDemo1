@@ -5,7 +5,8 @@ from .models import *
 from django.contrib.auth.models import User
 # 身份认证 登出 登录（记录登录状态）
 from django.contrib.auth import authenticate, logout, login
-from datetime import date
+from datetime import datetime
+
 
 def index(request):
     if request.method == "GET":
@@ -124,19 +125,24 @@ def about(request):
 
 
 def order(request, id):
-    if request.method == "GET":
-        car = Car.objects.get(pk=id)
-        orders = Order.objects.all()
-        return render(request, 'cars/order.html', {"car": car, "orders": orders})
-    else:
-        print("出错了")
+    car = Car.objects.get(pk=id)
+    orders = Order.objects.all()
+    return render(request, 'cars/order.html', {"car": car, "orders": orders})
 
 
 def commit(request, id):
     car = Car.objects.get(pk=id)
     qutime = request.POST["qutime"]
     huantime = request.POST["huantime"]
-    longtime = int(huantime.split("-")[-1])-int(qutime.split("-")[-1])
+    # print(qutime, type(datetime.strptime(qutime, "%Y-%m-%d")))
+    qutime = datetime.strptime(qutime, "%Y-%m-%d %H:%M:%S")
+    print(qutime)
+    huantime = datetime.strptime(huantime, "%Y-%m-%d %H:%M:%S")
+    y, m, d, H, M, S = huantime[0:6]
+    print(y, m, d, H, M, S)
+    longtime = huantime - qutime
+    print(type(longtime))
+    print(longtime)
     # print(longtime)
     dprice = car.drentprice
     rentprice = dprice * longtime
@@ -160,7 +166,7 @@ def userinfo(request):
 
 def pay(request, id):
     car = Car.objects.get(pk=id)
-    print(car, type(car), "#########")
+    # print(car, type(car), "#########")
     realname = request.POST["realname"]
     gender = request.POST["gender"]
     idCard = request.POST["idCard"]
@@ -244,4 +250,3 @@ def advice(request):
         users = User.objects.get(username=user1)
         users.customer.description = request.POST["car_style"]
         users.customer.save()
-        return render(request, 'cars/advice.html',{"users": users})
