@@ -393,27 +393,24 @@
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
 
-
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
-			<div class="item active">
-			  <img src="/static/images/car2.png" alt="..." >
-			  <div class="carousel-caption">
-				...
-			  </div>
-			</div>
-			<div class="item">
-			  <img src="/static/images/car1.png" alt="..." >
-			  <div class="carousel-caption">
-				...
-			  </div>
-			</div>
-			<div class="item">
-			  <img src="/static/images/car3.png" alt="...">
-			  <div class="carousel-caption">
-				...
-			  </div>
-			</div>
+				<div class="item active">
+				  <img src="/static/images/car1.png" alt="图片加载失败" >
+				  <div class="carousel-caption">
+					...
+				  </div>
+				</div>
+			   {% for hotpic in hotpics %}
+					<div class="item">
+					  <img src="/static/media/{{hotpic.pic.url}}" alt="图片加载失败" >
+					  <div class="carousel-caption">
+						...
+					  </div>
+					</div>
+			  {% empty %}
+					啥也没有
+			  {% endfor %}
 			...
 		  </div>
 		   

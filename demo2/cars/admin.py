@@ -20,7 +20,7 @@ class CarAdmin(admin.ModelAdmin):
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ["id", "user", "gender", "idCard", "age", "tel", "addr", "description"]
+    list_display = ["id", "user", "picture",  "gender", "idCard", "age", "tel", "addr", "description"]
     # 过滤字段
     list_filter = ["id"]
     # 搜索字段
@@ -33,7 +33,14 @@ class AdviceAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
+class HotAdmin(admin.ModelAdmin):
+    list_display = ["id", "name", "pic", "index"]
+    list_filter = ["name"]
+    search_fields = ["name"]
+
+
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Car, CarAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Advice, AdviceAdmin)
+admin.site.register(Hotpic, HotAdmin)

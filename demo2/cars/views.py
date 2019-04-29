@@ -10,10 +10,11 @@ from django.core.paginator import Paginator
 
 
 def index(request):
-    if request.method == "GET":
-        return render(request, 'cars/index.html', {"username": request.session.get("username")})
-    elif request.method == "POST":
-        return render(request, 'cars/index.html', {"username": request.session.get("username")})
+    hotpics = Hotpic.objects.all().order_by("index")
+    # print(hotpics[0].pic.url)
+    for hotpic in hotpics:
+        print(hotpic.pic.url)
+    return render(request, 'cars/index.html', {"username": request.session.get("username"), "hotpics": hotpics})
 
 
 def user_login(request):
@@ -225,7 +226,8 @@ def me(request):
     car = Car.objects.all()
     user1 = request.session.get("username")
     newuser = User.objects.get(username=user1)
-    return render(request, 'cars/me.html', {"carlist": car, "username": user1, "newuser": newuser})
+    picture = newuser.customer.picture
+    return render(request, 'cars/me.html', {"carlist": car, "username": user1, "newuser": newuser, "picture": picture})
 
 
 def dingdan(request):
@@ -243,18 +245,23 @@ def xiugai(request):
 
 
 def new(request):
-    new1 = request.session.get("username")
-    news = User.objects.get(username=new1)
-    news.email = request.POST["email"]
-    news.customer.tel = request.POST["tel"]
-    news.customer.age = request.POST["age"]
-    news.customer.addr = request.POST["addr"]
-    news.customer.gender = request.POST["inlineRadioOptions"]
+    if request.method == "GET":
+        return render(request, "cars/xiugai.html")
+    elif request.method == "POST":
+        new1 = request.session.get("username")
+        news = User.objects.get(username=new1)
+        news.email = request.POST["email"]
+        print(type(news))
+        news.customer.tel = request.POST["tel"]
+        news.customer.age = request.POST["age"]
+        news.customer.addr = request.POST["addr"]
+        news.customer.gender = request.POST["inlineRadioOptions"]
+        news.customer.picture = request.FILES["pic"]
 
-    news.customer.save()
-    news.save()
-    # print(type(news))
-    return redirect('/cars/me/')
+        news.customer.save()
+        news.save()
+        print(news.customer.picture)
+        return redirect('/cars/me/')
 
 
 def advice(request):

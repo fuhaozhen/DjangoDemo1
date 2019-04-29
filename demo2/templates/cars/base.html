@@ -230,7 +230,10 @@
 			 	line-height:50px;
 			 	text-decoration:none;
 			 	}
-
+				div.pict img{
+					width:99px;
+					height: 99px;
+				}
 			/* foot */
 			div.s1_footer{
 				height: 150px;
@@ -341,7 +344,9 @@
 					<div class="code_num" style="display: block;">
 						<div class="jiben">
 							<div class="pict">
+								{% block pic%}
 								<img src="/static/images/touxiang.png" alt="加载不出来" width="99" height="99">
+								{% endblock %}
 							</div>
 							<div class="show">
                                 {% block right %}

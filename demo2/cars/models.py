@@ -8,6 +8,8 @@ class Customer(models.Model):
     """
     定义用户扩展类型，和系统内置用户一对一关联
     """
+    # 客户头像
+    picture = models.ImageField(upload_to="picture")
     # 客户性别
     gender = models.CharField(max_length=20)
     # 客户身份证号
@@ -77,4 +79,8 @@ class Advice(models.Model):
     content = models.TextField()
 
 
+class Hotpic(models.Model):
+    name = models.CharField(max_length=20)
+    pic = models.ImageField(upload_to='hotpic')
+    index = models.IntegerField()
 
