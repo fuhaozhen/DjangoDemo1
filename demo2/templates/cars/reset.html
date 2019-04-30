@@ -1,4 +1,33 @@
 {% extends 'cars/header.html' %}
-{% block forget %}
-<ol></ol>
+{% block title %}
+<li>1 填写账户信息</li>
+<li class="tcurrent">2 重置密码</li>
+<li>3 找回成功</li>
+{% endblock %}
+{% block content %}
+	<form action="{% url 'cars:changes' %}" method="post">
+		<li>
+			<div class="fg_list">
+				<p>输入新密码</p>
+					<input type="text" class="telephone" name="psw" required>
+						<div class="clear"></div>
+			</div>
+		</li>
+		<li>
+			<div class="fg_list">
+				<p style="width: 29%;">确认密码</p>
+					<input type="text" class="ma" name="re_psw" style="width:40%" required>
+					<div class="clear"></div>
+			</div>
+		</li>
+		<li>
+			<div class="fg_list">
+				<p style="width:29%;">&nbsp;</p>
+					<div class="next" style="width:71%;">
+						<input class="next1" type="submit" value="下一步">
+					</div>
+				<div class="clear"></div>
+			</div>
+		</li>
+	</form>
 {% endblock %}

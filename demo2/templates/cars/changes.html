@@ -1,9 +1,26 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-	</body>
-</html>
+{% extends 'cars/header.html' %}
+{% block title %}
+<li>1 填写账户信息</li>
+<li>2 重置密码</li>
+<li class="tcurrent">3 找回成功</li>
+{% endblock %}
+{% block content %}
+	<dl class="jm50">
+		<dt><img src="/static/images/tu_biao/succ.png" alt="" width="53" height="53"></dt>
+		<dd>
+			<p class="sl_gx">
+				恭喜您，密码修改成功
+			</p>
+		</dd>
+		<div class="clear"></div>
+	</dl>
+		<li>
+			<div class="fg_list" style=" margin-top: 100px;">
+					<div class="next" style="width:61%;">
+						<a class="next1" href="{% url 'cars:user_login' %}"> 完成</a>
+					</div>
+				<div class="clear"></div>
+			</div>
+		</li>
+</div>
+{% endblock %}

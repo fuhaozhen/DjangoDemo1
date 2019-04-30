@@ -282,7 +282,7 @@
 						{% csrf_token %}
 						<input class="s1_yonghuming" type="text" name="username" placeholder="请输入您的账号" onfocus="getfocus(this);" onblur="lostfocus(this, '用户名/手机号');" required/>
 						<input class="s1_yonghuming" type="password" name="userpwd" placeholder="请输入您的密码" onfocus="getfocus(this);" onblur="lostfocus(this, '密码');" required>
-						<a class="s1_wangji" href="#">忘记密码？</a>
+						<a class="s1_wangji" href="{% url 'cars:header' %}">忘记密码？</a>
 						<div class="deng_lu">
 						<input type="submit" value="立即登录">
 						</div>

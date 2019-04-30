@@ -27,4 +27,7 @@ urlpatterns = [
     url(r'^new/$', views.new, name='new'),
     url(r'^advice/$', views.advice, name='advice'),
     url(r'^success/$', views.success, name='success'),
+    url(r'^header/$', views.header, name='header'),
+    url(r'^reset/$', views.reset, name='reset'),
+    url(r'^changes/$', views.changes, name='changes'),
 ]

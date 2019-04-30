@@ -22,12 +22,8 @@
 				background-color:#323232;
 				line-height:40px;
 			}
-			a.phone{
-				line-height: 52px;
-				float: left;
-				height:40px;
-			}
-			a.kefu{
+
+			span.kefu{
 				float: left;
 				font-size: 15px;
 				margin-left:11px;
@@ -46,13 +42,10 @@
 				padding-right:11px;
 				border-right:1px solid #23B7B7;	
 			}
-			ul.flu>li a{
+			ul.flu>li span{
 				display: block;
 				text-decoration: none;
 				color:#b4b5ba;
-			}
-			ul.flu>li a:hover{
-				text-decoration: underline;
 			}
 			div.top .fr{
 				float:right;
@@ -164,14 +157,16 @@
 				width: 388px;
 				margin: 106px auto;
 			}
-			:after{
+			div.clear {
 				display: block;
 				clear: both;
 				visibility: hidden;
+				width: 20px;
+				margin: 20px;
 			}
 		
 			div.next{
-				margin: 100px auto;
+				margin: 50px auto;
 			}
 			input.next1{
 				display: block;
@@ -184,7 +179,22 @@
 				font-weight: normal;
 				
 			}
-			
+			a.next1{
+				width: 192px;
+				text-decoration: none;
+				display: block;
+				height: 48px;
+				line-height: 48px;
+				text-align: center;
+				color: #fff ;
+				font-size: 16px;
+				background: #23B7B7;
+				margin-left: 50px;
+
+			}
+			li{
+				list-style: none;
+			}
 			dl.jm50{
 				margin-bottom: 50px;
 				overflow: hidden;
@@ -195,12 +205,14 @@
 				width: 53px;
 				height: 53px;
 				margin-right: 10px;
+				margin-left: 60px;
 			}
 			dl.jm50 dd{
 				float: left;
 			}
 			p.sl_gx{
 				margin-bottom: 5px;
+				font-size: 18px;
 			}
 			/* foot */
 			div.s1_footer{
@@ -250,10 +262,10 @@
 				<div class="fl">
 					<ul class="flu">
 						<li>
-							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
+							<span class="kefu">客服服务热线 400-666-6688</span>
 						</li>
 						<li>
-							<a href="#">用户中心</a>
+							<span>欢迎您</span>
 						</li>
 					</ul>
 				</div>
@@ -297,19 +309,19 @@
 			
 				<ul>
 					{% block content%}
-					<form action="#" method="post">
+					<form action="{% url 'cars:reset' %}" method="post">
 						<li>
-							<div class="fg_list">
+							<div class="fg_list clearfix">
 								<p>绑定手机号码</p>
-									<input type="text" class="telephone" name="tel">
-									::after
+									<input type="text" class="telephone" name="tel" required>
+								<div class="clear"></div>
 							</div>
 						</li>
 						<li>
-							<div class="fg_list">
+							<div class="fg_list clearfix">
 								<p style="width: 29%;">验证码</p>
 								<input type="text" class="ma" name="ma" style="width:40%">
-								::after
+								<div class="clear"></div>
 							</div>
 						</li>
 						<li>
@@ -318,7 +330,7 @@
 								<div class="next" style="width:71%;">
 									<input class="next1" type="submit" value="下一步">
 								</div>
-								::after
+
 							</div>
 						</li>
 					</form>

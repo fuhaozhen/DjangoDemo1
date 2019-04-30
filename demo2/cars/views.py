@@ -288,3 +288,15 @@ def success(request):
     advice1.content = request.POST["comment"]
     advice1.save()
     return render(request, 'cars/success.html')
+
+
+def header(request):
+    return render(request, 'cars/header.html')
+
+
+def reset(request):
+    return render(request, 'cars/reset.html')
+
+
+def changes(request):
+    return render(request, 'cars/changes.html')
