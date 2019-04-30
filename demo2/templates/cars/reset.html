@@ -5,7 +5,9 @@
 <li>3 找回成功</li>
 {% endblock %}
 {% block content %}
+	{{error_msg}}
 	<form action="{% url 'cars:changes' %}" method="post">
+		<input type="hidden" name="username" value="{{user}}">
 		<li>
 			<div class="fg_list">
 				<p>输入新密码</p>
