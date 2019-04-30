@@ -3,9 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.css"/>
-		<script src="/static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -25,8 +22,12 @@
 				background-color:#323232;
 				line-height:40px;
 			}
-
-			span.kefu{
+			a.phone{
+				line-height: 52px;
+				float: left;
+				height:40px;
+			}
+			a.kefu{
 				float: left;
 				font-size: 15px;
 				margin-left:11px;
@@ -43,12 +44,15 @@
 				float:left;
 				margin-left:11px;
 				padding-right:11px;
-				border-right:1px solid #23B7B7;
+				border-right:1px solid #23B7B7;	
 			}
-			ul.flu>li span{
+			ul.flu>li a{
 				display: block;
 				text-decoration: none;
 				color:#b4b5ba;
+			}
+			ul.flu>li a:hover{
+				text-decoration: underline;
 			}
 			div.top .fr{
 				float:right;
@@ -69,7 +73,7 @@
 				background-color:#23B7B7;
 				color: white;
 			}
-
+			
 			/* nav */
 			div.nav{
 				height:100px;
@@ -81,7 +85,7 @@
 			}
 			div.s1_content{
 				width:1100px;
-				margin:0  auto;
+				margin: 0 auto;
 				clear:both;
 			}
 			div.menu{
@@ -106,124 +110,105 @@
 			div.menu ul li a:hover{
 				color:#23B7B7;
 				border-bottom: 2px solid #23B7B7;
-				padding-bottom:10px;
+				padding-bottom:10px;	
 			}
 
-			/* middle-content */
-			div.about_content{
-				width: 1100px;
-				margin: 0 auto;
-				overflow: hidden;
-				background: #fff;
-				margin-top: 30px;
-				margin-bottom: 40px;
-				border: 1px solid #eee;
+			/* middle */
+			div.forget_psw{
+				background:#fff;
+				margin: 40px auto;
+				width: 921px;
+				min-height: 480px;
+				margin-bottom: 53px;
+				border: 1px solid #ddd;
+				
 			}
-			div.about_left{
-				width: 205px;
-				overflow: hidden;
-				float: left;
-				background: #f9f9f9;
-				min-height: 800px;
-			}
-			div.about_left a.us{
-				color: #23B7B7;
-				font-weight: bold;
-			}
-			div.about_left a{
-				display: block;
-				width: 205px;
-				height: 60px;
-				border-bottom: 1px solid #eeeeee;
-				font-size: 18px;
+			div.forget_psw ol li{
+				width: 306px;
+				height: 70px;
+				line-height: 70px;
+				background: #eee;
 				text-align: center;
-				line-height: 60px;
-				text-decoration: none;
-				color: #666;
-			}
-			div.about_left a:hover{
-				color: #23B7B7;
-				font-weight: bold;
-			}
-			div.about_left dt{
-				padding: 10px 20px;
 				font-size: 16px;
-				background-color: #E7E7E7;
-				font-weight: 700;
-				line-height: 1.5;
-				display: block;
+				color: #a8a8a8;
+				float: left;
+				border-right: 1px solid #ddd;
+				list-style: none;
 			}
-			div.about_right dd{
-				padding: 6px 0;
+			div.forget_psw ol li.tcurrent{
+				color: #fff;
+				background-color: #23B7B7;
 			}
-			div.about_right{
-				width: 879px;
-				overflow: hidden;
-				min-height: 410px;
-				margin: auto;
-				padding: 30px 0;
-				box-sizing: border-box;
-				font-family: "微软雅黑";
+			div.fg_list{
+				zoom:1;
+				position: relative;
 			}
-			div.title{
-				line-height: 44px;
-				border-bottom: 1px solid #E5E5E5;
-				padding-left: 30px;
-				font-size: 22px;
-				width: 120px;
-				height: 44px;
+			div.fg_list p{
+				width: 29%;
+				float: left;
 				text-align: center;
-				font-weight: bold;
+				height: 48px;
+				line-height: 48px;
+				color: #606060;
+				font-size: 16px;
 			}
-			div.code_num{
+			div.fg_list input{
+				width: 70%;
+				float: left;
+				text-indent: 8px;
+				height: 48px;
+				line-height: 48px;
+				border: 1px solid #ddd;
+			}
+			div.forget_psw ul{
+				width: 388px;
+				margin: 106px auto;
+			}
+			:after{
 				display: block;
+				clear: both;
+				visibility: hidden;
 			}
-			div.pict{
-				width: 99px;
-				height: 99px;
-				margin: 4px 0px 45px;
-				border-radius: 3px;
-				overflow: hidden;
+		
+			div.next{
+				margin: 100px auto;
 			}
-			div.aaa{
-				margin-left: 200px;
-			}
-			div.show{
-				width: 400px;
-			}
-
-			div.show th{
-				width: 100px;
+			input.next1{
+				display: block;
+				height: 48px;
+				line-height: 48px;
 				text-align: center;
-				 height:50px;
+				color: #fff !important;
+				font-size: 16px;
+				background: #23B7B7;
+				font-weight: normal;
+				
 			}
-			div.show tr{
-			 height:50px;
-			 line-height:70px;
-			 text-align:center;
-			 }
-			 div.xiugai a{
-			 	display:block;
-			 	background-color:#eee;
-			 	margin:0 auto;
-			 	margin-top:50px;
-			 	width: 100px;
-			 	height: 50px;
-			 	text-align: center;
-			 	line-height:50px;
-			 	text-decoration:none;
-			 	color:#000;
-			 	}
+			
+			dl.jm50{
+				margin-bottom: 50px;
+				overflow: hidden;
+				zoom: 1;
+			}
+			dl.jm50 dt{
+				float: left;
+				width: 53px;
+				height: 53px;
+				margin-right: 10px;
+			}
+			dl.jm50 dd{
+				float: left;
+			}
+			p.sl_gx{
+				margin-bottom: 5px;
+			}
 			/* foot */
 			div.s1_footer{
 				height: 150px;
 				width: 100%;
 				background: #323232;
 			}
-			div.foot_top{
-				height: 100px;
-				padding-top: 10px;
-			}
+
 			div.s1_top{
 				padding-top: 10px;
 				margin-bottom: 10px;
@@ -255,7 +240,6 @@
 			}
 			div.s1_top span{
 				margin-right: 15px;
-
 			}
 		</style>
 	</head>
@@ -266,10 +250,10 @@
 				<div class="fl">
 					<ul class="flu">
 						<li>
-							<span>客服服务热线 400-666-6688</span>
+							<a class="kefu" href="#">客服服务热线 400-666-6688</a>
 						</li>
 						<li>
-							<span>欢迎您</span>
+							<a href="#">用户中心</a>
 						</li>
 					</ul>
 				</div>
@@ -288,78 +272,61 @@
 		<div class="nav">
 			<div class="s1_content">
 				<img src="/static/images/商标.png" alt>
-
+			
 				<div class="menu">
 					<ul>
-						<li><a href="{% url 'cars:index' %}" >首页</a></li>
+						<li><a href="{% url 'cars:index' %}" style="color:#23B7B7;">首页</a></li>
 						<li><a href="{% url 'cars:short' %}">短租</a></li>
 						<li><a href="{% url 'cars:long' %}">长租</a></li>
 						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
-						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}">关于我们</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:guide' %}">关于我们</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		{# -- middle -- #}
-			<div class="about_content">
-			<div class="about_left">
-				<dt>我的订单</dt>
-					<dd>
-						<a href="{% url 'cars:dingdan' %}" class="ck">订单管理</a>
-					</dd>
-				<dt>个人中心</dt>
-					<dd>
-						<a href="#" class="user"  style="color:#23B7B7; ">用户信息</a>
-					</dd>
-			</div>
-			<div class="about_right">
-				<div class="title">
-					基本信息
-				</div>
-				<div class="aaa">
-					<div class="txt">
-					<div class="code_num" style="display: block;">
-						<div class="jiben">
-							<div class="pict">
-								<img src="/static/media/{{picture.url}}" alt="加载不出来" width="99" height="99">
+		{# -- content -- #}
+		<div class="forget_psw">
+			<ol class="tianxie">
+				{% block title %}
+				<li class="tcurrent">1 填写账户信息</li>
+				<li>2 重置密码</li>
+				<li>3 找回成功</li>
+				{% endblock %}
+				<div class="clear"></div>
+			</ol>
+			
+				<ul>
+					{% block content%}
+					<form action="#" method="post">
+						<li>
+							<div class="fg_list">
+								<p>绑定手机号码</p>
+									<input type="text" class="telephone" name="tel">
+									::after
 							</div>
-							<div class="show">
-								<table class="table table-bordered">
-									<tr>
-									  <th>用户名：</th>
-									  <td>{{username}}</td>
-									</tr>
-									<tr>
-									  <th>手机号：</th>
-									  <td>{{newuser.customer.tel}}</td>
-									</tr>
-									<tr>
-									  <th>性别：</th>
-									  <td>{{newuser.customer.gender}}</td>
-									</tr>
-								   <tr>
-									  <th>年龄：</th>
-									  <td>{{newuser.customer.age}}</td>
-									</tr>
-								   <tr>
-									  <th>邮箱：</th>
-									  <td>{{newuser.email}}</td>
-									</tr>
-									  <tr>
-										  <th>家庭住址：</th>
-										  <td>{{newuser.customer.addr}}</td>
-										</tr>
-								</table>
-								<div class="xiugai">
-									<a href="{% url 'cars:xiugai' %}">修改信息</a>
+						</li>
+						<li>
+							<div class="fg_list">
+								<p style="width: 29%;">验证码</p>
+								<input type="text" class="ma" name="ma" style="width:40%">
+								::after
+							</div>
+						</li>
+						<li>
+							<div class="fg_list">
+								<p style="width:29%;">&nbsp;</p>
+								<div class="next" style="width:71%;">
+									<input class="next1" type="submit" value="下一步">
 								</div>
+								::after
 							</div>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div>
+						</li>
+					</form>
+					{% endblock %}
+				</ul>
+			
 		</div>
+
 
 		{# -- foot -- #}
 		<div class="s1_footer">
@@ -403,7 +370,7 @@
 							<li><a href="#">丹江租车</a></li>
 							<li><a href="#">遵义租车</a></li>
 							<li><a href="#">青岛租车</a></li>
-
+							
 						</ul>
 					</div>
 				</div>
