@@ -296,20 +296,26 @@ def header(request):
 
 def reset(request):
     tel = request.POST["tel"]
-    user = Customer.objects.get(tel=tel).user
-    # print(user, type(user))
-    return render(request, 'cars/reset.html', {"user": user})
+    try:
+        user = Customer.objects.get(tel=tel).user
+        # print(user, type(user))
+        return render(request, 'cars/reset.html', {"user": user})
+    except:
+        return render(request, 'cars/header.html', {"error_code": -4, "error_msg": "手机号不存在"})
 
 
 def changes(request):
     user = request.POST["username"]
-    print(user)
-    users = User.objects.get(username=user)
-    newpsw = request.POST["psw"]
-    re_newpsw = request.POST["re_psw"]
-    if newpsw == re_newpsw:
-        users.set_password(newpsw)
-        users.save()
-        return render(request, 'cars/changes.html')
-    else:
-        return render(request, 'cars/reset.html', {"error_code": 1, "error_msg": "两次密码输入不一致"})
+    # print(user)
+    try:
+        users = User.objects.get(username=user)
+        newpsw = request.POST["psw"]
+        re_newpsw = request.POST["re_psw"]
+        if newpsw == re_newpsw:
+            users.set_password(newpsw)
+            users.save()
+            return render(request, 'cars/changes.html')
+        else:
+            return render(request, 'cars/reset.html', {"error_code": 1, "error_msg": "两次密码输入不一致"})
+    except:
+        return render(request, 'cars/reset.html')

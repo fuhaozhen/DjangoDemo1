@@ -308,6 +308,7 @@
 			</ol>
 			
 				<ul>
+					{{error_msg}}
 					{% block content%}
 					<form action="{% url 'cars:reset' %}" method="post">
 						<li>
