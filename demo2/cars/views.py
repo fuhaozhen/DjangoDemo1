@@ -147,6 +147,7 @@ def commit(request, id):
     huantime = request.POST["huantime"]
 
     print(qutime)
+    print(huantime,"********************************8")
     day1 = qutime.split("-")[-1]
     day2 = huantime.split("-")[-1]
     month1 = qutime.split("-")[-2]
@@ -206,6 +207,10 @@ def pay(request, id):
     order1.creatDate = request.POST["getdate"]
     # print(order1.creatDate)
     order1.returnDate = request.POST["redate"]
+
+    print(order1.returnDate, "************************")
+    print(type(order1.returnDate))
+    order1.otime = request.POST["longtime"]
     order1.ocost = request.POST["priceCount"]
     # print(order1.ocost)
     order1.save()

@@ -487,11 +487,12 @@
 				</div>
 				
 				<form name="myform" action="{% url 'cars:pay' car.id %}" method="post">
+					<input type="hidden" name="longtime" value="{{longtime}}">
 					<input type="hidden" name="aid" />
 					<input type="hidden" name="getcity"  />
 					<input type="hidden" name="retcity"  />
 					<input type="hidden" name="getdate"  value="{{qutime}}" />
-					<input type="hidden" name="redate"  vaule="{{huantime}}"/>
+					<input type="hidden" name="redate"  value="{{huantime}}"/>
 					<input type="hidden" name="flag"  />
 					<input type="hidden" name="days"/>
 					<div class="ding_dan_content">

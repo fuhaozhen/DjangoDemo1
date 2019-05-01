@@ -3,6 +3,9 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+# 富文本编辑器
+from tinymce.models import HTMLField
+
 
 class Customer(models.Model):
     """
@@ -61,9 +64,9 @@ class Order(models.Model):
     # 车辆号
     typeNo = models.CharField(max_length=20)
     # 取车时间
-    creatDate = models.DateTimeField(auto_now_add=True)
+    creatDate = models.DateTimeField(auto_now_add=False)
     # 还车时间
-    returnDate = models.DateTimeField(auto_now_add=True)
+    returnDate = models.DateTimeField(auto_now_add=False)
     # 租赁时长
     otime = models.IntegerField(default=0)
     # 总费用
@@ -76,7 +79,7 @@ class Advice(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     title = models.CharField(max_length=20)
-    content = models.TextField()
+    content = HTMLField()
 
 
 class Hotpic(models.Model):

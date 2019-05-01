@@ -3,6 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<script type="text/javascript" src='/static/tiny_mce/tiny_mce.js'></script>
+		<script type="text/javascript">
+			tinyMCE.init({
+			'mode':'textareas',
+			'theme':'advanced',
+			'width':400,
+			'height':100
+			});
+		</script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -413,8 +422,8 @@
 								<font>*</font>
 							</p>
 						</div>
-						<div class="zi_xun_bottom">
-							<textarea name="comment" class="commentText" placeholder="请输入咨询内容..." required>
+						<div class="zi_xun_bottom" style="margin-left:30px">
+							<textarea name="comment" class="commentText"  required>
 							</textarea>
 							<br>
 							<input type="submit" name="commentSubmit" class="commentButton" id="commentSubmit" value="提交咨询"  onclick=""/>
