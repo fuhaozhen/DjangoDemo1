@@ -30,4 +30,7 @@ urlpatterns = [
     url(r'^header/$', views.header, name='header'),
     url(r'^reset/$', views.reset, name='reset'),
     url(r'^changes/$', views.changes, name='changes'),
+    url(r'^email/$', views.email, name='email'),
+    url(r'^active/(.*?)/$', views.active, name='active'),
+    url(r'^verifycode/$', views.verifycode, name='verifycode'),
 ]

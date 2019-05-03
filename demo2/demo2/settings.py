@@ -143,8 +143,8 @@ EMAIL_USE_SSL = False
 EMAIL_HOST = 'smtp.163.com'
 # 发件箱的SMTP服务器端口
 EMAIL_PORT = 25
-# 发送邮件的邮箱地址
-EMAIL_HOST_USER = '18137128152@163.com'
-EMAIL_HOST_PASSWORD = 'qikuedu'
-# 邮件的发件人
-DEFAULT_FROM_EMAIL = 'zzy0371 <18137128152@163.com>'
+# 发送邮件的用户和密码
+EMAIL_HOST_USER = '13290901690@163.com'
+EMAIL_HOST_PASSWORD = 'like2shuo'
+# 用来显示发送者
+DEFAULT_FROM_EMAIL = 'fuhaozhen <13290901690@163.com>'

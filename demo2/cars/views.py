@@ -6,7 +6,17 @@ from django.contrib.auth.models import User
 # 身份认证 登出 登录（记录登录状态）
 from django.contrib.auth import authenticate, logout, login
 from datetime import datetime
+# 分页器
 from django.core.paginator import Paginator
+# 发送邮件
+from django.conf import settings
+from django.core.mail import send_mail, send_mass_mail
+# 序列化
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired
+# 验证码
+from PIL import Image, ImageDraw, ImageFont
+import random
+import io
 
 
 def index(request):
@@ -61,8 +71,19 @@ def user_register(request):
             if userpwd != re_userpwd:
                 return render(request, 'cars/register.html', {'error_code': -2, 'error_msg': "两次密码输入不一致"})
 
+
         # 创建用户注册
-        user = User.objects.create_user(username=username, password=userpwd, email=useremail)
+
+        user = User.objects.create_user(username=username, password=userpwd, email=useremail, is_active=False)
+        # print(User.objects.get(username=username), type(User.objects.get(username=username)))
+        id = User.objects.get(username=username).id
+
+        # 序列化Id
+        # serutil = Serializer(settings.SECRET_KEY, 300)
+        # resultid = serutil.dumps({"id": id}.decode("utf-8"))
+
+        print(user.email)
+        send_mail("点击激活账户", "<a href='http://127.0.0.1:8000/cars/active/%s'>点击我激活账户</a>"%(id,), settings.DEFAULT_FROM_EMAIL, [user.email])
         customer = Customer()
         customer.tel = usertel
         customer.gender = "待完善"
@@ -301,10 +322,15 @@ def header(request):
 
 def reset(request):
     tel = request.POST["tel"]
+    # 验证码
+    verifycode = request.POST["verifycode"]
     try:
         user = Customer.objects.get(tel=tel).user
-        # print(user, type(user))
-        return render(request, 'cars/reset.html', {"user": user})
+        if verifycode == request.session.get("verifycode"):
+            # print(user, type(user))
+            return render(request, 'cars/reset.html', {"user": user})
+        else:
+            return HttpResponse("验证码错误")
     except:
         return render(request, 'cars/header.html', {"error_code": -4, "error_msg": "手机号不存在"})
 
@@ -324,3 +350,67 @@ def changes(request):
             return render(request, 'cars/reset.html', {"error_code": 1, "error_msg": "两次密码输入不一致"})
     except:
         return render(request, 'cars/reset.html')
+
+
+def email(request):
+    """发送邮件"""
+    try:
+        send_mail("Django发送邮件", "Django自带邮件功能，你可以使用sen_mail发送，<a herf='http://127.0.0.1:8000/'></a>", settings.DEFAULT_FROM_EMAIL, ["1542242578@qq.com"])
+        return HttpResponse("发送成功")
+    except Exception as e:
+        print(e)
+        return HttpResponse("发送失败")
+
+
+def active(request, idstr):
+    deser = Serializer(settings.SECRET_KEY, 300)
+    try:
+        obj =  deser.loads(idstr)
+        user = User.objects.get(pk=obj["id"])
+        user.is_active = True
+        user.save()
+        return redirect(reverse('cars:user_login'))
+    except:
+        return HttpResponse("过期了")
+
+
+def verifycode(request):
+    # 生成验证码图片
+    # 定义变量，用于画面的背景色、宽、高
+    bgcolor = (random.randrange(20, 100),
+               random.randrange(20, 100),
+               random.randrange(20, 100))
+    width = 100
+    heigth = 25
+    # 创建画面对象
+    im = Image.new('RGB', (width, heigth), bgcolor)
+    # 创建画笔对象
+    draw = ImageDraw.Draw(im)
+    # 调用画笔的point()函数绘制噪点
+    for i in range(0, 100):
+        xy = (random.randrange(0, width), random.randrange(0, heigth))
+    fill = (random.randrange(0, 255), 255, random.randrange(0, 255))
+    draw.point(xy, fill=fill)
+    # 定义验证码的备选值
+    str1 = 'ABCD123EFGHIJK456LMNOPQRS789TUVWXYZ0'
+    # 随机选取4个值作为验证码
+    rand_str = ''
+    for i in range(0, 4):
+        rand_str += str1[random.randrange(0, len(str1))]
+    # 构造字体对象
+    font = ImageFont.truetype('46152___.TTF', 23)
+    fontcolor = (255, random.randrange(0, 255), random.randrange(0, 255))
+    # 绘制4个字
+    draw.text((5, 2), rand_str[0], font=font, fill=fontcolor)
+    draw.text((25, 2), rand_str[1], font=font, fill=fontcolor)
+    draw.text((50, 2), rand_str[2], font=font, fill=fontcolor)
+    draw.text((75, 2), rand_str[3], font=font, fill=fontcolor)
+    # 释放画笔
+    del draw
+
+    # 将生成的验证码存入session
+    request.session['verifycode'] = rand_str
+    f = io.BytesIO()
+    im.save(f, 'png')
+    # 将内存中的图片数据返回给客户端，MIME类型为图片png
+    return HttpResponse(f.getvalue(), 'image/png')
