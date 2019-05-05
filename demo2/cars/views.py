@@ -75,15 +75,15 @@ def user_register(request):
         # 创建用户注册
 
         user = User.objects.create_user(username=username, password=userpwd, email=useremail, is_active=False)
-        # print(User.objects.get(username=username), type(User.objects.get(username=username)))
-        id = User.objects.get(username=username).id
+        id = user.id
+        print(id)
 
         # 序列化Id
-        # serutil = Serializer(settings.SECRET_KEY, 300)
-        # resultid = serutil.dumps({"id": id}.decode("utf-8"))
+        serutil = Serializer(settings.SECRET_KEY, 300)
+        resultid = serutil.dumps({"id": id}).decode("utf-8")
 
-        print(user.email)
-        send_mail("点击激活账户", "<a href='http://127.0.0.1:8000/cars/active/%s'>点击我激活账户</a>"%(id,), settings.DEFAULT_FROM_EMAIL, [user.email])
+        # print(user.email)
+        send_mail("点击激活账户", "<a href='http://127.0.0.1:8000/cars/active/%s'>点击我激活账户</a>"%(resultid,), settings.DEFAULT_FROM_EMAIL, [user.email])
         customer = Customer()
         customer.tel = usertel
         customer.gender = "待完善"
@@ -93,8 +93,8 @@ def user_register(request):
         customer.user = user
         # user.save()
         customer.save()
-        # 返回登录页面
-        return render(request, 'cars/login.html', {'error_code': 1, 'error_msg': "账号注册成功，请使用新账号登录"})
+        # 返回注册页面
+        return render(request, 'cars/register.html', {'error_code': 1, 'error_msg': "账号注册成功，请在邮箱中激活账户"})
 
 
 def long(request):
@@ -321,18 +321,23 @@ def header(request):
 
 
 def reset(request):
+    name = request.POST["name"]
     tel = request.POST["tel"]
     # 验证码
     verifycode = request.POST["verifycode"]
     try:
-        user = Customer.objects.get(tel=tel).user
-        if verifycode == request.session.get("verifycode"):
-            # print(user, type(user))
-            return render(request, 'cars/reset.html', {"user": user})
+        user = User.objects.get(username=name)
+        if user and user.customer.tel == tel:
+            # return render(request, 'cars/reset.html', {"user": user})
+            if verifycode == request.session.get("verifycode"):
+                # print(user, type(user))
+                return render(request, 'cars/reset.html', {"user": user})
+            else:
+                return render(request, 'cars/header.html', {"user": user, "error_code": -3, "error_msg": "验证码错误"})
         else:
-            return HttpResponse("验证码错误")
+            return render(request, 'cars/header.html', {"error_code": -4, "error_msg": "用户名或手机号有误"})
     except:
-        return render(request, 'cars/header.html', {"error_code": -4, "error_msg": "手机号不存在"})
+        return HttpResponse("出错了")
 
 
 def changes(request):
@@ -363,15 +368,27 @@ def email(request):
 
 
 def active(request, idstr):
+    # user = User.objects.get(pk=id)
+    # user.is_active = True
+    # user.save()
+    # return redirect(reverse('cars:user_login'), {"error_code": 3, "error_msg": "账号激活成功，请登录"})
     deser = Serializer(settings.SECRET_KEY, 300)
     try:
-        obj =  deser.loads(idstr)
+        obj = deser.loads(idstr)
         user = User.objects.get(pk=obj["id"])
         user.is_active = True
         user.save()
-        return redirect(reverse('cars:user_login'))
+        return render(request, 'cars/login.html', {"error_code": 3, "error_msg": "账号激活成功，请登录"})
     except:
-        return HttpResponse("过期了")
+        return HttpResponse("链接失效")
+
+
+def checkuser(request):
+    if request.method == "POST":
+        username = request.POST["name"]
+        user = User.objects.filter(username=username).first()
+        if user is None:
+            return HttpResponse("用户名不存在")
 
 
 def verifycode(request):
@@ -380,8 +397,8 @@ def verifycode(request):
     bgcolor = (random.randrange(20, 100),
                random.randrange(20, 100),
                random.randrange(20, 100))
-    width = 100
-    heigth = 25
+    width = 105
+    heigth = 50
     # 创建画面对象
     im = Image.new('RGB', (width, heigth), bgcolor)
     # 创建画笔对象
@@ -398,19 +415,32 @@ def verifycode(request):
     for i in range(0, 4):
         rand_str += str1[random.randrange(0, len(str1))]
     # 构造字体对象
-    font = ImageFont.truetype('46152___.TTF', 23)
+    font = ImageFont.truetype('LCALLIG.TTF', 24)
     fontcolor = (255, random.randrange(0, 255), random.randrange(0, 255))
     # 绘制4个字
-    draw.text((5, 2), rand_str[0], font=font, fill=fontcolor)
-    draw.text((25, 2), rand_str[1], font=font, fill=fontcolor)
-    draw.text((50, 2), rand_str[2], font=font, fill=fontcolor)
-    draw.text((75, 2), rand_str[3], font=font, fill=fontcolor)
+    draw.text((7, 12), rand_str[0], font=font, fill=fontcolor)
+    draw.text((27, 12), rand_str[1], font=font, fill=fontcolor)
+    draw.text((52, 12), rand_str[2], font=font, fill=fontcolor)
+    draw.text((77, 12), rand_str[3], font=font, fill=fontcolor)
     # 释放画笔
     del draw
 
     # 将生成的验证码存入session
-    request.session['verifycode'] = rand_str
+    request.session['verifycode'] = rand_str.lower()
+
     f = io.BytesIO()
     im.save(f, 'png')
     # 将内存中的图片数据返回给客户端，MIME类型为图片png
     return HttpResponse(f.getvalue(), 'image/png')
+
+
+def ajaxload(request):
+    return render(request, 'cars/ajaxload.html')
+
+
+def ajax(request):
+    if request.method == "GET":
+        return HttpResponse("get请求成功")
+    elif request.method == "POST":
+        return HttpResponse("post请求成功")
+

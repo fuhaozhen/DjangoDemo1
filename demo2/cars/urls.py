@@ -5,8 +5,8 @@ app_name = 'cars'
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^login/$', views.user_login, name='user_login'),
-    url(r'^register/$', views.user_register, name='user_register'),
+    url(r'^user_login/$', views.user_login, name='user_login'),
+    url(r'^user_register/$', views.user_register, name='user_register'),
     url(r'^long/$', views.long, name='long'),
     url(r'^short/$', views.short, name='short'),
     url(r'^shangwu/$', views.shangwu, name='shangwu'),
@@ -33,4 +33,7 @@ urlpatterns = [
     url(r'^email/$', views.email, name='email'),
     url(r'^active/(.*?)/$', views.active, name='active'),
     url(r'^verifycode/$', views.verifycode, name='verifycode'),
+    url(r'^checkuser/$', views.checkuser, name='checkuser'),
+    url(r'^ajaxload/$', views.ajaxload, name='ajaxload'),
+    url(r'^ajax/$', views.ajax, name='ajax'),
 ]

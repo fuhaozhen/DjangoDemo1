@@ -3,6 +3,25 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<script src="/static/js/jquery-2.1.4.min.js"></script>
+		<script>
+			$(function () {
+				$("#username").blur(function(){
+					$.ajax({
+						url: "/cars/checkuser/",
+						data:{
+							"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val(),
+							"username": $("#username").val(),
+						},
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						success:function(data){
+							console.log(data)
+						},
+					});
+				})
+			})
+		</script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -111,7 +130,7 @@
 				background:#fff;
 				margin: 40px auto;
 				width: 921px;
-				min-height: 480px;
+				min-height: 560px;
 				margin-bottom: 53px;
 				border: 1px solid #ddd;
 				
@@ -155,7 +174,7 @@
 			}
 			div.forget_psw ul{
 				width: 388px;
-				margin: 106px auto;
+				margin: 86px auto;
 			}
 			div.clear {
 				display: block;
@@ -205,10 +224,12 @@
 				width: 53px;
 				height: 53px;
 				margin-right: 10px;
-				margin-left: 60px;
+				margin-left: 80px;
 			}
 			dl.jm50 dd{
 				float: left;
+				margin-left: 5px;
+				margin-top: 10px;
 			}
 			p.sl_gx{
 				margin-bottom: 5px;
@@ -310,10 +331,18 @@
 				<ul>
 					{{error_msg}}
 					{% block content%}
+					{% csrf_token %}
 					<form action="{% url 'cars:reset' %}" method="post">
 						<li>
 							<div class="fg_list clearfix">
-								<p>绑定手机号码</p>
+								<p>用户名</p>
+									<input type="text" id="username" name="name" required><span id="error"></span>
+								<div class="clear"></div>
+							</div>
+						</li>
+						<li>
+							<div class="fg_list clearfix">
+								<p>绑定手机号</p>
 									<input type="text" class="telephone" name="tel" required>
 								<div class="clear"></div>
 							</div>
@@ -321,8 +350,8 @@
 						<li>
 							<div class="fg_list clearfix">
 								<p style="width: 29%;">验证码</p>
-								<input type="text" class="ma" name="verifycode" style="width:40%">
-								<img src="{% url 'cars:verifycode' %}" alt="">
+								<input type="text" class="ma" name="verifycode" style="width:40%" required>
+								<img id="verifyimg" src="{% url 'cars:verifycode' %}" alt="图片加载失败" style="margin-left:10px">
 								<div class="clear"></div>
 							</div>
 						</li>
@@ -338,9 +367,7 @@
 					</form>
 					{% endblock %}
 				</ul>
-			
 		</div>
-
 
 		{# -- foot -- #}
 		<div class="s1_footer">
@@ -350,7 +377,7 @@
 							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
 							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
 					</div>
-					<div class="clear"></div>
+
 					<div class="s1_lian_jie">
 						<h5 style="color: #b4b5ba;">热门城市入口</h5>
 						<ul>
@@ -390,5 +417,11 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			$("#verifyimg").click(function () {
+				this.src = "/cars/verifycode/" + "?time=" + new Date().getTime();
+			})
+		</script>
 	</body>
 </html>
