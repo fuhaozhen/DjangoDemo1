@@ -13,10 +13,9 @@
 							"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val(),
 							"username": $("#username").val(),
 						},
-						type:'post',//HTTP请求类型
-						timeout:10000,//超时时间设置为10秒；
+						type:'post',
 						success:function(data){
-							console.log(data)
+							$("#error").text(data);
 						},
 					});
 				})
@@ -152,11 +151,12 @@
 				background-color: #23B7B7;
 			}
 			div.fg_list{
+				width:520px;
 				zoom:1;
 				position: relative;
 			}
 			div.fg_list p{
-				width: 29%;
+				width: 150px;
 				float: left;
 				text-align: center;
 				height: 48px;
@@ -165,7 +165,7 @@
 				font-size: 16px;
 			}
 			div.fg_list input{
-				width: 70%;
+				width: 272px;
 				float: left;
 				text-indent: 8px;
 				height: 48px;
@@ -173,7 +173,7 @@
 				border: 1px solid #ddd;
 			}
 			div.forget_psw ul{
-				width: 388px;
+				width: 550px;
 				margin: 86px auto;
 			}
 			div.clear {
@@ -234,6 +234,14 @@
 			p.sl_gx{
 				margin-bottom: 5px;
 				font-size: 18px;
+			}
+			span#error{
+				float: right;
+				line-height: 50px;
+				height: 50px;
+				display: block;
+				width: 90px;
+				margin-left: 5px;
 			}
 			/* foot */
 			div.s1_footer{
@@ -336,7 +344,7 @@
 						<li>
 							<div class="fg_list clearfix">
 								<p>用户名</p>
-									<input type="text" id="username" name="name" required><span id="error"></span>
+									<input type="text" id="username" name="username" required><span id="error"></span>
 								<div class="clear"></div>
 							</div>
 						</li>
@@ -349,8 +357,8 @@
 						</li>
 						<li>
 							<div class="fg_list clearfix">
-								<p style="width: 29%;">验证码</p>
-								<input type="text" class="ma" name="verifycode" style="width:40%" required>
+								<p style="width: 150px;">验证码</p>
+								<input type="text" class="ma" name="verifycode" style="width:160px;" required>
 								<img id="verifyimg" src="{% url 'cars:verifycode' %}" alt="图片加载失败" style="margin-left:10px">
 								<div class="clear"></div>
 							</div>

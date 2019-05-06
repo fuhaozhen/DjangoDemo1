@@ -17,6 +17,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, BadSigna
 from PIL import Image, ImageDraw, ImageFont
 import random
 import io
+import re
 
 
 def index(request):
@@ -61,16 +62,18 @@ def user_register(request):
         userpwd = request.POST["userpwd"]
         re_userpwd = request.POST["re_userpwd"]
         useremail = request.POST["useremail"]
-
         # 判断账号是否可用
         try:
             user = User.objects.get(username=username)
             return render(request, 'cars/register.html', {'error_code': -1, 'error_msg': "账号已存在，请使用其他账号注册"})
         except:
-            # 判断两次密码是否一致
-            if userpwd != re_userpwd:
-                return render(request, 'cars/register.html', {'error_code': -2, 'error_msg': "两次密码输入不一致"})
-
+            result = re.fullmatch(r'^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$', useremail)
+            if result:
+                # 判断两次密码是否一致
+                if userpwd != re_userpwd:
+                    return render(request, 'cars/register.html', {'error_code': -2, 'error_msg': "两次密码输入不一致"})
+            else:
+                return redirect(reverse('cars:user_register'), {"error_code": -6, 'error_msg': "邮箱格式不正确"})
 
         # 创建用户注册
 
@@ -321,7 +324,7 @@ def header(request):
 
 
 def reset(request):
-    name = request.POST["name"]
+    name = request.POST["username"]
     tel = request.POST["tel"]
     # 验证码
     verifycode = request.POST["verifycode"]
@@ -384,11 +387,14 @@ def active(request, idstr):
 
 
 def checkuser(request):
+
     if request.method == "POST":
-        username = request.POST["name"]
+        username = request.POST["username"]
         user = User.objects.filter(username=username).first()
         if user is None:
             return HttpResponse("用户名不存在")
+        else:
+            return HttpResponse("ok")
 
 
 def verifycode(request):
