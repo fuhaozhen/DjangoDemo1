@@ -96,8 +96,8 @@ def user_register(request):
         customer.user = user
         # user.save()
         customer.save()
-        # 返回注册页面
-        return render(request, 'cars/register.html', {'error_code': 1, 'error_msg': "账号注册成功，请在邮箱中激活账户"})
+        # 返回登录页面
+        return render(request, 'cars/login.html', {'error_code': 1, 'error_msg': "账号注册成功，请在邮箱中激活账户"})
 
 
 def long(request):
