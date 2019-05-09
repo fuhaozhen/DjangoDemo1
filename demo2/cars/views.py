@@ -421,7 +421,7 @@ def verifycode(request):
     for i in range(0, 4):
         rand_str += str1[random.randrange(0, len(str1))]
     # 构造字体对象
-    font = ImageFont.truetype('LCALLIG.TTF', 24)
+    font = ImageFont.truetype('Lobster-Regular.ttf', 24)
     fontcolor = (255, random.randrange(0, 255), random.randrange(0, 255))
     # 绘制4个字
     draw.text((7, 12), rand_str[0], font=font, fill=fontcolor)
