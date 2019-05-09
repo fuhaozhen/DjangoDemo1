@@ -3,7 +3,24 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<script src="/static/main.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/jquery-2.1.4.min.js"></script>
+		<script>
+			$(function () {
+				$("#username").blur(function(){
+					$.ajax({
+						url: "/cars/checkuser1/",
+						data:{
+							"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val(),
+							"username": $("#username").val(),
+						},
+						type:'post',
+						success:function(data){
+							$("#show").text(data);
+						},
+					});
+				})
+			})
+		</script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -144,18 +161,20 @@
 				background: #F2F3F5;
 			}
 			div.jreg_con{
-				width: 387px;
-				margin: 0 auto 0;
+				width: 500px;
+
 				min-height: 473px;
-				margin-left: 150px;
-				position: relative;
+				margin-left: 80px;
 				
+			}
+			form{
+				padding: 0 100px;
 			}
 			.clearfix{
 				zoom: 1;
 			}
 			div.jreg_content input{
-				width:77.5%;
+				width:235px;
 				height:49px;
 				line-height: 49px;
 				text-indent: 8px;
@@ -175,7 +194,7 @@
 			}
 
 			div.zhu_ce input{
-				width: 77.5%;
+				width: 235px;
 				display: block;
 				height: 45px;
 				line-height: 45px;
@@ -201,14 +220,20 @@
 				line-height: 30px;
 				position: absolute;
 				top: -13px;
-				left: 100px;
+				left: 150px;
 				margin: 0;
 			}
 			div.s1_huo p a{
 				color: #23B7B7;
 				text-decoration: none;
 			}
-			
+			span#show{
+				float: left;
+				height: 20px;
+				display: block;
+				width: 90px;
+
+			}
 			/* foot */
 			div.s1_footer{
 				height: 150px;
@@ -307,7 +332,8 @@
 					<div class="jreg_con">
 						<form class="clearfix" action="{% url 'cars:user_register' %}" method="post">
 							{% csrf_token %}
-							<input type="text" name="username" placeholder="请输入您的用户名" onfocus="getfocus(this);" onblur="lostfocus(this,'用户名');" required >
+							<input type="text" id="username" name="username" placeholder="请输入您的用户名" onfocus="getfocus(this);" onblur="lostfocus(this,'用户名');" required >
+							<span id="show"></span>
 							<input type="text" name="usertel" placeholder="请输入您的手机号" onfocus="getfocus(this);" onblur="lostfocus(this,'手机号');"  required>
 							<input type="password" name="userpwd" placeholder="请输入您的密码" onfocus="getfocus(this);" onblur="lostfocus(this,'密码');"  required>
 							<input type="password" name="re_userpwd" placeholder="请确认您的密码" onfocus="getfocus(this);" onblur="lostfocus(this,'确认密码');" required>

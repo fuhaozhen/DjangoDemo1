@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^active/(.*?)/$', views.active, name='active'),
     url(r'^verifycode/$', views.verifycode, name='verifycode'),
     url(r'^checkuser/$', views.checkuser, name='checkuser'),
+    url(r'^checkuser1/$', views.checkuser1, name='checkuser1'),
     url(r'^ajaxload/$', views.ajaxload, name='ajaxload'),
     url(r'^ajax/$', views.ajax, name='ajax'),
 ]

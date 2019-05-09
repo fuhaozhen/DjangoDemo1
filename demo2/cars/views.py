@@ -397,6 +397,17 @@ def checkuser(request):
             return HttpResponse("ok")
 
 
+def checkuser1(request):
+    # return HttpResponse("ok")
+    if request.method == "POST":
+        username = request.POST["username"]
+        user = User.objects.filter(username=username).first()
+        if user is not None:
+            return HttpResponse("用户名已存在")
+        else:
+            return HttpResponse("ok")
+
+
 def verifycode(request):
     # 生成验证码图片
     # 定义变量，用于画面的背景色、宽、高
