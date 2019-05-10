@@ -35,6 +35,9 @@ urlpatterns = [
     url(r'^verifycode/$', views.verifycode, name='verifycode'),
     url(r'^checkuser/$', views.checkuser, name='checkuser'),
     url(r'^checkuser1/$', views.checkuser1, name='checkuser1'),
+    url(r'^checkuser2/$', views.checkuser2, name='checkuser2'),
+    url(r'^checkuser3/$', views.checkuser3, name='checkuser3'),
     url(r'^ajaxload/$', views.ajaxload, name='ajaxload'),
     url(r'^ajax/$', views.ajax, name='ajax'),
+    url(r'^dianji/$', views.dianji, name='dianji'),
 ]

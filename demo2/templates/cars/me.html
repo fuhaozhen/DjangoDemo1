@@ -278,7 +278,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:me' %}">个人中心</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -307,7 +307,7 @@
 					<dd>
 						<a href="{% url 'cars:dingdan' %}" class="ck">订单管理</a>
 					</dd>
-				<dt>个人中心</dt>
+				<dt>我的信息</dt>
 					<dd>
 						<a href="#" class="user"  style="color:#23B7B7; ">用户信息</a>
 					</dd>

@@ -18,6 +18,19 @@
 							$("#show").text(data);
 						},
 					});
+				});
+				$("#tel").blur(function(){
+					$.ajax({
+						url: "/cars/checkuser2/",
+						data:{
+							"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val(),
+							"usertel": $("#tel").val(),
+						},
+						type:'post',
+						success:function(data){
+							$("#error").text(data);
+						},
+					});
 				})
 			})
 		</script>
@@ -227,12 +240,11 @@
 				color: #23B7B7;
 				text-decoration: none;
 			}
-			span#show{
+			.jreg_con span{
 				float: left;
 				height: 20px;
 				display: block;
 				width: 90px;
-
 			}
 			/* foot */
 			div.s1_footer{
@@ -299,7 +311,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:me' %}">个人中心</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -334,7 +346,8 @@
 							{% csrf_token %}
 							<input type="text" id="username" name="username" placeholder="请输入您的用户名" onfocus="getfocus(this);" onblur="lostfocus(this,'用户名');" required >
 							<span id="show"></span>
-							<input type="text" name="usertel" placeholder="请输入您的手机号" onfocus="getfocus(this);" onblur="lostfocus(this,'手机号');"  required>
+							<input type="text" id='tel' name="usertel" placeholder="请输入您的手机号" onfocus="getfocus(this);" onblur="lostfocus(this,'手机号');"  required>
+							<span id="error"></span>
 							<input type="password" name="userpwd" placeholder="请输入您的密码" onfocus="getfocus(this);" onblur="lostfocus(this,'密码');"  required>
 							<input type="password" name="re_userpwd" placeholder="请确认您的密码" onfocus="getfocus(this);" onblur="lostfocus(this,'确认密码');" required>
 							<input type="text" name="useremail" placeholder="请输入您的邮箱" onfocus="getfocus(this);" onblur="lostfocus(this,'邮箱');" required>

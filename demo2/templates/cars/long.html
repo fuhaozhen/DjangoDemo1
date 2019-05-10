@@ -366,7 +366,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:me' %}">个人中心</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -414,7 +414,7 @@
 					</ul>
 				</div>
 				<div class="cars_list">
-					<h2>超值长租</h2>
+					<h2>超值长租(一个月起租)</h2>
 					<div class="long_cars">
 						<ul style="margin-left: 60px;">
 							<li>
@@ -439,6 +439,7 @@
 											<s class="car_market">￥ 7200/月</s>
 											<span class="car_discount">￥ 6600/月</span>
 										</p>
+
 									</div>
 										<p class="type">帕萨特、凯美瑞、奥迪A4L,新天籁等</p>								
 								</div>

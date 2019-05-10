@@ -125,6 +125,8 @@
 				margin: 15px 20px;
 			}
 			div.t1 h2{
+				font-size: 24px;
+				font-weight: 400;
 				margin-top: 7px;
 				color: #666;
 			}
@@ -286,7 +288,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:me' %}">个人中心</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -310,7 +312,7 @@
 		</div>
 		{# -- middle -- #}
 		<div class="s1_bottom">
-			<div class="t1"><img src="/static/images/short.png" style="float: left;"><h2>自驾短租</h2></div>
+			<div class="t1"><img src="/static/images/short.png" style="float: left;"><h2>自驾短租(30天以内)</h2></div>
 			<div class="area">
 				<ul class="cha_xun">
 					<li class="biao_ti" style="background: none;font-weight:bold;font-size: 16px;" >按车型查询：</li>

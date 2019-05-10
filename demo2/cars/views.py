@@ -67,13 +67,14 @@ def user_register(request):
             user = User.objects.get(username=username)
             return render(request, 'cars/register.html', {'error_code': -1, 'error_msg': "账号已存在，请使用其他账号注册"})
         except:
-            result = re.fullmatch(r'^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$', useremail)
-            if result:
+            result = re.fullmatch(r'^1(3|4|5|7|8)\d{9}$', usertel)
+            result2 = re.fullmatch(r'^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$', useremail)
+            if result2 and result:
                 # 判断两次密码是否一致
                 if userpwd != re_userpwd:
                     return render(request, 'cars/register.html', {'error_code': -2, 'error_msg': "两次密码输入不一致"})
             else:
-                return redirect(reverse('cars:user_register'), {"error_code": -6, 'error_msg': "邮箱格式不正确"})
+                return render(request, 'cars/register.html', {'error_code': -6, 'error_msg': "手机号或邮箱格式不正确！"})
 
         # 创建用户注册
 
@@ -162,36 +163,41 @@ def about(request):
 def order(request, id):
     car = Car.objects.get(pk=id)
     orders = Order.objects.all()
-    return render(request, 'cars/order.html', {"car": car, "orders": orders})
+    if request.method == "GET":
+        return render(request, 'cars/order.html', {"car": car})
+    elif request.method == "POST":
+        return render(request, 'cars/order.html', {"car": car, "orders": orders})
 
 
 def commit(request, id):
     car = Car.objects.get(pk=id)
-    qutime = request.POST["qutime"]
-    huantime = request.POST["huantime"]
-
-    print(qutime)
-    print(huantime,"********************************8")
-    day1 = qutime.split("-")[-1]
-    day2 = huantime.split("-")[-1]
-    month1 = qutime.split("-")[-2]
-    month2 = huantime.split("-")[-2]
-    if month1 == month2:
-        longtime = int(day2) - int(day1)
-    else:
-        longtime = 30 - int(day1) + int(day2)
-    print(type(longtime))
-    print(longtime)
-    # print(longtime)
-    dprice = car.drentprice
-    rentprice = dprice * longtime
-    baoprice = 50 * longtime
-    shouprice = 1 * longtime
-    gpsprice = 10 * longtime
-    orderprice = rentprice+baoprice+shouprice+gpsprice
-    return render(request, 'cars/commit.html', {"car": car, "username": request.session.get("username"), "qutime": qutime,\
-     "huantime": huantime, "longtime": longtime, "rentprice": rentprice, "baoprice": baoprice, "shouprice": shouprice,\
-     "gpsprice": gpsprice, "orderprice": orderprice})
+    if request.method == "GET":
+        return render(request, 'cars/commit.html', {"car": car})
+    elif request.method == "POST":
+        qutime = request.POST["qutime"]
+        huantime = request.POST["huantime"]
+        # print(qutime)
+        # print(huantime,"********************************8")
+        day1 = qutime.split("-")[-1]
+        day2 = huantime.split("-")[-1]
+        month1 = qutime.split("-")[-2]
+        month2 = huantime.split("-")[-2]
+        if month1 == month2:
+            longtime = int(day2) - int(day1)
+        else:
+            longtime = 30 - int(day1) + int(day2)
+        print(type(longtime))
+        print(longtime)
+        # print(longtime)
+        dprice = car.drentprice
+        rentprice = dprice * longtime
+        baoprice = 50 * longtime
+        shouprice = 1 * longtime
+        gpsprice = 10 * longtime
+        orderprice = rentprice+baoprice+shouprice+gpsprice
+        return render(request, 'cars/commit.html', {"car": car, "username": request.session.get("username"), "qutime": qutime,\
+         "huantime": huantime, "longtime": longtime, "rentprice": rentprice, "baoprice": baoprice, "shouprice": shouprice,\
+         "gpsprice": gpsprice, "orderprice": orderprice})
 
 
 def log_out(request):
@@ -204,41 +210,50 @@ def userinfo(request):
 
 
 def pay(request, id):
-    car = Car.objects.get(pk=id)
-    car.carnum -= 1
-    car.save()
-    # print(car, type(car), "#########")
-    realname = request.POST["realname"]
-    gender = request.POST["gender"]
-    idCard = request.POST["idCard"]
-    user = request.session.get("username")
-    users = User.objects.get(username=user)
-    users.last_name = realname[:1]
-    users.first_name = realname[1:]
+    if request.method == "GET":
+        return render(request, 'cars/pay.html')
+    elif request.method == "POST":
+        car = Car.objects.get(pk=id)
+        car.carnum -= 1
+        car.save()
+        # print(car, type(car), "#########")
+        realname = request.POST["realname"]
+        gender = request.POST["gender"]
+        idCard = request.POST["idCard"]
+        result = re.fullmatch(r'/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/', idCard)
 
-    users.customer.gender = gender
-    users.customer.idCard = idCard
-    users.customer.save()
-    users.save()
+        user = request.session.get("username")
+        users = User.objects.get(username=user)
+        users.last_name = realname[:1]
+        users.first_name = realname[1:]
 
-    # 生成订单
-    order1 = Order()
-    order1.o_uid = users
-    order1.customerName = realname
-    order1.customerTel = users.customer.tel
-    order1.o_cid = car
-    order1.typeNo = car.typeNo
-    order1.creatDate = request.POST["getdate"]
-    # print(order1.creatDate)
-    order1.returnDate = request.POST["redate"]
-
-    print(order1.returnDate, "************************")
-    print(type(order1.returnDate))
-    order1.otime = request.POST["longtime"]
-    order1.ocost = request.POST["priceCount"]
-    # print(order1.ocost)
-    order1.save()
-    return render(request, 'cars/pay.html', {"car": car})
+        users.customer.gender = gender
+        users.customer.idCard = idCard
+        users.customer.save()
+        users.save()
+        if not result:
+            return redirect('/cars/commit/'+id, {"error_code": -7, "error_msg": "身份证号格式不正确"})
+        else:
+            users.customer.idCard = idCard
+            users.customer.save()
+            users.save()
+            # 生成订单
+            order1 = Order()
+            order1.o_uid = users
+            order1.customerName = realname
+            order1.customerTel = users.customer.tel
+            order1.o_cid = car
+            order1.typeNo = car.typeNo
+            order1.creatDate = request.POST["getdate"]
+            # print(order1.creatDate)
+            order1.returnDate = request.POST["redate"]
+            # print(order1.returnDate, "************************")
+            # print(type(order1.returnDate))
+            order1.otime = request.POST["longtime"]
+            order1.ocost = request.POST["priceCount"]
+            # print(order1.ocost)
+            order1.save()
+            return render(request, 'cars/pay.html', {"car": car})
 
 
 def service(request):
@@ -408,6 +423,32 @@ def checkuser1(request):
             return HttpResponse("ok")
 
 
+def checkuser2(request):
+    # return HttpResponse("ok")
+    if request.method == "POST":
+        # username = request.POST["username"]
+        # user = User.objects.filter(username=username).first()
+        tel = request.POST["usertel"]
+        result = re.fullmatch(r'^1(3|4|5|7|8)\d{9}$', tel)
+        if not result:
+            return HttpResponse("格式不正确")
+        else:
+            return HttpResponse("ok")
+
+
+def checkuser3(request):
+    # return HttpResponse("ok")
+    if request.method == "POST":
+        # username = request.POST["username"]
+        # user = User.objects.filter(username=username).first()
+        idCard = request.POST["idCard"]
+        result = re.fullmatch(r'/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/', idCard)
+        if not result:
+            return HttpResponse("格式不正确")
+        else:
+            return HttpResponse("ok")
+
+
 def verifycode(request):
     # 生成验证码图片
     # 定义变量，用于画面的背景色、宽、高
@@ -468,4 +509,8 @@ def ajax(request):
         return HttpResponse("get请求成功")
     elif request.method == "POST":
         return HttpResponse("post请求成功")
+
+
+def dianji(request):
+    return render(request, 'cars/dianji.html')
 

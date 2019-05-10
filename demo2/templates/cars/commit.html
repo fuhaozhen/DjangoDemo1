@@ -3,10 +3,28 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="/static/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+
+		<!-- 先引入jQuery，再引入BootStrap -->
 		<script src="/static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/static/dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-		
+		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function () {
+				$("#CardNumber").blur(function(){
+					$.ajax({
+						url: "/cars/checkuser3/",
+						data:{
+							"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val(),
+							"idCard": $("#CardNumber").val(),
+						},
+						type:'post',
+						success:function(data){
+							$("#error").text(data);
+						},
+					});
+				})
+			})
+		</script>
 		<style type="text/css">
 			/* top */
 			*{
@@ -74,23 +92,22 @@
 			
 			/* nav */
 			div.nav{
-				height:100px;
-				background-color:#fff;
-
-			}
-			div.s1_content img{
-				margin-top: 20px;
-			}
-			div.s1_content{
-				width:1100px;
-				margin: 0 auto;
-				margin-left:-300px;
-				border-bottom:1px solid #23B7B7;
-			}
-			div.menu{
-				float:right;
-				height:100px;
-			}
+			height:100px;
+			background-color:#fff;
+			border-bottom:1px solid #23B7B7;
+		}
+		div.s1_content img{
+			margin-top: 20px;
+		}
+		div.s1_content{
+			width:1100px;
+			margin: 0 auto;
+			clear:both;
+		}
+		div.menu{
+			float:right;
+			height:100px;
+		}
 			div.menu ul li{
 				float:left;
 				list-style: none;
@@ -136,13 +153,13 @@
 				border-bottom: 1px solid #E6E6E6;
 				margin: 15px 20px;
 			}
-			div.t1 img{
-				margin-top: 7px;
+			div.t1 a{
 				float: left;
 				margin: 0 0 0 10px;
 			}
 			div.t1 h2{
-				margin-top: 7px;
+				font-weight: bold;
+				font-size: 22px;
 				color: #666;
 				float: left;
 				margin: 0 0 0 10px;
@@ -208,8 +225,6 @@
 				padding: 8px 0 8px 10px;
 				line-height: 19px;
 			}
-			
-
 
 			div.date-box ul{
 				list-style: none;
@@ -245,35 +260,9 @@
 				border: 1px solid #E2E2E2;
 				min-width: 70px;
 			}
-			.fz14{
-				font: 700 16px/15px arial;
-			}
+
 			.f60{
 				color: #f60;
-			}
-			a.que_ren{
-				display: block;
-				font-size: 16px;
-				text-decoration: none;
-				line-height: 50px;
-				color: #F4F4F6;
-			}
-			.feeDay{
-				width: 110px;
-				height: 49px;
-				padding-top: 3px;
-				line-height: 26px;
-				border: 1px solid #61a1df;
-				border-left: 0;
-				background: #fff;
-				text-align: center;
-			}
-			.d_block{
-				display: block;
-			}
-			.sz_priceBlueSmall{
-				display: inline-block;
-				overflow: hidden;
 			}
 			.sz_priceBlueSmall em.rmb{
 				width: 10px;
@@ -290,12 +279,7 @@
 				color: #61A1DF;
 				margin-right: 2px;
 			}
-			.feeTotalDay{
-				display: inline-block;
-				font-size: 14px;
-				color: #848484;
-				margin: 30px 0 0 10px;
-			}
+
 			.feeTotalDay span{
 				font-size: 14px;
 				color: #f60;
@@ -359,9 +343,7 @@
 				color: #848484;
 				/* float: left; */
 			}
-			.none{
-				display: none;
-			}
+
 			.sz_OrderpOrangeB{
 				display: inline-block;
 				overflow: hidden;
@@ -455,7 +437,7 @@
 						<a href="{% url 'cars:user_login' %}">登录</a>
 						<a href="{% url 'cars:user_register' %}">注册</a>
 					{% else %}
-						<a href="{% url 'cars:me' %}">我的</a>
+						<a href="{% url 'cars:me' %}">个人中心</a>
 						<a href="{% url 'cars:log_out' %}">退出</a>
 					{% endif %}
 				</div>
@@ -481,8 +463,10 @@
 		<div class="main">
 			<div class="newlist" style="width: 1100px;">
 				<div class="t1">
-					<img src="" alt="" width="22" height="21">
-					<h2>确认订单</h2>
+					<a href="{% url 'cars:order' car.id %}" style="text-decoration: none;">
+						<img src="/static/images/tu_biao/back.png" alt="" width="30" height="30">
+					</a>
+					<h2>提交订单</h2>
 					<div class="clear"></div>
 				</div>
 				
@@ -547,7 +531,9 @@
 																	性别
 																</td>
 																<td width="49%">
-																	<input type="text" name="gender"  maxlength="50" required />
+																	男<input type="radio" name="gender"  maxlength="50" value="男" >
+																	女<input type="radio" name="gender"  maxlength="50" value="女" required />
+
 																</td>
 															</tr>
 															<tr>
@@ -555,6 +541,7 @@
 																	<font color="red">*</font>
 																	证件类型
 																</td>
+
 																<td>
 																	<select name="CardType" class="borinp" required>
 																		<option value ="身份证">身份证</option>
@@ -566,6 +553,7 @@
 																</td>
 																<td>
 																	<input type="text" name="idCard" id="CardNumber" maxlength="20" />
+																	<span id="error"></span>
 																</td>
 															</tr>
 														</tbody>
