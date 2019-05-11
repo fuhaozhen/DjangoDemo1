@@ -373,6 +373,14 @@
 				width: 120px;
 				cursor: pointer;
 			}
+			input.queding{
+				background-color: #fff;
+				padding: 6px 12px;
+				margin-bottom: 0;
+				vertical-align: middle;
+				cursor: pointer;
+				border-radius: 4px;
+			}
 			/* foot */
 			div.s1_footer{
 				height: 150px;
@@ -501,13 +509,13 @@
 												<td width="16%" height="30" align="center" bgcolor="#eee" class="key">取车时间:</td>
 												<td width="34%" bgcolor="#fff">{{qutime}}</td>
 												<td width="16%" bgcolor="#eee" align="center">取车地点：</td>
-												<td width="34%" bgcolor="#fff">航海路店</td>
+												<td width="34%" bgcolor="#fff">{{getsite}}</td>
 											</tr>
 											<tr>
 												<td width="16%" height="30" align="center" bgcolor="#eee" class="key">还车时间:</td>
 												<td width="34%" bgcolor="#fff">{{huantime}}</td>
 												<td width="16%" bgcolor="#eee" align="center">还车地点：</td>
-												<td width="34%" bgcolor="#fff">航海路店</td>
+												<td width="34%" bgcolor="#fff">{{returnsite}}</td>
 											</tr>
 											<tr>
 												<td height="20" colspan="4" bgcolor="#fdf1e">
@@ -690,8 +698,29 @@
 								</li>
 							</ul>
 							<div class="clear"></div>
-							<input type="submit" value="确认订单" style="margin: 50px 0 10px 220px; width: 100px; height: 50px;text-align: center;">
-
+							<!-- Button trigger modal -->
+								<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin: 50px 0 10px 220px; width: 100px; height: 50px;text-align: center;">
+								  确认订单
+								</button>
+										<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">订单提交成功！</h4>
+									  </div>
+									  <div class="modal-body">
+										感谢您的支持 <img src="/static/images/tu_biao/smile.png" width="20" height="20">
+									  </div>
+									  <div class="modal-footer">
+										  <input type="submit" value="确定" class="queding">
+										<button type="button" class="btn btn-default" data-dismiss="modal">取消
+										</button>
+									  </div>
+									</div>
+								  </div>
+								</div>
 						</div>
 					</div>
 				</form>

@@ -39,8 +39,22 @@ class HotAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
+class LongCarAdmin(admin.ModelAdmin):
+    list_display = ["id", "name", "picture", "desc"]
+    list_filter = ["name"]
+    search_fields = ["name"]
+
+
+class LongOrderAdmin(admin.ModelAdmin):
+    list_display = ["id", "username", "email", "rent", "gettime", "cartype"]
+    list_filter = ["username"]
+    search_fields = ["username"]
+
+
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Car, CarAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Advice, AdviceAdmin)
 admin.site.register(Hotpic, HotAdmin)
+admin.site.register(LongCar, LongCarAdmin)
+admin.site.register(LongOrder, LongOrderAdmin)

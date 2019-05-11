@@ -40,4 +40,6 @@ urlpatterns = [
     url(r'^ajaxload/$', views.ajaxload, name='ajaxload'),
     url(r'^ajax/$', views.ajax, name='ajax'),
     url(r'^dianji/$', views.dianji, name='dianji'),
+    url(r'^checkreturn/(\d+)/$', views.checkreturn, name='checkreturn'),
+    url(r'^motai/$', views.motai, name='motai'),
 ]

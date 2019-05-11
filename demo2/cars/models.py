@@ -52,7 +52,7 @@ class Car(models.Model):
 
 
 class Order(models.Model):
-    """订单信息"""
+    """短租订单信息"""
     # 客户ID
     o_uid = models.ForeignKey(User, on_delete=models.CASCADE)
     # 客户姓名
@@ -72,11 +72,9 @@ class Order(models.Model):
     # 总费用
     ocost = models.FloatField()
 
-    choice = (('T', '已还车'), ('F', '租赁中'),)
+    choice = ((u'T', u'已还车'), (u'F', u'租赁中'),)
     # 是否已还车
-    is_return = models.CharField(choices=choice, max_length=20, default='T')
-
-
+    is_return = models.CharField(choices=choice, max_length=20, default='F')
 
 
 class Advice(models.Model):
@@ -92,4 +90,19 @@ class Hotpic(models.Model):
     name = models.CharField(max_length=20)
     pic = models.ImageField(upload_to='hotpic')
     index = models.IntegerField()
+
+
+class LongCar(models.Model):
+    name = models.CharField(max_length=20)
+    picture = models.ImageField(upload_to='./static/media/')
+    desc = models.CharField(max_length=50)
+
+
+class LongOrder(models.Model):
+    username = models.CharField(max_length=20)
+    email = models.CharField(max_length=50)
+    choice = (('1', '1个月'), ('2', '2个月'), ('3', '3个月'), ('4', '6个月'), ('5', '1年'), ('6', '2年'))
+    rent = models.CharField(max_length=20, choices=choice, default='1')
+    gettime = models.DateTimeField(auto_now_add=False)
+    cartype = models.ForeignKey(LongCar, on_delete=models.CASCADE)
 

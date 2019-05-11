@@ -247,18 +247,23 @@
 				min-width: 70px;
 			}
 			.s_box{
-				float: left;
+				margin: 0 auto;
 				width: 160px;
 				height: 40px;
 				position: relative;
 			}
 			.s_box .city{
-				width: 90px;
-				font-size: 18px;
+				width: 120px;
+				height: 30px ;
+				font-size: 16px;
 				color: #0888c8;
 				float: left;
 				margin-top: 8px;
-				border: 0;
+				padding-bottom: 5px;
+				border-top: 1px solid #AEAEAE;
+				border-left: 1px solid #AEAEAE;
+				border-right: 1px solid #D6D6D6;
+				border-bottom: 1px solid #D6D6D6;
 			}
 			
 			input.que_ren{
@@ -274,10 +279,6 @@
 				height: 150px;
 				width: 100%;
 				background: #323232;
-			}
-			div.foot_top{
-				height: 100px;
-				padding-top: 10px;
 			}
 			div.s1_top{
 				padding-top: 10px;
@@ -367,8 +368,7 @@
 				</div>
 				<form name="myform" action="{% url 'cars:commit' car.id %}" method="post">
 					<input type="hidden" name="qutime"/>
-					<input type="hidden" name="qucity" id="getcity"/>
-					<input type="hidden" name="huancity" id="retcity" />
+
 					<input type="hidden" name="huantime" />
 					<div class="ding_dan_content">
 						<div class="ding_dan_main">
@@ -404,7 +404,22 @@
 												</td>
 												<td width="40%" bgcolor="#fff">
 													<div class="s_box">
-														<input class="city" type="text" id="getcityname" readonly value="航海路店" />
+														<select name="getsite" class="city">
+															<option value="航海路店">航海路店</option>
+															<option value="花园路店">花园路店</option>
+															<option value="商都路店">商都路店</option>
+															<option value="东三街店">东三街店</option>
+															<option value="龙子湖店">龙子湖店</option>
+															<option value="大学路店">大学路店</option>
+															<option value="博学路店">博学路店</option>
+															<option value="经八路店">经八路店</option>
+															<option value="红专路店">红专路店</option>
+															<option value="丰产路店">丰产路店</option>
+															<option value="二七路店">二七路店</option>
+															<option value="民主路店">民主路店</option>
+															<option value="陇海路店">陇海路店</option>
+															<option value="紫荆山店">紫荆山店</option>
+														</select>
 													</div>
 												</td>
 											</tr>
@@ -424,7 +439,22 @@
 												</td>
 												<td width="40%" bgcolor="#fff">
 													<div class="s_box">
-														<input class="city" id="retcityname" readonly type="text" value="航海路店">
+														<select name="returnsite" class="city">
+															<option value="航海路店">航海路店</option>
+															<option value="花园路店">花园路店</option>
+															<option value="商都路店">商都路店</option>
+															<option value="东三街店">东三街店</option>
+															<option value="龙子湖店">龙子湖店</option>
+															<option value="大学路店">大学路店</option>
+															<option value="博学路店">博学路店</option>
+															<option value="经八路店">经八路店</option>
+															<option value="红专路店">红专路店</option>
+															<option value="丰产路店">丰产路店</option>
+															<option value="二七路店">二七路店</option>
+															<option value="民主路店">民主路店</option>
+															<option value="陇海路店">陇海路店</option>
+															<option value="紫荆山店">紫荆山店</option>
+														</select>
 													</div>
 												</td>
 											</tr>

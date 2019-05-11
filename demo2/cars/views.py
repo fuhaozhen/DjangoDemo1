@@ -102,11 +102,8 @@ def user_register(request):
 
 
 def long(request):
-    car = Car.objects.all()
-    if request.method == "GET":
-        return render(request, 'cars/long.html', {"carlist": car, "username": request.session.get("username")})
-    elif request.method == "POST":
-        return render(request, 'cars/long.html', {"carlist": car, "username": request.session.get("username")})
+    cars = LongCar.objects.all()
+    return render(request, 'cars/long.html', {"cars": cars})
 
 
 def short(request):
@@ -176,6 +173,8 @@ def commit(request, id):
     elif request.method == "POST":
         qutime = request.POST["qutime"]
         huantime = request.POST["huantime"]
+        getsite = request.POST["getsite"]
+        returnsite = request.POST["returnsite"]
         # print(qutime)
         # print(huantime,"********************************8")
         day1 = qutime.split("-")[-1]
@@ -195,7 +194,7 @@ def commit(request, id):
         shouprice = 1 * longtime
         gpsprice = 10 * longtime
         orderprice = rentprice+baoprice+shouprice+gpsprice
-        return render(request, 'cars/commit.html', {"car": car, "username": request.session.get("username"), "qutime": qutime,\
+        return render(request, 'cars/commit.html', {"car": car, "username": request.session.get("username"),  "getsite":getsite, "returnsite": returnsite, "qutime": qutime,\
          "huantime": huantime, "longtime": longtime, "rentprice": rentprice, "baoprice": baoprice, "shouprice": shouprice,\
          "gpsprice": gpsprice, "orderprice": orderprice})
 
@@ -253,7 +252,7 @@ def pay(request, id):
             order1.ocost = request.POST["priceCount"]
             # print(order1.ocost)
             order1.save()
-            return render(request, 'cars/pay.html', {"car": car})
+            return redirect("/cars", {"car": car})
 
 
 def service(request):
@@ -275,13 +274,14 @@ def me(request):
 
 
 def dingdan(request):
-    user = request.session.get("username")
-    user1 = User.objects.get(username=user)
-    # print(user1, type(user1),"*********")
-    order1 = user1.order_set.all()
-    length = len(order1)
-    # print(type(order1))
-    return render(request, 'cars/dingdan.html', {"username": user, "order1": order1, "length": length})
+
+        user = request.session.get("username")
+        user1 = User.objects.get(username=user)
+        # print(user1, type(user1),"*********")
+        order1 = user1.order_set.all()
+        length = len(order1)
+        # print(type(order1))
+        return render(request, 'cars/dingdan.html', {"username": user, "order1": order1, "length": length})
 
 
 def xiugai(request):
@@ -309,17 +309,22 @@ def new(request):
 
 
 def advice(request):
-    if request.method == "GET":
-        return render(request, 'cars/login.html')
-    elif request.method == "POST":
-        user1 = request.session["username"]
-        users = User.objects.get(username=user1)
-        users.customer.description = request.POST["car_style"]
-        users.customer.tel = request.POST["tel"]
-        users.customer.addr = request.POST["addr"]
-        users.customer.save()
-        users.save()
-        return render(request, 'cars/success.html', {"users": users})
+        returnsite = request.POST["site"]
+        renttime = request.POST["renttime"]
+        gettime = request.POST["gettime"]
+        cartype1 = request.POST["cartype"]
+        username = request.POST["username"]
+        email = request.POST["email"]
+        car = LongCar.objects.get(name=cartype1)
+        longorder = LongOrder()
+        print(longorder,"+++++++++++++++++")
+        longorder.username=username
+        longorder.email=email
+        longorder.rent=renttime
+        longorder.gettime=gettime
+        longorder.cartype=car
+        longorder.save()
+        return render(request, 'cars/success.html')
 
 
 def success(request):
@@ -514,3 +519,16 @@ def ajax(request):
 def dianji(request):
     return render(request, 'cars/dianji.html')
 
+
+def checkreturn(request, id):
+    # print(id,'++++++++++++++++++++++++')
+    # return HttpResponse("ok")
+    order1 = Order.objects.get(pk=id)
+    order1.is_return = 'T'
+    print(order1.is_return)
+    order1.save()
+    return redirect('/cars/dingdan')
+
+
+def motai(request):
+    return render(request, 'cars/motai.html')

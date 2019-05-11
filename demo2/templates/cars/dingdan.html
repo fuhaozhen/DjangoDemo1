@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.css"/>
 		<script src="/static/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+
 		<style type="text/css">
 			/* top */
 			*{
@@ -188,7 +189,7 @@
 				width: 810px;
 				overflow: hidden;
 				margin: auto;
-				padding: 50px 0 50px 60px;
+				padding: 50px 0 50px 20px;
 			}
 			div.right_bottom span{
 				display: block;
@@ -324,6 +325,7 @@
 									  <th scope="col">取车时间</th>
 									  <th scope="col">还车时间</th>
 										<th scope="col">花费</th>
+										<th scope="col">状态</th>
 									</tr>
 								  <tbody>
 								  {% for i in order1 %}
@@ -336,6 +338,30 @@
 									  <td>{{i.creatDate}}</td>
 									  <td>{{i.returnDate}}</td>
 									  <td>{{i.ocost}}</td>
+										<td >
+											{% ifequal i.is_return 'T' %}
+												已还车
+											{% endifequal %}
+											{% ifequal i.is_return 'F' %}
+												<span class="jieguo" style="width: 80px;">租赁中 <button class="return" name="returncar">去还车</button></span>
+											{% endifequal %}
+										</td>
+										<script>
+											$(function () {
+														$(".return").click(function () {
+															$.ajax({
+																url: "{% url 'cars:checkreturn' i.id%}",
+																data: {
+																	"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val(),
+																},
+																type: 'post',
+																success: function (data) {
+																	$(".jieguo").text("已还车");
+																},
+															});
+														});
+													})
+										</script>
 									</tr>
 								  {% endfor %}
 								  </tbody>

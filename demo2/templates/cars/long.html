@@ -3,7 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+
+		<!-- 先引入jQuery，再引入BootStrap -->
 		<script src="/static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+
 		<style type="text/css">
 			/* top */
 			*{
@@ -122,7 +127,7 @@
 			div.longRent_center{
 				width: 1100px;
 				margin: 0 auto;
-				height: 1350px;
+				height: 1000px;
 			}
 			.clearfix{
 				zoom: 1;
@@ -165,7 +170,7 @@
 			}
 			div.cars_list{
 				float: left;
-				margin-top: 50px;
+				margin-top: 30px;
 			}
 			div.cars_list h2{
 				float: left;
@@ -176,6 +181,7 @@
 				line-height: 50px;
 				width: 100%;
 			}
+
 			div.long_cars{
 				width: 1100px;
 				padding-top: 30px;
@@ -232,8 +238,8 @@
 				float: left;
 				width:1100px ;
 				position: relative;
-				margin-top: 55px;
-				height: 800px;
+				margin-top: 35px;
+				height: 330px;
 			}
 			div.longRent_form h2{
 				text-align: center;
@@ -262,24 +268,24 @@
 				/* height: 600px; */
 			}
 			ul.subData li{
-				padding-top: 20px;
+
 				width: 100%;
-				height: 70px;
+				height: 50px;
 				margin-top: 10px;
 				border-radius: 1px;
-				line-height: 70px;
-				font-size: 20px;
+				line-height: 50px;
+				font-size: 16px;
 				
 			}
-			input.adv{
-				width: 150px;
-				height: 50px;
+			button.adv{
+				width: 420px;
+				height: 30px;
 				margin: 0 auto;
 				margin-top: 30px;
 				display: block;
-				font-size: 18px;
+				font-size: 16px;
 				text-align: center;
-				line-height: 50px;
+				line-height: 10px;
 				cursor: pointer;
 				background: #23B7B7;
 				color: #fff;
@@ -301,6 +307,14 @@
 				line-height: 1.8;
 				font-weight: 700;
 			}
+			input.queding{
+				background-color: #fff;
+				padding: 6px 12px;
+				margin-bottom: 0;
+				vertical-align: middle;
+				cursor: pointer;
+				border-radius: 4px;
+			}
 			/* foot */
 			div.s1_footer{
 				/* margin-top: 700px; */
@@ -308,10 +322,7 @@
 				width: 100%;
 				background: #323232;
 			}
-			div.foot_top{
-				height: 100px;
-				padding-top: 10px;
-			}
+
 			div.s1_top{
 				padding-top: 10px;
 				margin-bottom: 10px;
@@ -413,8 +424,85 @@
 						</li>
 					</ul>
 				</div>
+				<div class="longRent_form clearfix">
+					<h2>超值长租 <span style="font-size: 16px;">(一个月起租)</span></h2>
+							<form action="{%url 'cars:advice' %} " method="post">
+							<ul class="subData">
+							<li>
+								取车城市：
+								<select name="city" style="width: 80px; height: 24px; margin-right: 30px; color: gray">
+									<option value="郑州">郑州</option>
+								</select>
+								取车门店：
+								<select name="site" style="width: 136px; height: 24px; color: gray" required>
+									<option value="金水区">金水区</option>
+									<option value="经开区">经开区</option>
+									<option value="二七区">二七区</option>
+									<option value="火车站">火车站</option>
+									<option value="郑东新区">郑东新区</option>
+								</select>
+								
+							</li>
+							<li>租车时长：
+								<select name="renttime" style="width: 80px; height: 24px;  margin-right: 30px; color: gray" required>
+									<option value="1个月">1个月</option>
+									<option value="2个月">2个月</option>
+									<option value="3个月">3个月</option>
+									<option value="6个月">6个月</option>
+									<option value="1年">1年</option>
+									<option value="2年">2年</option>
+								</select>
+								取车时间：
+								<input type="date"  name="gettime" style="width: 136px; color: gray; height: 24px; font-size: 14px;" required>
+							</li>
+							<li>
+								车型：<select name="cartype" style="width:370px; height: 24px; color: gray" required>
+								{% for car in cars %}
+								<option value="{{car.name}}">{{car.name}}{{car.desc}}</option>
+								{% empty %}
+								没有车辆
+								{% endfor %}
+							</select>
+
+							</li>
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-primary btn-lg adv" data-toggle="modal" data-target="#myModal">
+								 去申请
+								</button>
+										<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">联系信息</h4>
+									  </div>
+									  <div class="modal-body">
+										<div class="contractInfo">
+												<form>
+												  <div class="form-group" style="margin-left:100px;">
+													<label for="exampleInputName" style="float: left; margin-right: 20px;">联系人:</label>
+													<input type="text" name="username" style="width:300px;" class="form-control" id="exampleInputName" placeholder="请输入联系人姓名" required>
+												  </div>
+												  <div class="form-group" style="margin-left:100px;">
+													<label for="exampleInputEmail" style="float: left; margin-right: 20px;">Email:</label>
+													<input type="email" name="email" style="width:300px;"  class="form-control" id="exampleInputEmail" placeholder="请输入邮箱" required>
+												  </div>
+													<div>请填写您的邮件地址，我们的需求单将通过邮件的方式自动发送给您</div>
+												  <button type="submit" class="btn btn-default" style="margin-top: 30px;">提交信息</button>
+												</form>
+										</div>
+									  </div>
+
+									</div>
+								  </div>
+								</div>
+							</ul>
+
+						</form>
+				</div>
 				<div class="cars_list">
-					<h2>超值长租(一个月起租)</h2>
+					<h3>推荐车型</h3>
 					<div class="long_cars">
 						<ul style="margin-left: 60px;">
 							<li>
@@ -460,45 +548,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="longRent_form clearfix">
-					<h2>您想长租什么类型的车辆呢</h2>
-					<h5>请留下联系方式，我们会尽快联系您，提供专人服务</h5>
-						{% if username %}
-							<form action="{%url 'cars:advice' %} " method="post">
-							<ul class="subData">
-							<li>
-								心仪车型：<input type="radio" name="car_style" value="经济型"/>经济型 <input type="radio" name="car_style"  value="舒适型" checked  /> 舒适型 <input type="radio" name="car_style" value="豪华型"/>豪华型
-							</li>
-							<li>您的姓名：
-								<input type="text"  style="width: 200px; height:40px;" placeholder="{{username}}"/>
-							</li>
-							<li>手机号码：<input type="text" name="tel" style="width: 200px; height:40px; " placeholder="{{users.customer.tel}}" required /></li>
-							<li>家庭住址：<input type="text" name="addr" style="width: 200px; height:40px;" placeholder="{{users.customer.addr}}" required/></li>
-							<li>
-								租车用途：<input type="radio" name="yong_tu"  checked/>个人用车 <input type="radio" name="yong_tu"/>企业用车
-							</li>
-							</ul>
-							<input class="adv" type="submit" value="提交申请">
-						</form>
-					{% else %}
-						<ul class="subData">
-							<ul class="subData">
-							<li>
-								心仪车型：<input type="radio" name="car_style" />经济型 <input type="radio" name="car_style"  checked /> 舒适型 <input type="radio" name="car_style" />豪华型
-							</li>
-							<li>您的姓名：
-								<input type="text"  style="width: 200px; height:40px;" required/>
-							</li>
-							<li>手机号码：<input type="text" name="tel" style="width: 200px; height:40px; "/></li>
-							<li>家庭住址：<input type="text" name="addr" style="width: 200px; height:40px;" required/></li>
-							<li>
-								租车用途：<input type="radio" name="yong_tu"  checked/>个人用车 <input type="radio" name="yong_tu"/>企业用车
-							</li>
-							</ul>
-							<div style="height:20px; line-height: 40px;"><h3>请 <a href="{% url 'cars:user_login' %}">登录</a></h3></div>
-						</ul>
-					{% endif %}
-				</div>
+
 			</div>
 			<div class="longRent_explain">
 				<h3>长租说明</h3>
