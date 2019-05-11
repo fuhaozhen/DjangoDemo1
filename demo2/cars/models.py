@@ -72,6 +72,12 @@ class Order(models.Model):
     # 总费用
     ocost = models.FloatField()
 
+    choice = (('T', '已还车'), ('F', '租赁中'),)
+    # 是否已还车
+    is_return = models.CharField(choices=choice, max_length=20, default='T')
+
+
+
 
 class Advice(models.Model):
     name = models.CharField(max_length=20)

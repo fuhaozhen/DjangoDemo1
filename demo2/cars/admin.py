@@ -4,7 +4,7 @@ from .models import *
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["id", "o_uid", "customerName", "customerTel", "o_cid", "typeNo", "creatDate", "returnDate", "otime", "ocost"]
+    list_display = ["id", "o_uid", "customerName", "customerTel", "o_cid", "typeNo", "creatDate", "returnDate", "otime", "ocost", "is_return"]
     # 过滤字段
     list_filter = ["id"]
     # 搜索字段
