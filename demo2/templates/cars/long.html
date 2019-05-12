@@ -170,7 +170,7 @@
 			}
 			div.cars_list{
 				float: left;
-				margin-top: 30px;
+				margin-top: 40px;
 			}
 			div.cars_list h2{
 				float: left;
@@ -205,6 +205,8 @@
 				color: #999;
 			}
 			div.lei_xing h3{
+				margin-top:0px;
+				margin-bottom:0px;
 				font-size: 18px;
 				color: #333;
 				float: left;
@@ -453,7 +455,7 @@
 									<option value="2年">2年</option>
 								</select>
 								取车时间：
-								<input type="date"  name="gettime" style="width: 136px; color: gray; height: 24px; font-size: 14px;" required>
+								<input type="date" id="getdate" name="gettime" style="width: 136px; color: gray; height: 24px; font-size: 14px;" required>
 							</li>
 							<li>
 								车型：<select name="cartype" style="width:370px; height: 24px; color: gray" required>
@@ -607,5 +609,17 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			 $(document).ready(function(){
+					let time = new Date();
+					//得到当前年份
+					let day = ("0" + time.getDate()).slice(-2);
+					let month = ("0" + (time.getMonth() + 1)).slice(-2);
+					let today = time.getFullYear() + "-" + (month) + "-" + (day);
+					$('#getdate').val(today);
+					$('#getdate').attr('min', today);
+					});
+		</script>
 	</body>
 </html>

@@ -316,6 +316,8 @@ def advice(request):
         username = request.POST["username"]
         email = request.POST["email"]
         car = LongCar.objects.get(name=cartype1)
+        picture = car.picture
+        carname = car.name+car.desc
         longorder = LongOrder()
         print(longorder,"+++++++++++++++++")
         longorder.username=username
@@ -324,7 +326,8 @@ def advice(request):
         longorder.gettime=gettime
         longorder.cartype=car
         longorder.save()
-        return render(request, 'cars/success.html')
+        return render(request, 'cars/success.html', {"picture": picture, "carname": carname, "getsite": returnsite, "gettime": gettime,\
+                                                     "renttime": renttime, "username": username, "email": email})
 
 
 def success(request):
@@ -337,6 +340,10 @@ def success(request):
     advice1.content = request.POST["comment"]
     advice1.save()
     return render(request, 'cars/success.html')
+
+
+def finally1(request):
+    return render(request, 'cars/finally.html')
 
 
 def header(request):

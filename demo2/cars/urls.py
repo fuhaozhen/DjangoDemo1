@@ -42,4 +42,5 @@ urlpatterns = [
     url(r'^dianji/$', views.dianji, name='dianji'),
     url(r'^checkreturn/(\d+)/$', views.checkreturn, name='checkreturn'),
     url(r'^motai/$', views.motai, name='motai'),
+    url(r'^finally/$', views.finally1, name='finally1'),
 ]

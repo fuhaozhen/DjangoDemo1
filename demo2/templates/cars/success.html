@@ -1,12 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-提交成功
-<br>
-<a href="{% url 'cars:index' %}">回到首页</a>
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/* top */
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			div{
+				display: block;
+			}
+			body{
+				font-family: "微软雅黑";
+				font-size:14px;
+				color: #666;
+			}
+			div.top{
+				height:40px;
+				background-color:#323232;
+				line-height:40px;
+			}
+
+			span.kefu{
+				float: left;
+				font-size: 15px;
+				margin-left:11px;
+			}
+			div.content{
+				width:1100px;
+				margin:0 auto;
+			}
+			ul.flu{
+				float: left;
+			}
+			ul.flu>li{
+				list-style: none;
+				float:left;
+				margin-left:11px;
+				padding-right:11px;
+				border-right:1px solid #23B7B7;
+			}
+			ul.flu>li span{
+				display: block;
+				text-decoration: none;
+				color:#b4b5ba;
+			}
+
+			div.top .fr{
+				float:right;
+			}
+			div.top .fr a{
+				width:78px;
+				height:24px;
+				display: block;
+				border:1px solid #23B7B7;
+				float: left;
+				line-height: 24px;
+				text-align: center;
+				margin-top:7px;
+				text-decoration: none;
+				color:#23B7B7;
+			}
+			div.top .fr a:hover{
+				background-color:#23B7B7;
+				color: white;
+			}
+
+			/* nav */
+			div.nav{
+				height:100px;
+				background-color:#fff;
+				border-bottom:1px solid #23B7B7;
+			}
+			div.s1_content img{
+				margin-top: 20px;
+			}
+			div.s1_content{
+				width:1100px;
+				margin: 0 auto;
+				clear:both;
+			}
+			div.menu{
+				float:right;
+				height:100px;
+			}
+			div.menu ul li{
+				float:left;
+				list-style: none;
+				padding-top: 34px;
+				color:#666666;
+				/* width:110px; */
+				text-align: center;
+				line-height: 30px;
+				margin-right: 60px;
+			}
+			div.menu ul li a{
+				text-decoration: none;
+				color:#000;
+				font-size:20px;
+			}
+			div.menu ul li a:hover{
+				color:#23B7B7;
+				border-bottom: 2px solid #23B7B7;
+				padding-bottom:10px;
+			}
+
+			/* middle-content */
+            div.confirmInfo{
+                border:1px solid #dbe4eb;
+                border-bottom-width:2px;
+                background:#fff;
+                zoom:1;
+                width:980px;
+                margin:0 auto;
+                margin-top:50px;
+            }
+            .fl{
+                float:left;
+            }
+			.confirmInfo h3{
+				height: 40px;
+				line-height: 40px;
+				background: #eaf6fd;
+				border-bottom: 1px solid #dbe4eb;
+				font-size: 16px;
+				color: #61A1DF;
+				font-family: "微软雅黑";
+				padding: 0 10px;
+				font-weight: 400;
+			}
+			div.orderInfo{
+				color: #333;
+				background: #fff;
+			}
+			div.carInfo{
+				width: 315px;
+				float: left;
+				border-right: 1px solid #DBE4EB;
+				text-align: center;
+				font-family: "微软雅黑";
+				font-size: 16px;
+				vertical-align: middle;
+			}
+			table{
+				border-collapse: collapse;
+			}
+			.borderBlueB .borderBlueR{
+				border-bottom: 1px solid #DBE4EB;
+			}
+			.borderBlueB img{
+				border: none;
+				vertical-align: middle;
+				width: 190px;
+				height:110px;
+			}
+			div.carTime{
+				width: 258px;
+				height: 183px;
+				float: left;
+				overflow: hidden;
+			}
+			li.borderBlueBda{
+				height: 45px;
+				line-height: 45x;
+				font-size: 14px;
+				padding-left: 20px;
+				border-bottom:1px dashed #dbe4eb;
+			}
+			.borderBlueBda span{
+				font-weight: 700;
+				line-height: 45px;
+				font-size: 14px;
+			}
+			div.customerInfo{
+				width: 403px;
+				height: 224px;
+				overflow: hidden;
+			}
+			.customerInfo p{
+				margin-top:20px;
+				height: 45px;
+				line-height: 45px;
+				padding: 0 10px;
+				font-size: 14px;
+			}
+			div.ac{
+				text-align: center;
+				margin: 20px 0;
+				padding: 20px 0;
+			}
+			a.tijiao{
+				width: 104px;
+				height: 44px;
+				display: inline-block;
+				background-position: -84px 0;
+				font: bold 16px/44px "微软雅黑";
+				text-align: center;
+				background-color:#23b7b7;
+				color: #fff;
+				text-decoration: none;
+				margin-top:30px;
+				margin-bottom:20px;
+			}
+			/* foot */
+			div.s1_footer{
+				height: 150px;
+				width: 100%;
+				background: #323232;
+			}
+			div.foot_top{
+				height: 100px;
+				padding-top: 10px;
+			}
+			div.s1_top{
+				padding-top: 10px;
+				margin-bottom: 10px;
+			}
+			div.clear{
+				clear: both;
+				overflow: hidden;
+				height: 1px;
+				margin-top: -1px;
+				font-size: 0;
+			}
+			div.s1_lian_jie ul{
+				height: 80px;
+				border-top: 1px solid gray;
+				overflow: hidden;
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+			div.s1_lian_jie ul li{
+				list-style: none;
+				float: left;
+				margin-right: 15px;
+				line-height: 25px;
+				margin-top: 10px;
+			}
+			div.s1_lian_jie ul li a{
+				color: #b4b5ba;
+				text-decoration: none;
+			}
+			div.s1_top span{
+				margin-right: 15px;
+
+			}
+		</style>
+	</head>
+	<body>
+		{# -- top -- #}
+		<div class="top">
+			<div class="content">
+				<div class="fl">
+					<ul class="flu">
+						<li>
+							<span class="kefu">客服服务热线 400-666-6688</span>
+						</li>
+						<li>
+							<span>欢迎您</span>
+						</li>
+					</ul>
+				</div>
+				<div class="fr">
+					{% if  not username %}
+						<a href="{% url 'cars:user_login' %}">登录</a>
+						<a href="{% url 'cars:user_register' %}">注册</a>
+					{% else %}
+						<a href="{% url 'cars:me' %}">个人中心</a>
+						<a href="{% url 'cars:log_out' %}">退出</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{# -- nav -- #}
+		<div class="nav">
+			<div class="s1_content">
+				<img src="/static/images/商标.png" alt>
+
+				<div class="menu">
+					<ul>
+						<li><a href="{% url 'cars:index' %}" >首页</a></li>
+						<li><a href="{% url 'cars:short' %}">短租</a></li>
+						<li><a href="{% url 'cars:long' %}">长租</a></li>
+						<li><a href="{% url 'cars:guide' %}">租车指南</a></li>
+						<li style="margin-right: 20px;"><a href="{% url 'cars:about' %}" style="color:#23B7B7;">关于我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{# -- middle -- #}
+		    <div class="confirmInfo">
+                <div class="fl" style="border-right:1px solid #dbe4eb;">
+                    <h3>用车信息</h3>
+                    <div class="orderInfo" style="overflow:inherit; height:auto;">
+                        <div class="carInfo" style="height:auto">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" height="147" align="center" valign="middle" class="borderBlueB">
+                                            <img src="/{{picture}}" alt="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="65" height="65" align="center" valign="center" class="borderBlueR">{{carname}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="carTime">
+                            <ul class="borderBlueB">
+                                <li class="borderBlueBda" style="margin-top:20px;">
+                                    <span>取车门店：</span>
+                                    {{getsite}}
+                                </li>
+                                <li class="borderBlueBda">
+                                    <span>取车时间：</span>
+                                    {{gettime}}
+                                </li>
+                                <li class="borderBlueBda">
+                                    <span>租车时长：</span>
+                                    {{renttime}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="customerInfo fl">
+                    <h3>客户信息</h3>
+                    <p class="f14 p0_p10">
+                        联系人：{{username}}
+                        <br>
+                        邮件地址：{{email}}
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="ac">
+                <a href="{% url 'cars:finally1' %}" id="submitOrderInfo" class="tijiao">提交需求单</a>
+            </div>
+
+		{# -- foot -- #}
+		<div class="s1_footer">
+			<div class="s1_footer_top">
+				<div class="s1_content">
+					<div class="s1_top">
+							<span style="border-right: 1px solid gray; padding-right: 20px;"><a href="{% url 'cars:guide' %}" style="color: #b4b5ba; text-decoration: none;">租车指南</a></span>
+							<span><a href="{% url 'cars:about' %}" style="color: #b4b5ba;text-decoration: none;">关于我们</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="s1_lian_jie">
+						<h5 style="color: #b4b5ba;">热门城市入口</h5>
+						<ul>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">广州租车</a></li>
+							<li><a href="#">北京租车</a></li>
+							<li><a href="#">深圳租车</a></li>
+							<li><a href="#">杭州租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">重庆租车</a></li>
+							<li><a href="#">长沙租车</a></li>
+							<li><a href="#">苏州租车</a></li>
+							<li><a href="#">佛山租车</a></li>
+							<li><a href="#">合肥租车</a></li>
+							<li><a href="#">武汉租车</a></li>
+							<li><a href="#">厦门租车</a></li>
+							<li><a href="#">中山租车</a></li>
+							<li><a href="#">宝鸡租车</a></li>
+							<li><a href="#">安阳租车</a></li>
+							<li><a href="#">义务租车</a></li>
+							<li><a href="#">太仓租车</a></li>
+							<li><a href="#">成都租车</a></li>
+							<li><a href="#">德州租车</a></li>
+							<li><a href="#">乐山租车</a></li>
+							<li><a href="#">枣庄租车</a></li>
+							<li><a href="#">荆州租车</a></li>
+							<li><a href="#">大理租车</a></li>
+							<li><a href="#">淮安租车</a></li>
+							<li><a href="#">上海租车</a></li>
+							<li><a href="#">信阳租车</a></li>
+							<li><a href="#">丹江租车</a></li>
+							<li><a href="#">遵义租车</a></li>
+							<li><a href="#">青岛租车</a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
+
