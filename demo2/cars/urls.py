@@ -25,7 +25,6 @@ urlpatterns = [
     url(r'^dingdan/$', views.dingdan, name='dingdan'),
     url(r'^xiugai/$', views.xiugai, name='xiugai'),
     url(r'^new/$', views.new, name='new'),
-    url(r'^advice/$', views.advice, name='advice'),
     url(r'^success/$', views.success, name='success'),
     url(r'^header/$', views.header, name='header'),
     url(r'^reset/$', views.reset, name='reset'),

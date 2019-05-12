@@ -104,5 +104,6 @@ class LongOrder(models.Model):
     choice = (('1', '1个月'), ('2', '2个月'), ('3', '3个月'), ('4', '6个月'), ('5', '1年'), ('6', '2年'))
     rent = models.CharField(max_length=20, choices=choice, default='1')
     gettime = models.DateTimeField(auto_now_add=False)
+    getsite = models.CharField(max_length=20, default="金水区")
     cartype = models.ForeignKey(LongCar, on_delete=models.CASCADE)
 

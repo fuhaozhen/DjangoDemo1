@@ -308,41 +308,38 @@ def new(request):
         return redirect('/cars/me/')
 
 
-def advice(request):
-        returnsite = request.POST["site"]
-        renttime = request.POST["renttime"]
-        gettime = request.POST["gettime"]
-        cartype1 = request.POST["cartype"]
-        username = request.POST["username"]
-        email = request.POST["email"]
-        car = LongCar.objects.get(name=cartype1)
-        picture = car.picture
-        carname = car.name+car.desc
-        longorder = LongOrder()
-        print(longorder,"+++++++++++++++++")
-        longorder.username=username
-        longorder.email=email
-        longorder.rent=renttime
-        longorder.gettime=gettime
-        longorder.cartype=car
-        longorder.save()
-        return render(request, 'cars/success.html', {"picture": picture, "carname": carname, "getsite": returnsite, "gettime": gettime,\
+def success(request):
+    getsite = request.POST["site"]
+    renttime = request.POST["renttime"]
+    gettime = request.POST["gettime"]
+    cartype1 = request.POST["cartype"]
+    username = request.POST["username"]
+    email = request.POST["email"]
+    car = LongCar.objects.get(name=cartype1)
+    picture = car.picture
+    carname = car.name+car.desc
+    carname1 = car.name
+    return render(request, 'cars/success.html', {"car": car, "picture": picture, "carname": carname, "carname1": carname1, "getsite": getsite, "gettime": gettime,\
                                                      "renttime": renttime, "username": username, "email": email})
 
 
-def success(request):
-    advice1 = Advice()
-    advice1.name = request.POST["username"]
-    advice1.gender = request.POST["gender"]
-    advice1.email = request.POST["email"]
-    advice1.phone = request.POST["tel"]
-    advice1.title = request.POST["title"]
-    advice1.content = request.POST["comment"]
-    advice1.save()
-    return render(request, 'cars/success.html')
-
-
 def finally1(request):
+    getsite = request.POST["getsite"]
+    renttime = request.POST["renttime"]
+    gettime = request.POST["gettime"]
+    carname = request.POST["carname"]
+    # print(carname, "*************")
+    username = request.POST["username"]
+    email = request.POST["email"]
+    longorder = LongOrder()
+    # print(longorder, "+++++++++++++++++")
+    longorder.username = username
+    longorder.email = email
+    longorder.rent = renttime
+    longorder.gettime = gettime
+    longorder.cartype = LongCar.objects.get(name=carname)
+    longorder.getsite =getsite
+    longorder.save()
     return render(request, 'cars/finally.html')
 
 

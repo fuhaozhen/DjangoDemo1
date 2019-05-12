@@ -191,7 +191,7 @@
 				margin: 20px 0;
 				padding: 20px 0;
 			}
-			a.tijiao{
+			.tijiao{
 				width: 104px;
 				height: 44px;
 				display: inline-block;
@@ -291,57 +291,66 @@
 			</div>
 		</div>
 		{# -- middle -- #}
+		<form action="{% url 'cars:finally1'  %}" method="post">
 		    <div class="confirmInfo">
                 <div class="fl" style="border-right:1px solid #dbe4eb;">
                     <h3>用车信息</h3>
                     <div class="orderInfo" style="overflow:inherit; height:auto;">
-                        <div class="carInfo" style="height:auto">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2" height="147" align="center" valign="middle" class="borderBlueB">
-                                            <img src="/{{picture}}" alt="">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="65" height="65" align="center" valign="center" class="borderBlueR">{{carname}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="carTime">
-                            <ul class="borderBlueB">
-                                <li class="borderBlueBda" style="margin-top:20px;">
-                                    <span>取车门店：</span>
-                                    {{getsite}}
-                                </li>
-                                <li class="borderBlueBda">
-                                    <span>取车时间：</span>
-                                    {{gettime}}
-                                </li>
-                                <li class="borderBlueBda">
-                                    <span>租车时长：</span>
-                                    {{renttime}}
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
+							<div class="carInfo" style="height:auto">
+								<table width="100%" border="0" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td colspan="2" height="147" align="center" valign="middle" class="borderBlueB">
+												<img src="/static/media/{{picture}}" alt="">
+											</td>
+										</tr>
+
+											<tr>
+												<td  width="130" height="65" align="center" valign="center" class="borderBlueR">
+
+													<input type="hidden" name="carname" value="{{carname1}}">{{carname}}
+												</td>
+											</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="carTime">
+								<ul class="borderBlueB">
+									<li class="borderBlueBda" style="margin-top:20px;">
+										<span>取车门店：</span>
+
+										<input type="hidden" name="getsite" value="{{getsite}}">{{getsite}}
+									</li>
+									<li class="borderBlueBda">
+										<span>取车时间：</span>
+
+										<input type="hidden" name="gettime" value="{{gettime}}">{{gettime}}
+									</li>
+									<li class="borderBlueBda">
+										<span>租车时长：</span>
+
+										<input type="hidden" name="renttime" value="{{renttime}}">{{renttime}}
+									</li>
+								</ul>
+							</div>
+							<div class="clear"></div>
+
                     </div>
                 </div>
                 <div class="customerInfo fl">
                     <h3>客户信息</h3>
                     <p class="f14 p0_p10">
-                        联系人：{{username}}
+                        联系人：<input type="hidden" name="username" value="{{username}}">{{username}}
                         <br>
-                        邮件地址：{{email}}
+                        邮件地址：<input type="hidden" name="email" value="{{email}}">{{email}}
                     </p>
                 </div>
                 <div class="clear"></div>
             </div>
             <div class="ac">
-                <a href="{% url 'cars:finally1' %}" id="submitOrderInfo" class="tijiao">提交需求单</a>
+				<input type="submit" class="tijiao" value="提交需求单">
             </div>
-
+		</form>
 		{# -- foot -- #}
 		<div class="s1_footer">
 			<div class="s1_footer_top">
