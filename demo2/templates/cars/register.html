@@ -142,21 +142,27 @@
 			form{
 				display: block;
 			}
+			div.middle{
+			background:url(/static/images/back.png);
+			margin:10px auto;
+			width:1024px;
+			height:680px;
+			}
 			div.jregister{
+				opacity:1;
 				margin: 30px auto;
 				margin-bottom: 70px;
 				width:705px;
-				
+				height:655px;
 			}
 			div.jreg_top{
-				height:100px;
+				height:70px;
 			}
 			div.jreg_top h1{
 				/* width: 438px; */
 				text-align: center;
 				height: 77px;
 				line-height: 77px;
-				border-bottom: 1px solid #E5E5E5;
 				font-size: 24px;
 			}
 			dl.clearfix{
@@ -166,22 +172,20 @@
 			div.jreg_list{
 				margin: 0;
 				padding: 0;
-				padding-top: 70px;
+				padding-top: 40px;
 				border: 1px solid #E5E5E5;
-				width: 600px;
+				width: 400px;
 				margin: auto;
-				margin-top: 30px;
+				margin-top: 10px;
 				background: #F2F3F5;
 			}
 			div.jreg_con{
-				width: 500px;
-
+				width: 300px;
 				min-height: 473px;
-				margin-left: 80px;
-				
+				margin-left: 70px;
 			}
 			form{
-				padding: 0 100px;
+				padding: 0 10px;
 			}
 			.clearfix{
 				zoom: 1;
@@ -233,7 +237,7 @@
 				line-height: 30px;
 				position: absolute;
 				top: -13px;
-				left: 150px;
+				left: 70px;
 				margin: 0;
 			}
 			div.s1_huo p a{
@@ -334,7 +338,8 @@
 			</div>
 		</div>
 		{# -- middle_register --#}
-		<div class="jregister">
+		<div class="middle">
+			<div class="jregister">
 			<div class="jreg_content">
 				<div class="jreg_top">
 					<h1>新用户注册</h1>
@@ -344,13 +349,13 @@
 					<div class="jreg_con">
 						<form class="clearfix" action="{% url 'cars:user_register' %}" method="post">
 							{% csrf_token %}
-							<input type="text" id="username" name="username" placeholder="请输入您的用户名" onfocus="getfocus(this);" onblur="lostfocus(this,'用户名');" required >
+							<input type="text" id="username" name="username" placeholder="请输入您的用户名" required >
 							<span id="show"></span>
-							<input type="text" id='tel' name="usertel" placeholder="请输入您的手机号" onfocus="getfocus(this);" onblur="lostfocus(this,'手机号');"  required>
+							<input type="text" id='tel' name="usertel" placeholder="请输入您的手机号"  required>
 							<span id="error"></span>
-							<input type="password" name="userpwd" placeholder="请输入您的密码" onfocus="getfocus(this);" onblur="lostfocus(this,'密码');"  required>
-							<input type="password" name="re_userpwd" placeholder="请确认您的密码" onfocus="getfocus(this);" onblur="lostfocus(this,'确认密码');" required>
-							<input type="text" name="useremail" placeholder="请输入您的邮箱" onfocus="getfocus(this);" onblur="lostfocus(this,'邮箱');" required>
+							<input type="password" name="userpwd" placeholder="请输入您的密码"  required>
+							<input type="password" name="re_userpwd" placeholder="请确认您的密码"  required>
+							<input type="text" name="useremail" placeholder="请输入您的邮箱"  required>
 							<div class="zhu_ce clearfix">
 							<input type="submit" value="立即注册">
 							</div>
@@ -366,6 +371,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 		{# -- foot -- #}
 		<div class="s1_footer">
